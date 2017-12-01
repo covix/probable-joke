@@ -1,5 +1,12 @@
 **/save
 **/data
+**/build
+**/.build_release
+
+
+*.config
+*.txt
+*.caffemodel
 
 # macOS related stuff
 **/.DS_Store
