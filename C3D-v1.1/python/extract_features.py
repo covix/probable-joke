@@ -70,7 +70,7 @@ for folder in os.listdir(data_dir):
         video_feature_matrix.append(feature_vector)
 
     # Create output file
-    output_file = current_output_dir + '/' + folder + '_features.txt'
+    output_file = current_output_dir + '/' + folder + '_features.csv'
 
     # Save video feature matrix in file
     with open(output_file, 'w') as f:
