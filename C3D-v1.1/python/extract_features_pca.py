@@ -112,6 +112,6 @@ with open(num_frames_file, 'w') as f:
 print 'PCA explained variance ratio: ' +  str(pca.explained_variance_ratio_)
 print 'Explained variance: ' + str(sum(pca.explained_variance_ratio_))
 print 'Shape after: ' + str(pca_data_fit.shape)
-plt.imshow(pca_data_fit)
+plt.imshow(pca_data_fit, interpolation='nearest')
 plt.gray()
 plt.show()
