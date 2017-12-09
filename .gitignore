@@ -5,7 +5,6 @@
 
 
 *.config
-*.txt
 *.caffemodel
 
 # macOS related stuff
