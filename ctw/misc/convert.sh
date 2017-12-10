@@ -1,11 +1,11 @@
 #!/bin/bash
 
 INPUT_FOLDER=$1
+OUTPUT_FOLDER=${2:-$INPUT_FOLDER}
 
-for i in $INPUT_FOLDER/*.avi;
+for i in $INPUT_FOLDER/*M*.avi;
 do
-    name="${i%.*}";
-    # ffmpeg -v 1 -y -vcodec h264 -i "$i" "$name.mp4";
-    avconv -i "$i" -vcodec libx264 -acodec aac -strict experimental -y -v 0 "$name.mp4";  
+    name="${i##*/}"
+    echo $name;
+    avconv -i "$i" -vcodec libx264 -acodec aac -strict experimental -y -v 0 "${OUTPUT_FOLDER}/${name}.mp4";
 done
-

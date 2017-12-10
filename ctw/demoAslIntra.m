@@ -19,7 +19,7 @@ aslSrc = [cd '/data/asl/intra_class/'];
 % aslSrc = [cd '/data/asl/inter_class/'];
 
 %% data
-aslData = aslAliData(aslSrc);
+aslData = aslAliDataRaw(aslSrc);
 X0Gs = aslAliDataX(aslData.Gs, st('d', .999));
 XGs = pcas(X0Gs, st('d', min(cellDim(X0Gs, 1)), 'cat', 'n'));
 

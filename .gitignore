@@ -3,11 +3,19 @@
 **/build
 **/.build_release
 
-
+# Caffe
 *.config
 *.txt
 *.caffemodel
 
 # macOS related stuff
 **/.DS_Store
+
+# Dataset
+VideoThumbnails*
+*.csv
+
+# MatLab
+*.mat
+*.m~
 

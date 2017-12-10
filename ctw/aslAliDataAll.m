@@ -1,4 +1,4 @@
-function aslData = aslAliData(aslSrc)
+function aslData = aslAliDataRaw(aslSrc)
 % Read .mp4 files and compute the BM
 %
 % Input
@@ -16,37 +16,23 @@ srcs = dir([aslSrc '/*mp4']);
 % dimension
 m = length(srcs);
 
-if m < 2
-    ME = MException('MYFUN:BadFolder', ...
-                    'Number of files is < 2 in %s', aslSrc);
-    throw(ME)
-end
-
 % data
-
-[OrFs, Ors, BMs, BMFs]= cellss(1, m);
+BMs = cell(1, m);
+ratio = 0.1;
 
 for i = 1 : m
+    disp(i);
     % mask
     src = srcs(i);
     frames = aslReadVideo([src.folder '/' src.name]);
     
     bms = cell(1, length(frames));
     for j = 1:length(frames)
-    	bms{j} = double(~magicWand(frames{j}, [1 20], [1 20], 50));
-        frames{j} = rgb2gray(frames{j});
+    	bms{j} = imresize(~magicWand(frames{j}, [1 20], [1 20], 50), ratio);
     end
     
-    OrFs{i} = frames;
-    Ors{i} = mcat('horz', cellVec(frames));
-    BMFs{i} = bms;
     BMs{i} = mcat('horz', cellVec(bms));
 end
 
 aslData = struct();
-aslData.OrFs = OrFs;
-aslData.Gss = Ors;
-aslData.BMFs = BMFs;
 aslData.BMs = BMs;
-
-

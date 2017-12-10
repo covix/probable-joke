@@ -10,14 +10,19 @@
 %   create  -  Luca Coviello (luca.coviello@gmail.com), 11-22-2017
 
 
-footpath = cd;
+footpath = [cd '/'];
 
-dirs = ["/data/asl/inter_class/*.mp4"
-"/data/asl/intra_class/*.mp4"];
+mkdir ../data/bm
+
+% dirs = ["/data/asl/inter_class/*.mp4"
+% "/data/asl/intra_class/*.mp4"];
+dirs = ["../data/avi/"];
 
 for d = dirs'
-    files = dir([footpath char(d)]);
+    disp(d)
+    files = dir([footpath char(d) '/*mp4']);
     for file = files'
+        disp(file)
         disp([file.folder '/' file.name])
         vidObj = VideoReader([file.folder '/' file.name]);
 
@@ -40,7 +45,7 @@ for d = dirs'
         end
         
         fname_ext = split(file.name, '.');
-        v = VideoWriter([file.folder '/' fname_ext{1} '-bm.' fname_ext{2}], 'MPEG-4');
+        v = VideoWriter([file.folder '/../bm/' fname_ext{1} '-bm.' fname_ext{2}], 'MPEG-4');
         open(v);
         for i = 1:length(s)
             writeVideo(v, bms{i});
