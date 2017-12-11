@@ -53,7 +53,7 @@ aliGtw = gtw(Xs, bas, aliUtw, [], parGtw, parCca, parGN);
 
 %% save indexes
 P = aliGtw.P;
-csvwrite(strcat('data/asl/aligned/aliGtw', class, 'P.csv'), P)
+csvwrite(strcat('data/asl/aligned_bm/ali_gtw_bm_P_', class, '.csv'), P)
 
 %% show key-frame - feature
 % idx = round(linspace(1, l, 7));
