@@ -10,13 +10,15 @@ addPath
 parCca = st('d', 3, 'lams', .1); % CCA: reduce dimension to keep at least 0.95 energy
 parGN = st('nItMa', 2, 'inp', 'linear'); % Gauss-Newton: 2 iterations to update the weight in GTW, 
 parGtw = st('nItMa', 20);
+parPimw = st('lA', 1, 'lB', 1); % IMW: regularization weight
 
 
 %% src
 % aslSrc = '/Users/covix/Projects/probable-joke/data/mp4';
 % aslSrc = '/Users/covix/Projects/probable-joke/ctw/data/asl/inter_class';
 % aslSrc = '/Users/covix/Projects/probable-joke/ctw/data/asl/deep_features';
-aslSrc = '/Users/covix/Projects/probable-joke/ctw/data/asl/deep_pca_features';
+% aslSrc = '/Users/covix/Projects/probable-joke/ctw/data/asl/deep_pca_features';
+aslSrc = '/Users/covix/Projects/probable-joke/data/pca_10_features/';
 
 %% data
 % aslData = aslAliDataAll(aslSrc);
@@ -33,14 +35,21 @@ bas = baTems(l, ns, 'pol', [5 .5], 'tan', [5 1 1]); % 2 polynomial and 3 tangent
 %% utw (initialization)
 aliUtw = utw(Xs, bas, []);
 
+%% pimw
+aliPimw = pimw(Xs, aliUtw, [], parPimw, []);
+
 %% gtw
-aliGtw = gtw(Xs, bas, aliUtw, [], parGtw, parCca, parGN);
+% aliGtw = gtw(Xs, bas, aliUtw, [], parGtw, parCca, parGN);
 
 %% save indexes
-save('aliGtw.mat', 'aliGtw');
+% save('aliGtw.mat', 'aliGtw');
+% save('aliPimw.mat', 'aliPimw');
+P = aliPimw.P;
+csvwrite('data/asl/aligned_deep_features/ali_pimw_bm_P_all.csv', P)
+
 
 %% show result
-shAslCmp([], [], {aliGtw}, [], parCca, [], parGN, 1);
+shAslCmp([], [], {aliPimw}, [], parCca, [], parGN, 1);
 
 
 %% show key-frame - feature

@@ -15,6 +15,7 @@ output_dir = sys.argv[5]
 layer = sys.argv[6]
 
 N_COMP = sys.argv[7] if len(sys.argv) == 8 else 100
+N_COMP = int(N_COMP)
 
 # Create caffe Net object
 net = caffe.Net(deploy_prototxt_path, model_path, caffe.TEST)
