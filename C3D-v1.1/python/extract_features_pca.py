@@ -6,7 +6,6 @@ import matplotlib.pyplot as plt
 from sklearn.decomposition import PCA
 from PIL import Image
 
-N_COMP = 100
 
 data_dir = sys.argv[1]
 model_path = sys.argv[2]
@@ -14,6 +13,8 @@ deploy_prototxt_path = sys.argv[3]
 imagemean_path = sys.argv[4]
 output_dir = sys.argv[5]
 layer = sys.argv[6]
+
+N_COMP = sys.argv[7] if len(sys.argv) == 8 else 100
 
 # Create caffe Net object
 net = caffe.Net(deploy_prototxt_path, model_path, caffe.TEST)
@@ -47,19 +48,19 @@ for folder in os.listdir(data_dir):
 
     if not os.path.exists(current_output_dir):
              os.makedirs(current_output_dir)
-    
+
     num_frames = 0
     for image_file in sorted(os.listdir(data_dir + '/' + folder)):
-        
+
         num_frames = num_frames + 1
 
         print 'Processing image: ' + image_file
         # Load image
         img = caffe.io.load_image(data_dir + '/' + folder + '/' + image_file)
-        
+
         # Preprocess the image using the transformer
         net.blobs['data'].data[...] = transformer.preprocess('data', img)
-        
+
         # Feed forward the image in the net
         output = net.forward()
 
@@ -80,14 +81,14 @@ for folder in os.listdir(data_dir):
 
     # Save number of frames of current video
     num_frames_array.append(num_frames)
-    
+
     # Create output file
     output_file = current_output_dir + '/' + folder + '_features.txt'
 
     # Save video feature matrix in file
     with open(output_file, 'w') as f:
         np.savetxt(f, video_feature_matrix)
-    print '-------------------------------'    
+    print '-------------------------------'
 
 
 # Apply PCA
