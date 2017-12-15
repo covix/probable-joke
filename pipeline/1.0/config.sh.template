@@ -3,5 +3,5 @@
 # and edit there the variables
 
 
-# Note: -nodesktop is only for local installation
-MATLAB="/Applications/MATLAB_R2017b.app/bin/matlab -nodesktop"
+# Note: options are only for local installation
+MATLAB="/Applications/MATLAB_R2017b.app/bin/matlab -nodesktop -nospash -nodisplay"
