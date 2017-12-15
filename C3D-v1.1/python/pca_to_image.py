@@ -49,6 +49,9 @@ if __name__ == '__main__':
     min_, max_, num_frames = [], [], []
     k = 0
     for f in os.listdir(input_folder):
+        if not f.endswith(".csv"):
+            continue
+        
         pca_matrix = np.loadtxt(os.path.join(input_folder, f), delimiter=',')
         min_.append(pca_matrix.min())
         max_.append(pca_matrix.max())
