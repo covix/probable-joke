@@ -18,3 +18,7 @@ VideoThumbnails*
 *.mat
 *.m~
 
+
+# pipeline config
+config.sh
+
