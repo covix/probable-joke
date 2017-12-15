@@ -2,4 +2,6 @@
 # to actually try the things on your computer, do `cp config.sh.template config.sh`
 # and edit there the variables
 
-MATLAB=/Applications/MATLAB_R2017b.app/bin/matlab
+
+# Note: -nodesktop is only for local installation
+MATLAB="/Applications/MATLAB_R2017b.app/bin/matlab -nodesktop"

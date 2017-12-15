@@ -11,4 +11,4 @@ CMD="\
     exit;
 "
 
-$MATLAB -nodesktop -nodisplay -nosplash -r "$CMD"
+$MATLAB -nodisplay -nosplash -r "$CMD"
