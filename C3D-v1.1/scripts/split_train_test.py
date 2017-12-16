@@ -17,10 +17,13 @@ def main():
     with open(input_file) as f:
         X = f.readlines()
 
+    y = [i.split()[-1] for i in X]
+
     # TODO split on video level, not frame
     # TODO sort the results
+    # TODO check if stratify really works
     X_train, X_test = train_test_split(
-        X, test_size=test_size, random_state=42)
+        X, test_size=test_size, stratify=y, random_state=42)
 
     with open(os.path.join(outf, 'train.txt'), 'w') as f:
         f.writelines(X_train)
