@@ -1,4 +1,4 @@
-name: "C3D-ASLNet"
+name: "C3D-UCF101Net"
 layer {
   name: "data"
   type: "VideoData"
@@ -13,15 +13,15 @@ layer {
     mirror: true
   }
   video_data_param {
-    source: "train.txt"
-    root_folder: "/data/sparks/share/asl/"
+    source: "train_01.lst"
+    root_folder: "/data/users/trandu/datasets/ucf101/frm/"
     new_length: 8
     sampling_rate: 2
     new_height: 128
     new_width: 171
     use_image: true
     show_data: false
-    batch_size: 8  # 24
+    batch_size: 24
     shuffle: true
   }
 }
@@ -40,15 +40,15 @@ layer {
     mirror: false
   }
   video_data_param {
-    source: "train.txt"
-    root_folder: "/data/sparks/share/asl/"
+    source: "train_01.lst"
+    root_folder: "/data/users/trandu/datasets/ucf101/frm/"
     new_length: 8
     sampling_rate: 2
     new_height: 128
     new_width: 171
     use_image: true
     show_data: false
-    batch_size: 1  # 20
+    batch_size: 20
     shuffle: true
   }
 }
@@ -67,15 +67,15 @@ layer {
     mirror: false
   }
   video_data_param {
-    source: "test.txt"
-    root_folder: "/data/sparks/share/asl/"
+    source: "test_01.lst"
+    root_folder: "/data/users/trandu/datasets/ucf101/frm/"
     new_length: 8
     sampling_rate: 2
     new_height: 128
     new_width: 171
     use_image: true
     show_data: false
-    batch_size: 1  #  20
+    batch_size: 20
     shuffle: true
   }
 }
@@ -87,7 +87,7 @@ layer {
   name: "conv1"
   type: "Convolution3D"
   param {
-    lr_mult: 0
+    lr_mult: 1
     decay_mult: 1
   }
   convolution3d_param {
@@ -134,11 +134,11 @@ layer {
   name: "scale_conv1"
   type: "Scale"
   param {
-    lr_mult: 0
+    lr_mult: 1
     decay_mult: 0
   }
   param {
-    lr_mult: 0
+    lr_mult: 1
     decay_mult: 0
   }
   scale_param {
@@ -160,7 +160,7 @@ layer {
   name: "res2a_branch1"
   type: "Convolution3D"
   param {
-    lr_mult: 0
+    lr_mult: 1
     decay_mult: 1
   }
   convolution3d_param {
@@ -207,11 +207,11 @@ layer {
   name: "scale2a_branch1"
   type: "Scale"
   param {
-    lr_mult: 0
+    lr_mult: 1
     decay_mult: 0
   }
   param {
-    lr_mult: 0
+    lr_mult: 1
     decay_mult: 0
   }
   scale_param {
@@ -225,7 +225,7 @@ layer {
   name: "res2a_branch2a"
   type: "Convolution3D"
   param {
-    lr_mult: 0
+    lr_mult: 1
     decay_mult: 1
   }
   convolution3d_param {
@@ -272,11 +272,11 @@ layer {
   name: "scale2a_branch2a"
   type: "Scale"
   param {
-    lr_mult: 0
+    lr_mult: 1
     decay_mult: 0
   }
   param {
-    lr_mult: 0
+    lr_mult: 1
     decay_mult: 0
   }
   scale_param {
@@ -297,7 +297,7 @@ layer {
   name: "res2a_branch2b"
   type: "Convolution3D"
   param {
-    lr_mult: 0
+    lr_mult: 1
     decay_mult: 1
   }
   convolution3d_param {
@@ -344,11 +344,11 @@ layer {
   name: "scale2a_branch2b"
   type: "Scale"
   param {
-    lr_mult: 0
+    lr_mult: 1
     decay_mult: 0
   }
   param {
-    lr_mult: 0
+    lr_mult: 1
     decay_mult: 0
   }
   scale_param {
@@ -377,7 +377,7 @@ layer {
   name: "res2b_branch2a"
   type: "Convolution3D"
   param {
-    lr_mult: 0
+    lr_mult: 1
     decay_mult: 1
   }
   convolution3d_param {
@@ -424,11 +424,11 @@ layer {
   name: "scale2b_branch2a"
   type: "Scale"
   param {
-    lr_mult: 0
+    lr_mult: 1
     decay_mult: 0
   }
   param {
-    lr_mult: 0
+    lr_mult: 1
     decay_mult: 0
   }
   scale_param {
@@ -449,7 +449,7 @@ layer {
   name: "res2b_branch2b"
   type: "Convolution3D"
   param {
-    lr_mult: 0
+    lr_mult: 1
     decay_mult: 1
   }
   convolution3d_param {
@@ -496,11 +496,11 @@ layer {
   name: "scale2b_branch2b"
   type: "Scale"
   param {
-    lr_mult: 0
+    lr_mult: 1
     decay_mult: 0
   }
   param {
-    lr_mult: 0
+    lr_mult: 1
     decay_mult: 0
   }
   scale_param {
@@ -531,7 +531,7 @@ layer {
   name: "res3a_branch1"
   type: "Convolution3D"
   param {
-    lr_mult: 0
+    lr_mult: 1
     decay_mult: 1
   }
   convolution3d_param {
@@ -578,11 +578,11 @@ layer {
   name: "scale3a_branch1"
   type: "Scale"
   param {
-    lr_mult: 0
+    lr_mult: 1
     decay_mult: 0
   }
   param {
-    lr_mult: 0
+    lr_mult: 1
     decay_mult: 0
   }
   scale_param {
@@ -596,7 +596,7 @@ layer {
   name: "res3a_branch2a"
   type: "Convolution3D"
   param {
-    lr_mult: 0
+    lr_mult: 1
     decay_mult: 1
   }
   convolution3d_param {
@@ -643,11 +643,11 @@ layer {
   name: "scale3a_branch2a"
   type: "Scale"
   param {
-    lr_mult: 0
+    lr_mult: 1
     decay_mult: 0
   }
   param {
-    lr_mult: 0
+    lr_mult: 1
     decay_mult: 0
   }
   scale_param {
@@ -668,7 +668,7 @@ layer {
   name: "res3a_branch2b"
   type: "Convolution3D"
   param {
-    lr_mult: 0
+    lr_mult: 1
     decay_mult: 1
   }
   convolution3d_param {
@@ -715,11 +715,11 @@ layer {
   name: "scale3a_branch2b"
   type: "Scale"
   param {
-    lr_mult: 0
+    lr_mult: 1
     decay_mult: 0
   }
   param {
-    lr_mult: 0
+    lr_mult: 1
     decay_mult: 0
   }
   scale_param {
@@ -748,7 +748,7 @@ layer {
   name: "res3b_branch2a"
   type: "Convolution3D"
   param {
-    lr_mult: 0
+    lr_mult: 1
     decay_mult: 1
   }
   convolution3d_param {
@@ -795,11 +795,11 @@ layer {
   name: "scale3b_branch2a"
   type: "Scale"
   param {
-    lr_mult: 0
+    lr_mult: 1
     decay_mult: 0
   }
   param {
-    lr_mult: 0
+    lr_mult: 1
     decay_mult: 0
   }
   scale_param {
@@ -820,7 +820,7 @@ layer {
   name: "res3b_branch2b"
   type: "Convolution3D"
   param {
-    lr_mult: 0
+    lr_mult: 1
     decay_mult: 1
   }
   convolution3d_param {
@@ -867,11 +867,11 @@ layer {
   name: "scale3b_branch2b"
   type: "Scale"
   param {
-    lr_mult: 0
+    lr_mult: 1
     decay_mult: 0
   }
   param {
-    lr_mult: 0
+    lr_mult: 1
     decay_mult: 0
   }
   scale_param {
@@ -902,7 +902,7 @@ layer {
   name: "res4a_branch1"
   type: "Convolution3D"
   param {
-    lr_mult: 0
+    lr_mult: 1
     decay_mult: 1
   }
   convolution3d_param {
@@ -947,11 +947,11 @@ layer {
   name: "scale4a_branch1"
   type: "Scale"
   param {
-    lr_mult: 0
+    lr_mult: 1
     decay_mult: 0
   }
   param {
-    lr_mult: 0
+    lr_mult: 1
     decay_mult: 0
   }
   scale_param {
@@ -964,7 +964,7 @@ layer {
   name: "res4a_branch2a"
   type: "Convolution3D"
   param {
-    lr_mult: 0
+    lr_mult: 1
     decay_mult: 1
   }
   convolution3d_param {
@@ -1009,11 +1009,11 @@ layer {
   name: "scale4a_branch2a"
   type: "Scale"
   param {
-    lr_mult: 0
+    lr_mult: 1
     decay_mult: 0
   }
   param {
-    lr_mult: 0
+    lr_mult: 1
     decay_mult: 0
   }
   scale_param {
@@ -1032,7 +1032,7 @@ layer {
   name: "res4a_branch2b"
   type: "Convolution3D"
   param {
-    lr_mult: 0
+    lr_mult: 1
     decay_mult: 1
   }
   convolution3d_param {
@@ -1077,11 +1077,11 @@ layer {
   name: "scale4a_branch2b"
   type: "Scale"
   param {
-    lr_mult: 0
+    lr_mult: 1
     decay_mult: 0
   }
   param {
-    lr_mult: 0
+    lr_mult: 1
     decay_mult: 0
   }
   scale_param {
@@ -1107,7 +1107,7 @@ layer {
   name: "res4b_branch2a"
   type: "Convolution3D"
   param {
-    lr_mult: 0
+    lr_mult: 1
     decay_mult: 1
   }
   convolution3d_param {
@@ -1152,11 +1152,11 @@ layer {
   name: "scale4b_branch2a"
   type: "Scale"
   param {
-    lr_mult: 0
+    lr_mult: 1
     decay_mult: 0
   }
   param {
-    lr_mult: 0
+    lr_mult: 1
     decay_mult: 0
   }
   scale_param {
@@ -1175,7 +1175,7 @@ layer {
   name: "res4b_branch2b"
   type: "Convolution3D"
   param {
-    lr_mult: 0
+    lr_mult: 1
     decay_mult: 1
   }
   convolution3d_param {
@@ -1220,11 +1220,11 @@ layer {
   name: "scale4b_branch2b"
   type: "Scale"
   param {
-    lr_mult: 0
+    lr_mult: 1
     decay_mult: 0
   }
   param {
-    lr_mult: 0
+    lr_mult: 1
     decay_mult: 0
   }
   scale_param {
@@ -1254,7 +1254,7 @@ layer {
   name: "res5a_branch1"
   type: "Convolution3D"
   param {
-    lr_mult: 0
+    lr_mult: 1
     decay_mult: 1
   }
   convolution3d_param {
@@ -1299,11 +1299,11 @@ layer {
   name: "scale5a_branch1"
   type: "Scale"
   param {
-    lr_mult: 0
+    lr_mult: 1
     decay_mult: 0
   }
   param {
-    lr_mult: 0
+    lr_mult: 1
     decay_mult: 0
   }
   scale_param {
@@ -1316,7 +1316,7 @@ layer {
   name: "res5a_branch2a"
   type: "Convolution3D"
   param {
-    lr_mult: 0
+    lr_mult: 1
     decay_mult: 1
   }
   convolution3d_param {
@@ -1361,11 +1361,11 @@ layer {
   name: "scale5a_branch2a"
   type: "Scale"
   param {
-    lr_mult: 0
+    lr_mult: 1
     decay_mult: 0
   }
   param {
-    lr_mult: 0
+    lr_mult: 1
     decay_mult: 0
   }
   scale_param {
@@ -1384,7 +1384,7 @@ layer {
   name: "res5a_branch2b"
   type: "Convolution3D"
   param {
-    lr_mult: 0
+    lr_mult: 1
     decay_mult: 1
   }
   convolution3d_param {
@@ -1429,11 +1429,11 @@ layer {
   name: "scale5a_branch2b"
   type: "Scale"
   param {
-    lr_mult: 0
+    lr_mult: 1
     decay_mult: 0
   }
   param {
-    lr_mult: 0
+    lr_mult: 1
     decay_mult: 0
   }
   scale_param {
@@ -1459,7 +1459,7 @@ layer {
   name: "res5b_branch2a"
   type: "Convolution3D"
   param {
-    lr_mult: 0
+    lr_mult: 1
     decay_mult: 1
   }
   convolution3d_param {
@@ -1504,11 +1504,11 @@ layer {
   name: "scale5b_branch2a"
   type: "Scale"
   param {
-    lr_mult: 0
+    lr_mult: 1
     decay_mult: 0
   }
   param {
-    lr_mult: 0
+    lr_mult: 1
     decay_mult: 0
   }
   scale_param {
@@ -1527,7 +1527,7 @@ layer {
   name: "res5b_branch2b"
   type: "Convolution3D"
   param {
-    lr_mult: 0
+    lr_mult: 1
     decay_mult: 1
   }
   convolution3d_param {
@@ -1572,11 +1572,11 @@ layer {
   name: "scale5b_branch2b"
   type: "Scale"
   param {
-    lr_mult: 0
+    lr_mult: 1
     decay_mult: 0
   }
   param {
-    lr_mult: 0
+    lr_mult: 1
     decay_mult: 0
   }
   scale_param {
