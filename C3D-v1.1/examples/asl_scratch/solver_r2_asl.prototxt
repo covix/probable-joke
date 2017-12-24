@@ -4,7 +4,7 @@ test_state: { stage: 'test-on-train' }
 test_iter: 100
 test_state: { stage: 'test-on-val' }
 test_interval: 101
-base_lr: 0.1
+base_lr: 0.01
 momentum: 0.9
 weight_decay: 0.00005
 lr_policy: "step"

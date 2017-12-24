@@ -1,3 +1,5 @@
+nvidia-smi
+
 mkdir -p LOG_TRAIN
 
 source /etc/profile.d/modules.sh
