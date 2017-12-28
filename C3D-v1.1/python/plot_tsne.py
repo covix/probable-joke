@@ -24,7 +24,7 @@ def plot_embedding(X, title=None):
     ax = plt.subplot(111)
     for i in range(X.shape[0]):
         plt.text(X[i, 0], X[i, 1], str(y[i]),
-                 color=plt.cm.Set1(y[i] / float(len(y))),
+                 color=plt.cm.Set1(y[i] / float(len(np.unique(y)))),
                  fontdict={'weight': 'bold', 'size': 9})
 
     plt.xticks([]), plt.yticks([])
@@ -48,8 +48,10 @@ for idx, f in enumerate(os.listdir(input_folder)):
     if idx % 100 == 0:
         print idx
 
-X = np.array([i[:, :].flatten() for i in matrices])
+skip_features = 90
+X = np.array([i[:, skip_features:].flatten() for i in matrices])
 y = labels
+
 n_samples, n_features = X.shape
 n_neighbors = 30
 #

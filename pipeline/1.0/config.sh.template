@@ -4,4 +4,4 @@
 
 
 # Note: options are only for local installation
-export MATLAB="/Applications/MATLAB_R2017b.app/bin/matlab -nodesktop -nospash -nodisplay"
+export MATLAB="/Applications/MATLAB_R2017b.app/bin/matlab -nodesktop -nosplash -nodisplay"
