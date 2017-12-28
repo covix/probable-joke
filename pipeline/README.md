@@ -21,8 +21,9 @@ The pipeline structure is the following:
   * Code or libraries needed to execute the code
 
 ## Brief pipelines descriptions
-### 1.0
+### <a name="1.0">1.0</a>
 This is the first developed pipeline, it extracts features from GoogLeNet on every frames,
-which are then aligned and fed to AlexNet for finetuning.
+which are then aligned with PIMW and fed to AlexNet for finetuning.
 
-
+### 2.0
+Frame based approach like in [1.0](#1.0), but with GCTW.
