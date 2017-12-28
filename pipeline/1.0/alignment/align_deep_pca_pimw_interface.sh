@@ -11,4 +11,4 @@ CMD="\
     exit;
 "
 
-$MATLAB -r "$CMD"
+$MATLAB -r "$CMD" > pimw.log 2>&1

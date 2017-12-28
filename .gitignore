@@ -17,7 +17,7 @@ VideoThumbnails*
 # MatLab
 *.mat
 *.m~
-
+*.log
 
 # pipeline config
 config.sh
