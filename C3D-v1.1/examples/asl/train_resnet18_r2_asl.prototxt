@@ -15,7 +15,7 @@ layer {
   video_data_param {
     source: "train.txt"
     root_folder: "/data/sparks/share/asl/"
-    new_length: 8
+    new_length: 16
     sampling_rate: 2
     new_height: 128
     new_width: 171
@@ -42,7 +42,7 @@ layer {
   video_data_param {
     source: "train.txt"
     root_folder: "/data/sparks/share/asl/"
-    new_length: 8
+    new_length: 16
     sampling_rate: 2
     new_height: 128
     new_width: 171
@@ -69,7 +69,7 @@ layer {
   video_data_param {
     source: "test.txt"
     root_folder: "/data/sparks/share/asl/"
-    new_length: 8
+    new_length: 16
     sampling_rate: 2
     new_height: 128
     new_width: 171

@@ -4,6 +4,7 @@ import os
 import imageio
 import numpy as np
 
+# TODO replicate the frames of the videos in image format
 
 def main():
     input_folder = sys.argv[1]
