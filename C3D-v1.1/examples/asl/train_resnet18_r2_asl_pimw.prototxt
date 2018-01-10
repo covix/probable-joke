@@ -15,13 +15,13 @@ layer {
   video_data_param {
     source: "/data/sparks/share/asl/experiments/pimw_aligned_frames_split/train.txt"
     root_folder: "/data/sparks/share/asl/experiments/dry_run/aligned_video_pimw/"
-    new_length: 180  # 8
+    new_length: 60  # 8
     # sampling_rate: 2
     new_height: 128
     new_width: 171
     use_image: true
     show_data: false
-    batch_size: 50  # 24
+    batch_size: 1  # 24
     shuffle: true
   }
 }
@@ -42,7 +42,7 @@ layer {
   video_data_param {
     source: "/data/sparks/share/asl/experiments/pimw_aligned_frames_split/train.txt"
     root_folder: "/data/sparks/share/asl/experiments/dry_run/aligned_video_pimw/"
-    new_length: 180  # 8
+    new_length: 60  # 8
     # sampling_rate: 2
     new_height: 128
     new_width: 171
@@ -69,7 +69,7 @@ layer {
   video_data_param {
     source: "/data/sparks/share/asl/experiments/pimw_aligned_frames_split/test.txt"
     root_folder: "/data/sparks/share/asl/experiments/dry_run/aligned_video_pimw/"
-    new_length: 180  # 8
+    new_length: 60  # 8
     # sampling_rate: 2
     new_height: 128
     new_width: 171
