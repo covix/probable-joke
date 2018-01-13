@@ -14,4 +14,4 @@ export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:/data/sparks/share/nccl-master/lib
 
 CAFFE_HOME=/data/sparks/share/C3D/C3D-v1.1/
 
-GLOG_logtostderr=1 ${CAFFE_HOME}/build/tools/extract_image_features.bin c3d_resnet18_ucf101_feature_extraction.prototxt conv3d_deepnetA_sport1m_iter_1900000_v1.1.caffemodel $GPU_ID $BATCH_SIZE $BATCH_NUMBERS ucf101_video_frame.prefix pool5 res5b
+GLOG_logtostderr=1 ${CAFFE_HOME}/build/tools/extract_image_features.bin c3d_resnet18_ucf101_feature_extraction.prototxt conv3d_deepnetA_sport1m_iter_1900000_v1.1.caffemodel $GPU_ID $BATCH_SIZE $BATCH_NUMBERS ucf101_video_frame.prefix pool5 conv5b
