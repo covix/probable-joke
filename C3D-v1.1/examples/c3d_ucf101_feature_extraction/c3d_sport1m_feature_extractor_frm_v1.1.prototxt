@@ -19,7 +19,7 @@ layer {
     use_image: true
     show_data: false
     use_temporal_jitter: false
-    batch_size: 30
+    batch_size: 1
     shuffle: false
   }
 }
