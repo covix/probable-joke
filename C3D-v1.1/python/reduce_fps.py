@@ -1,10 +1,14 @@
+"""
+remember to push from the cluster (cit. polimi teacher)
+"""
+
 import os
 import shutil
 import sys
 
-import imageio
-import matplotlib.pyplot as plt
-import visvis as vv
+#import imageio
+#import matplotlib.pyplot as plt
+#import visvis as vv
 
 ACTUAL_FPS = 30
 
@@ -61,11 +65,11 @@ def main():
         Y.sort()
         for idx, i in enumerate(range(0, len(Y), fps)):
             y = Y[i]
-			y = format(idx, "06") + ".jpg"
+                y = format(idx, "06") + ".jpg"
             source = "/".join([input_folder, x, y])
             dest = folder + y
             shutil.copyfile(source, dest)
-        create_video2(folder)
+        # create_video2(folder)
 
 
 if __name__ == '__main__':
