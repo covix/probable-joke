@@ -4,7 +4,7 @@ fi
 
 GPU_ID=0
 BATCH_SIZE=1
-BATCH_NUMBERS=1
+BATCH_NUMBERS=1204
 
 source /etc/profile.d/modules.sh
 module load cuda/8.0
