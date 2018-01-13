@@ -3,7 +3,7 @@ if [ ! -f c3d_resnet18_sports1m_r2_iter_2800000.caffemodel ];then
 fi
 
 GPU_ID=0
-BATCH_SIZE=10
+BATCH_SIZE=1
 BATCH_NUMBERS=1
 
 source /etc/profile.d/modules.sh

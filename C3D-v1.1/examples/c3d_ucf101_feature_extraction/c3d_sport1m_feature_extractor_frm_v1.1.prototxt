@@ -12,7 +12,7 @@ layer {
   video_data_param {
     source: "ucf101_video_frame.list"
     root_folder: ""
-    new_length: 16
+    new_length: 165
     sampling_rate: 1  # 2
     new_height: 128
     new_width: 171
