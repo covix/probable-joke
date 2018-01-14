@@ -1,4 +1,4 @@
-name: "c3d_ucf101"
+name: "c3d_Asl_boost"
 
 layer {
   name: "data"
