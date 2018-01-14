@@ -11,6 +11,8 @@ layer {
   transform_param {
     crop_size: 112
     mean_value: 128
+    mean_value: 128
+    mean_value: 128
     mirror: true
   }
   video_data_param {
@@ -37,6 +39,8 @@ layer {
   }
   transform_param {
     crop_size: 112
+    mean_value: 128
+    mean_value: 128
     mean_value: 128
     mirror: false
   }
@@ -65,6 +69,8 @@ layer {
   transform_param {
     crop_size: 112
     mean_value: 128
+    mean_value: 128
+    mean_value: 128
     mirror: false
   }
   video_data_param {
@@ -89,11 +95,11 @@ layer {
   bottom: "data"
   top: "conv1a"
   param {
-    lr_mult: 0
-    decay_mult: 0
+    lr_mult: 1
+    decay_mult: 1
   }
   param {
-    lr_mult: 0
+    lr_mult: 2
     decay_mult: 0
   }
   convolution_param {
@@ -143,11 +149,11 @@ layer {
   bottom: "pool1"
   top: "conv2a"
   param {
-    lr_mult: 0
-    decay_mult: 0
+    lr_mult: 1
+    decay_mult: 1
   }
   param {
-    lr_mult: 0
+    lr_mult: 2
     decay_mult: 0
   }
   convolution_param {
