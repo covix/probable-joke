@@ -15,16 +15,18 @@ def main():
     train_out_file = sys.argv[4]
     test_out_file = sys.argv[5]
 
-    times = int(180 / block_size) - 1
-    stride = 1
+    outf = os.path.dirname(os.path.realpath(input_folder))
+    X = os.listdir(input_folder)
+    Y = []
 
-    if((180 / float(block_size)) - (times + 1) != 0):
+    video_length = len(os.listdir(os.path.join(input_folder, X[0])))
+
+    stride = 1
+    times = int(video_length / block_size)
+
+    if((video_length / float(block_size)) - (times + 1) != 0):
         print("Attention, block_size is not a multiple of 180 \nin this way you will ignore some frames!")
 
-    outf = os.path.dirname(os.path.realpath(input_folder))
-    print input_folder
-    X = next(os.walk(input_folder))[1]
-    Y = []
     for f in X:
         for i in range(times):
             Y.append(f + " " + str(i * block_size + 1))
