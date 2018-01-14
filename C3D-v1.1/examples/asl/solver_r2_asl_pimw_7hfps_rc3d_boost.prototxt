@@ -17,7 +17,7 @@ lr_policy: "step"
 gamma: 0.1
 stepsize: 216
 # Display every 1 iterations
-display: 5
+display: 4
 # The maximum number of iterations
 max_iter: 20000
 # snapshot intermediate results
