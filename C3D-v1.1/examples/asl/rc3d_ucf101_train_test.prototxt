@@ -14,7 +14,7 @@ layer {
     mirror: true
   }
   video_data_param {
-    source: "/data/sparks/share/asl/experiments/pimw_aligned_frames_split/train7h.txt"
+    source: "train7h.txt"
     root_folder: "/data/sparks/share/asl/experiments/pimw_aligned_frames_7.5fps_rc3d/"
     new_length: 45  # 8
     # sampling_rate: 2
@@ -41,7 +41,7 @@ layer {
     mirror: false
   }
   video_data_param {
-    source: "/data/sparks/share/asl/experiments/pimw_aligned_frames_split/train7h.txt"
+    source: "train7h.txt"
     root_folder: "/data/sparks/share/asl/experiments/pimw_aligned_frames_7.5fps_rc3d/"
     new_length: 45  # 8
     # sampling_rate: 2
@@ -68,7 +68,7 @@ layer {
     mirror: false
   }
   video_data_param {
-    source: "/data/sparks/share/asl/experiments/pimw_aligned_frames_split/test7h.txt"
+    source: "test7h.txt"
     root_folder: "/data/sparks/share/asl/experiments/pimw_aligned_frames_7.5fps_rc3d/"
     new_length: 45  # 8
     # sampling_rate: 2
