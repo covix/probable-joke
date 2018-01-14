@@ -21,7 +21,7 @@ layer {
     new_width: 171
     use_image: true
     show_data: false
-    batch_size: 4  # 24
+    batch_size: 2  # 24
     shuffle: true
   }
 }
