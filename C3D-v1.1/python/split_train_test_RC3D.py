@@ -25,12 +25,13 @@ def main():
     times = int(video_length / block_size)
 
     if((video_length / float(block_size)) - (times + 1) != 0):
-        print("Attention, block_size is not a multiple of 180 \nin this way you will ignore some frames!")
+        print "Attention, block_size is not a multiple of", video_length
+        print "in this way you will ignore some frames!"
 
     for f in X:
         for i in range(times):
             Y.append(f + " " + str(i * block_size + 1))
-    Y = map(lambda x: x + " " + x.split("-")[2] + " " + stride, Y)
+    Y = map(lambda x: x + " " + x.split("-")[2] + " " + str(stride), Y)
     print Y
     X_train, X_test = train_test_split(Y, test_size=test_size)
 
