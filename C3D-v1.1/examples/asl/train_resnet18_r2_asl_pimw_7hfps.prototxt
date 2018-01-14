@@ -20,7 +20,7 @@ layer {
     new_height: 128
     new_width: 171
     # use_image: true
-    show_data: false
+    # show_data: false
     batch_size: 1  # 24
     shuffle: true
   }
@@ -47,7 +47,7 @@ layer {
     new_height: 128
     new_width: 171
     # use_image: true
-    show_data: false
+    # show_data: false
     batch_size: 1  # 20
     shuffle: true
   }
@@ -74,7 +74,7 @@ layer {
     new_height: 128
     new_width: 171
     # use_image: true
-    show_data: false
+    # show_data: false
     batch_size: 1  #  20
     shuffle: true
   }
