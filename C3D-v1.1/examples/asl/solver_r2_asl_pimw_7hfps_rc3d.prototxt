@@ -24,3 +24,4 @@ max_iter: 20000
 snapshot: 15
 snapshot_prefix: "rc3d_resnet18_asl_r2_ft_pimw_7hfps"
 solver_mode: GPU
+type: "Adam"
