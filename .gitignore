@@ -6,6 +6,7 @@
 # Caffe
 *.config
 *.caffemodel
+*.solverstate
 
 # macOS related stuff
 **/.DS_Store
