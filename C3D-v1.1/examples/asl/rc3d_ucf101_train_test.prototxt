@@ -89,11 +89,11 @@ layer {
   bottom: "data"
   top: "conv1a"
   param {
-    lr_mult: 1
-    decay_mult: 1
+    lr_mult: 0
+    decay_mult: 0
   }
   param {
-    lr_mult: 2
+    lr_mult: 0
     decay_mult: 0
   }
   convolution_param {
@@ -143,11 +143,11 @@ layer {
   bottom: "pool1"
   top: "conv2a"
   param {
-    lr_mult: 1
-    decay_mult: 1
+    lr_mult: 0
+    decay_mult: 0
   }
   param {
-    lr_mult: 2
+    lr_mult: 0
     decay_mult: 0
   }
   convolution_param {
@@ -229,18 +229,55 @@ layer {
   top: "conv3a"
 }
 layer {
+  name: "conv3b"
+  type: "Convolution"
+  bottom: "conv3a"
+  top: "conv3b"
+  param {
+    lr_mult: 1
+    decay_mult: 1
+  }
+  param {
+    lr_mult: 2
+    decay_mult: 0
+  }
+  convolution_param {
+    num_output: 256
+    kernel_size: 3
+    kernel_size: 3
+    kernel_size: 3
+    pad: 1
+    pad: 1
+    pad: 1
+    weight_filler {
+      type: "gaussian"
+      std: 0.01
+    }
+    bias_filler {
+      type: "constant"
+      value: 1
+    }
+  }
+}
+layer {
+  name: "relu3b"
+  type: "ReLU"
+  bottom: "conv3b"
+  top: "conv3b"
+}
+layer {
   name: "pool3"
   type: "Pooling"
-  bottom: "conv3a"
+  bottom: "conv3b"
   top: "pool3"
   pooling_param {
     pool: MAX
     kernel_size: 2
     kernel_size: 2
     kernel_size: 2
-    stride: 2
-    stride: 2
-    stride: 2
+    stride:2
+    stride:2
+    stride:2
   }
 }
 
@@ -283,9 +320,46 @@ layer {
   top: "conv4a"
 }
 layer {
+  name: "conv4b"
+  type: "Convolution"
+  bottom: "conv4a"
+  top: "conv4b"
+  param {
+    lr_mult: 1
+    decay_mult: 1
+  }
+  param {
+    lr_mult: 2
+    decay_mult: 0
+  }
+  convolution_param {
+    num_output: 512
+    kernel_size: 3
+    kernel_size: 3
+    kernel_size: 3
+    pad: 1
+    pad: 1
+    pad: 1
+    weight_filler {
+      type: "gaussian"
+      std: 0.01
+    }
+    bias_filler {
+      type: "constant"
+      value: 1
+    }
+  }
+}
+layer {
+  name: "relu4b"
+  type: "ReLU"
+  bottom: "conv4b"
+  top: "conv4b"
+}
+layer {
   name: "pool4"
   type: "Pooling"
-  bottom: "conv4a"
+  bottom: "conv4b"
   top: "pool4"
   pooling_param {
     pool: MAX
@@ -336,6 +410,45 @@ layer {
   bottom: "conv5a"
   top: "conv5a"
 }
+
+layer {
+  name: "conv5b"
+  type: "Convolution"
+  bottom: "conv5a"
+  top: "conv5b"
+  param {
+    lr_mult: 1
+    decay_mult: 1
+  }
+  param {
+    lr_mult: 2
+    decay_mult: 0
+  }
+  convolution_param {
+    num_output: 512
+    kernel_size: 3
+    kernel_size: 3
+    kernel_size: 3
+    pad: 1
+    pad: 1
+    pad: 1
+    weight_filler {
+      type: "gaussian"
+      std: 0.01
+    }
+    bias_filler {
+      type: "constant"
+      value: 1
+    }
+  }
+}
+layer {
+  name: "relu5b"
+  type: "ReLU"
+  bottom: "conv5b"
+  top: "conv5b"
+}
+
 layer {
   name: "pool5"
   type: "Pooling"
@@ -343,9 +456,9 @@ layer {
   top: "pool5"
   pooling_param {
     pool: MAX
-    kernel_size: 2
-    kernel_size: 2
-    kernel_size: 2
+    kernel_shape: 2
+    kernel_shape: 2
+    kernel_shape: 2
     stride: 2
     stride: 2
     stride: 2
@@ -354,10 +467,10 @@ layer {
 
 # ----- 1st fc group -----
 layer {
-  name: "fc6"
+  name: "fc6-new"
   type: "InnerProduct"
   bottom: "pool5"
-  top: "fc6"
+  top: "fc6-new"
   param {
     lr_mult: 1
     decay_mult: 1
@@ -381,14 +494,14 @@ layer {
 layer {
   name: "relu6"
   type: "ReLU"
-  bottom: "fc6"
-  top: "fc6"
+  bottom: "fc6-new"
+  top: "fc6-new"
 }
 layer {
   name: "drop6"
   type: "Dropout"
-  bottom: "fc6"
-  top: "fc6"
+  bottom: "fc6-new"
+  top: "fc6-new"
   dropout_param {
     dropout_ratio: 0.5
   }
@@ -396,10 +509,10 @@ layer {
 
 # ----- 2nd fc group -----
 layer {
-  name: "fc7"
+  name: "fc7-new"
   type: "InnerProduct"
-  bottom: "fc6"
-  top: "fc7"
+  bottom: "fc6-new"
+  top: "fc7-new"
   param {
     lr_mult: 1
     decay_mult: 1
@@ -423,14 +536,14 @@ layer {
 layer {
   name: "relu7"
   type: "ReLU"
-  bottom: "fc7"
-  top: "fc7"
+  bottom: "fc7-new"
+  top: "fc7-new"
 }
 layer {
   name: "drop7"
   type: "Dropout"
-  bottom: "fc7"
-  top: "fc7"
+  bottom: "fc7-new"
+  top: "fc7-new"
   dropout_param {
     dropout_ratio: 0.5
   }
@@ -440,7 +553,7 @@ layer {
 layer {
   name: "fc8-new"
   type: "InnerProduct"
-  bottom: "fc7"
+  bottom: "fc7-new"
   top: "fc8-new"
   param {
     lr_mult: 1
