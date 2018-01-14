@@ -38,20 +38,20 @@ def create_field_index():
         train_key: {
             'Iters': 0,
             # 'Seconds': 1,
-            train_key + ' loss': 2,
-            train_key + ' learning rate': 3
+            train_key + ' loss': 1,
+            train_key + ' learning rate': 2
         }, test_on_train_key: {
             'Iters': 0,
             # 'Seconds': 1,
-            test_on_train_key + ' accuracy1': 2,
-            test_on_train_key + ' accuracy5': 3,
-            test_on_train_key + ' loss': 4
+            test_on_train_key + ' accuracy1': 1,
+            test_on_train_key + ' accuracy5': 2,
+            test_on_train_key + ' loss': 3
         }, test_on_test_key: {
             'Iters': 0,
             # 'Seconds': 1,
-            test_on_test_key + ' accuracy1': 2,
-            test_on_test_key + ' accuracy5': 3,
-            test_on_test_key + ' loss': 4
+            test_on_test_key + ' accuracy1': 1,
+            test_on_test_key + ' accuracy5': 2,
+            test_on_test_key + ' loss': 3
         }
     }
     fields = set()
@@ -96,8 +96,8 @@ def get_data_file(chart_type, path_to_log):
 def get_field_descriptions(chart_type):
     description = get_chart_type_description(chart_type).split(
         get_chart_type_description_separator())
-    y_axis_field = description[0].replace('_', ' ')
-    x_axis_field = description[1].replace('_', ' ')
+    y_axis_field = description[0]
+    x_axis_field = description[1]
     return x_axis_field, y_axis_field
 
 
@@ -173,8 +173,8 @@ def plot_chart(chart_type, png_prefix, path_to_log_list):
     legend_loc = get_legend_loc(chart_type)
     plt.legend(loc=legend_loc, ncol=1)  # ajust ncol to fit the space
     plt.title(get_chart_type_description(chart_type).replace('_', ' '))
-    plt.xlabel(x_axis_field)
-    plt.ylabel(y_axis_field)
+    plt.xlabel(x_axis_field.replace('_', ' '))
+    plt.ylabel(y_axis_field.replace('_', ' '))
     filename = ' '.join(get_chart_type_description(chart_type).split()).replace(
         ' ', '_').replace('.', '').lower() + '.png'
     path_to_png = os.path.join(png_prefix, filename)
