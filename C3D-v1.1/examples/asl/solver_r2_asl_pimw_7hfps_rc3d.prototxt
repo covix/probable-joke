@@ -10,7 +10,7 @@ test_state: { stage: 'test-on-train' }
 test_iter: 100
 test_state: { stage: 'test-on-val' }
 test_interval: 15
-base_lr: 1e-3
+base_lr: 1e-2
 momentum: 0.9
 weight_decay: 0.00005
 lr_policy: "step"
@@ -24,4 +24,3 @@ max_iter: 20000
 snapshot: 15
 snapshot_prefix: "rc3d_resnet18_asl_r2_ft_pimw_7hfps"
 solver_mode: GPU
-type: "Adam"
