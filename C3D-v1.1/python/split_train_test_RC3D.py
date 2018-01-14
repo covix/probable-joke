@@ -22,6 +22,7 @@ def main():
         print("Attention, block_size is not a multiple of 180 \nin this way you will ignore some frames!")
 
     outf = os.path.dirname(os.path.realpath(input_folder))
+    print input_folder
     X = next(os.walk(input_folder))[1]
     Y = []
     for f in X:
