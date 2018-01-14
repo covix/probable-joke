@@ -4,14 +4,14 @@ from sklearn.model_selection import train_test_split
 
 
 def main():
-    input_file = sys.argv[1]
+    input_folder = sys.argv[1]
     test_size = float(sys.argv[2])
     block_size = int(sys.argv[3])
     times= int(180/block_size)-1
     if((180/float(block_size))-(times+1)!=0):
 	print("Attention, block_size is not a multiple of 180 \nin this way you will ignore some frames!")
-    outf = os.path.dirname(os.path.realpath(input_file))
-    X = next(os.walk(input_file))[1]
+    outf = os.path.dirname(os.path.realpath(input_folder))
+    X = next(os.walk(input_folder))[1]
     Y=[]
     for f in X:
 	for i in range(times):
