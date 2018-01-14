@@ -96,8 +96,8 @@ def get_data_file(chart_type, path_to_log):
 def get_field_descriptions(chart_type):
     description = get_chart_type_description(chart_type).split(
         get_chart_type_description_separator())
-    y_axis_field = description[0]
-    x_axis_field = description[1]
+    y_axis_field = description[0].replace('_', ' ')
+    x_axis_field = description[1].replace('_', ' ')
     return x_axis_field, y_axis_field
 
 
