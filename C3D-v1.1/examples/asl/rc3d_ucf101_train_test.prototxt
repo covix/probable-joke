@@ -456,9 +456,9 @@ layer {
   top: "pool5"
   pooling_param {
     pool: MAX
-    kernel_shape: 2
-    kernel_shape: 2
-    kernel_shape: 2
+    kernel_size: 2
+    kernel_size: 2
+    kernel_size: 2
     stride: 2
     stride: 2
     stride: 2
