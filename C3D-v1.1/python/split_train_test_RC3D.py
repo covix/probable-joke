@@ -30,10 +30,10 @@ def main():
     Y = map(lambda x: x + " " + x.split("-")[2], Y)
     X_train, X_test = train_test_split(Y, test_size=test_size)
 
-    with open(os.path.join(outf, train_out_file), 'w') as f:
+    with open(train_out_file, 'w') as f:
         f.write('\n'.join(X_train) + '\n')
 
-    with open(os.path.join(outf, test_out_file), 'w') as f:
+    with open(test_out_file, 'w') as f:
         f.write('\n'.join(X_train) + '\n')
 
 
