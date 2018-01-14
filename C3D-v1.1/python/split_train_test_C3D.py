@@ -21,8 +21,7 @@ def main():
     with open(os.path.join(outf, 'train.txt'), 'w') as f:
         f.write('\n'.join(X_train) + '\n')
     with open(os.path.join(outf, 'test.txt'), 'w') as f:
-        f.write('\n'.join(X_train) + '\n')
+        f.write('\n'.join(X_test) + '\n')
 
 if __name__ == '__main__':
     main()
-
