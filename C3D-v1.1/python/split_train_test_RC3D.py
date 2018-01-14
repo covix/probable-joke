@@ -32,7 +32,6 @@ def main():
         for i in range(times):
             Y.append(f + " " + str(i * block_size + 1))
     Y = map(lambda x: x + " " + x.split("-")[2] + " " + str(stride), Y)
-    print Y
     X_train, X_test = train_test_split(Y, test_size=test_size)
 
     with open(train_out_file, 'w') as f:
