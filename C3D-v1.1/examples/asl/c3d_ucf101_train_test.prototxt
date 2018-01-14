@@ -320,7 +320,7 @@ layer {
 layer {
   name: "fc8-new"
   type: "InnerProduct"
-  bottom: "fc7"
+  bottom: "pool5"
   top: "fc8-new"
   param {
     lr_mult: 1
