@@ -1,26 +1,26 @@
 net: "rc3d_ucf101_train_test.prototxt"
 
 # 842 samples
-# batch_size 15
+# batch_size 12
 # gpus 4
-# 15 iter/epoch
+# 18 iter/epoch
 
 test_iter: 100
 test_state: { stage: 'test-on-train' }
 test_iter: 100
 test_state: { stage: 'test-on-val' }
-test_interval: 15
+test_interval: 18
 base_lr: 1e-2
 momentum: 0.9
 weight_decay: 0.00005
 lr_policy: "step"
 gamma: 0.1
-stepsize: 180
+stepsize: 216
 # Display every 1 iterations
 display: 5
 # The maximum number of iterations
 max_iter: 20000
 # snapshot intermediate results
-snapshot: 15
+snapshot: 18
 snapshot_prefix: "rc3d_resnet18_asl_r2_ft_pimw_7hfps"
 solver_mode: GPU
