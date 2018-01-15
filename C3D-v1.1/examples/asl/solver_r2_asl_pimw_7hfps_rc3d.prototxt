@@ -5,9 +5,9 @@ net: "rc3d_ucf101_train_test.prototxt"
 # gpus 4
 # 18 iter/epoch
 
-test_iter: 100
+test_iter: 362
 test_state: { stage: 'test-on-train' }
-test_iter: 100
+test_iter: 362
 test_state: { stage: 'test-on-val' }
 test_interval: 18
 base_lr: 1e-2
