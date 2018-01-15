@@ -59,6 +59,7 @@ def main():
     os.makedirs(output_folder)
     X = next(os.walk(input_folder))[1]
     for x in X:
+        print x
         folder = "/".join([output_folder, x, ""])
         os.makedirs(os.path.dirname(folder))
         Y = os.listdir("/".join([input_folder, x, ""]))
