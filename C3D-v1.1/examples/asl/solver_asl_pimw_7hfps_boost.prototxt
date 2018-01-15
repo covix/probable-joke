@@ -1,13 +1,13 @@
-net: "rc3d_ucf101_train_test_frozen.prototxt"
+net: "train_c3d_asl_pimw_7h_boost.prototxt"
 
 # 842 samples
 # batch_size 12
 # gpus 4
 # 18 iter/epoch
 
-test_iter: 31
+test_iter: 362
 test_state: { stage: 'test-on-train' }
-test_iter: 31
+test_iter: 362
 test_state: { stage: 'test-on-val' }
 test_interval: 18
 base_lr: 1e-3
@@ -22,5 +22,5 @@ display: 6
 max_iter: 1800
 # snapshot intermediate results
 snapshot: 18
-snapshot_prefix: "snapshots/rc3d_resnet18_asl_r2_ft_pimw_7hfps_frozen"
+snapshot_prefix: "snapshots/train_c3d_asl_pimw_7h_boost"
 solver_mode: GPU

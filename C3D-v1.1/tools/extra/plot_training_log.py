@@ -89,7 +89,8 @@ def get_data_file_type(chart_type):
 
 
 def get_data_file(chart_type, path_to_log):
-    return (os.path.basename(path_to_log) + '.' +
+    # return (os.path.basename(path_to_log) + '.' +
+    return (path_to_log + '.' +
             get_data_file_type(chart_type).lower())
 
 
