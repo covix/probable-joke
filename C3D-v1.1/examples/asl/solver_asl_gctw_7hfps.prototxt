@@ -1,4 +1,4 @@
-net: "train_c3d_asl_pgctw_7h.prototxt"
+net: "train_c3d_asl_gctw_7h.prototxt"
 
 # 842 samples
 # batch_size 12
