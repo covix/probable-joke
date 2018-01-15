@@ -11,5 +11,5 @@ do
 
     echo $name
     mkdir -p ${OUTPUT_FOLDER}/${name}
-    ffmpeg -v 0 -i $i ${OUTPUT_FOLDER}/${name}/%06d.jpg
+    ffmpeg -v 0 -i $i ${OUTPUT_FOLDER}/${name}/image_%05d.jpg
 done
