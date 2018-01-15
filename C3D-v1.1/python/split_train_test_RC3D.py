@@ -38,7 +38,7 @@ def main():
         f.write('\n'.join(X_train) + '\n')
 
     with open(test_out_file, 'w') as f:
-        f.write('\n'.join(X_train) + '\n')
+        f.write('\n'.join(X_test) + '\n')
 
 
 if __name__ == '__main__':
