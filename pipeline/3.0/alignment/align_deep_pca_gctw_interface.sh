@@ -10,7 +10,7 @@ do
 
     CMD="\
         addpath(genpath([cd '/' '$ENR_CODE'])); \
-        align_deep_pca_gctw_class('${INPUT_FOLDER}/${1}', '$1', '$OUTPUT_FOLDER', '$ENR_CODE'); \
+        align_deep_pca_gctw_class('${INPUT_FOLDER}/${i}', '$i', '$OUTPUT_FOLDER', '$ENR_CODE'); \
         exit;
     "
 
