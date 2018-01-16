@@ -21,6 +21,7 @@ def main():
         print video_folder
         print idx, video_folder
 
+        print aligned_idx[:, idx]
         for frame_idx, frame in enumerate(aligned_idx[:, idx]):
             print '\t', frame
             source = os.path.join(input_folder, video_folder, "image_{:05d}.jpg".format(int(frame)))
