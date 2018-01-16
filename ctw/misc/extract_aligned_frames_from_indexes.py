@@ -12,7 +12,7 @@ def main():
     output_folder = sys.argv[3] if len(sys.argv) > 3 else input_folder
 
     # matlab is 1-indexed
-    aligned_idx = np.loadtxt(alignment_file, delimiter=',').astype(np.int) - 1
+    aligned_idx = np.loadtxt(alignment_file, delimiter=',').astype(np.int)
 
     video_folders = sorted(os.listdir(input_folder))
     assert len(video_folders) == aligned_idx.shape[1], "lenght differs"
@@ -21,10 +21,9 @@ def main():
         print video_folder
         print idx, video_folder
 
-        print aligned_idx[:, idx]
         for frame_idx, frame in enumerate(aligned_idx[:, idx]):
             print '\t', frame
-            source = os.path.join(input_folder, video_folder, "image_{:05d}.jpg".format(int(frame)))
+            source = os.path.join(input_folder, video_folder, "image_{:05d}.jpg".format(frame))
             dest = os.path.join(output_folder, video_folder, "image_{:05d}_aligned.jpg".format(frame_idx + 1))
             shutil.copyfile(source, dest)
 
