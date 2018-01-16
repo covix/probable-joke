@@ -71,6 +71,7 @@ if __name__=="__main__":
     if os.path.exists("frames_"+output_folder):
         shutil.rmtree("frames_"+output_folder)
     os.makedirs(output_folder)
+    os.makedirs("frames_"+output_folder)
     main(input_folder,output_folder,max_nframe)
 
 #Usage example:
