@@ -1,0 +1,7 @@
+# this file is a template for the enviroment variables
+# to actually try the things on your computer, do `cp config.sh.template config.sh`
+# and edit there the variables
+
+
+# Note: options are only for local installation
+export MATLAB="/Applications/MATLAB_R2017b.app/bin/matlab -nodesktop -nospash -nodisplay"
