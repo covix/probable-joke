@@ -17,12 +17,14 @@ def main():
     video_folders = sorted(os.listdir(input_folder))
     assert len(video_folders) == aligned_idx.shape[1], "lenght differs"
 
+
     for idx, video_folder in enumerate(video_folders):
-        print video_folder
         print idx, video_folder
 
+        if not os.path.exists(os.path.join(output_folder, video_folder)):
+            os.makedirs(os.path.join(output_folder, video_folder))
+
         for frame_idx, frame in enumerate(aligned_idx[:, idx]):
-            print '\t', frame
             source = os.path.join(input_folder, video_folder, "image_{:05d}.jpg".format(frame))
             dest = os.path.join(output_folder, video_folder, "image_{:05d}_aligned.jpg".format(frame_idx + 1))
             shutil.copyfile(source, dest)
