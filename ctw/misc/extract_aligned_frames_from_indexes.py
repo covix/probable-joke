@@ -22,6 +22,7 @@ def main():
         print idx, video_folder
 
         for frame_idx, frame in enumerate(aligned_idx[:, idx]):
+            print '\t', frame
             source = os.path.join(input_folder, video_folder, "image_{:05d}.jpg".format(int(frame)))
             dest = os.path.join(output_folder, video_folder, "image_{:05d}_aligned.jpg".format(frame_idx + 1))
             shutil.copyfile(source, dest)
