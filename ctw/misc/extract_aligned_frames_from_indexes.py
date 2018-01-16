@@ -1,3 +1,4 @@
+import shutil
 import sys
 import os
 
@@ -17,6 +18,7 @@ def main():
     assert len(video_folders) == aligned_idx.shape[1], "lenght differs"
 
     for idx, video_folder in enumerate(video_folders):
+        print video_folder
         print idx, video_folder
 
         shutil.copyfile(source, dest)
