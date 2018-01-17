@@ -32,7 +32,7 @@ def main():
         for i in range(times):
             Y.append(f + " " + str(i * block_size + 1))
             frame = str(i * block_size + 1)
-            label = x.split("-")[2]
+            label = f.split("-")[2]
             Y.append("{filename} {frame} {label} {stride}".format(
                 filename=f, frame=frame, label=label, stride=stride))
 
