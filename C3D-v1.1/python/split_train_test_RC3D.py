@@ -31,7 +31,13 @@ def main():
     for f in X:
         for i in range(times):
             Y.append(f + " " + str(i * block_size + 1))
+            frame = str(i * block_size + 1)
+            label = x.split("-")[2]
+            Y.append("{filename} {frame} {label} {stride}".format(
+                filename=f, frame=frame, label=label, stride=stride))
+
     Y = map(lambda x: x + " " + x.split("-")[2] + " " + str(stride), Y)
+
     X_train, X_test = train_test_split(Y, test_size=test_size)
 
     with open(train_out_file, 'w') as f:
