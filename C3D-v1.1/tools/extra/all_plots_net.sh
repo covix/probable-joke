@@ -20,7 +20,7 @@ do
     
     cp $i ${LOG_FILE}
     
-    ID=`echo $(basename $FIRST_LOG) | cut -d. -f2`
+    ID=`echo $(basename $LOG_FILE) | cut -d. -f2`
     IDS=${IDS}_$ID
 
     LOG_FILES="${LOG_FILES} ${LOG_FILE}"
@@ -28,6 +28,7 @@ done
 
 
 IDS=${IDS:1}
+
 PLOT_FOLDER=$(dirname ${FIRST_LOG})/plots/${IDS}
 mkdir -p $PLOT_FOLDER
 
