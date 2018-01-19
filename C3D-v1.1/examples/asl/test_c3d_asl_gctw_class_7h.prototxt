@@ -562,3 +562,12 @@ layer {
   bottom: "label"
   top: "loss"
 }
+layer {
+  name: "prob-out"
+  type: "Softmax"
+  bottom: "fc8-new"
+  top: "prob-out"
+  include {
+    phase: TEST
+  }
+}
