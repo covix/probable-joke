@@ -10,7 +10,7 @@ def main():
         sys.exit(-1)
 
     input_folder = sys.argv[1]
-    test_size = float(sys.argv[2])
+    test_size = int(sys.argv[2])
     block_size = int(sys.argv[3])
     train_out_file = sys.argv[4]
     test_out_file = sys.argv[5]
@@ -38,8 +38,8 @@ def main():
                 filename=f, frame=frame, label=label, stride=stride))
 
     # Y = map(lambda x: x + " " + x.split("-")[2] + " " + str(stride), Y)
-    print(labels)
     X_train, X_test = train_test_split(Y, test_size=test_size,stratify=labels)
+
 
     with open(train_out_file, 'w') as f:
         f.write('\n'.join(X_train) + '\n')
