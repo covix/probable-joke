@@ -3,6 +3,7 @@ import sys
 
 import numpy as np
 from sklearn.decomposition import PCA
+from sklearn.externals import joblib
 
 # import matplotlib.pyplot as plt
 
@@ -53,6 +54,9 @@ for idx, i in enumerate(frame_indices):
 print 'PCA explained variance ratio: ' + str(pca.explained_variance_ratio_)
 print 'Explained variance: ' + str(sum(pca.explained_variance_ratio_))
 print 'Shape after: ' + str(pca_data_fit.shape)
+
+joblib.dump(pca, 'pca_train.pkl') 
+
 # plt.imshow(pca_data_fit, interpolation='nearest')
 # plt.gray()
 # plt.show()
