@@ -55,7 +55,7 @@ print 'PCA explained variance ratio: ' + str(pca.explained_variance_ratio_)
 print 'Explained variance: ' + str(sum(pca.explained_variance_ratio_))
 print 'Shape after: ' + str(pca_data_fit.shape)
 
-joblib.dump(os.path.join(output_dir, pca), 'pca_train.pkl') 
+joblib.dump(pca, os.path.join(output_dir, 'pca_train.pkl'))
 
 # plt.imshow(pca_data_fit, interpolation='nearest')
 # plt.gray()
