@@ -4,8 +4,8 @@ import shutil
 
 
 def main():
-    if len(sys.argv) != 3:
-        print "Usage: ./{} input_folder final".format(__file__)
+    if len(sys.argv) != 4:
+        print "Usage: ./{} input_folder output_folder final".format(__file__)
         sys.exit(-1)
 
     input_folder = sys.argv[1]
