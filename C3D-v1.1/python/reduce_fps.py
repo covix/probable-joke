@@ -54,10 +54,13 @@ def main():
     output_folder = sys.argv[2]
     fps = float(sys.argv[3])
     fps = int(ACTUAL_FPS / fps)
-    if os.path.exists(os.path.dirname(output_folder)):
+
+    if os.path.exists(output_folder):
         shutil.rmtree(output_folder)
+
     os.makedirs(output_folder)
-    X = next(os.walk(input_folder))[1]
+
+    X = sorted(next(os.walk(input_folder))[1])
     for x in X:
         print x
         folder = "/".join([output_folder, x, ""])
