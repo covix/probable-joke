@@ -4,7 +4,7 @@ import sys
 import numpy as np
 from sklearn.decomposition import PCA
 
-import matplotlib.pyplot as plt
+# import matplotlib.pyplot as plt
 
 data_dir = sys.argv[1]
 output_dir = sys.argv[2]
@@ -53,6 +53,6 @@ for idx, i in enumerate(frame_indices):
 print 'PCA explained variance ratio: ' + str(pca.explained_variance_ratio_)
 print 'Explained variance: ' + str(sum(pca.explained_variance_ratio_))
 print 'Shape after: ' + str(pca_data_fit.shape)
-plt.imshow(pca_data_fit, interpolation='nearest')
-plt.gray()
-plt.show()
+# plt.imshow(pca_data_fit, interpolation='nearest')
+# plt.gray()
+# plt.show()

@@ -4,7 +4,6 @@ import os
 import imageio
 import numpy as np
 
-# TODO replicate the frames of the videos in image format
 
 def main():
     input_folder = sys.argv[1]
@@ -12,7 +11,7 @@ def main():
     output_folder = sys.argv[3] if len(sys.argv) > 3 else input_folder
 
     # matlab is 1-indexed
-    aligned_idx = np.loadtxt(alignment_file, delimiter=',').astype(np.int) - 1
+    aligned_idx = np.loadtxt(alignment_file, delimiter=',')
 
     files = sorted(os.listdir(input_folder))
     assert len(files) == aligned_idx.shape[1], "lenght differs"
@@ -25,7 +24,7 @@ def main():
             outf = os.path.join(output_folder, fname)
             with imageio.get_writer(outf) as writer:
                 for frame in aligned_idx[:, idx]:
-                    im = reader.get_data(frame)
+                    im = reader.get_data(int(round(frame)) - 1)
                     writer.append_data(im)
 
 if __name__ == '__main__':
