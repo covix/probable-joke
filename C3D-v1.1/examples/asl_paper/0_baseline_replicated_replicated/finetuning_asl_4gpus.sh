@@ -1,7 +1,7 @@
 SOLVER_FILE=$1
 
 if [ ! -f c3d_resnet18_sports1m_r2_iter_2800000.caffemodel ]; then
-	echo "activitynet_iter_135000 not found, exiting"
+    echo "activitynet_iter_135000 not found, exiting"
     exit 1
 fi
 
