@@ -19,8 +19,11 @@ export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:/data/sparks/share/nccl-master/lib
 CAFFE_HOME=/data/sparks/share/R-C3D/caffe3d/
 
 GPUS=
+ONE=1
+NUM_GPUS=$((NUM_GPUS-ONE))
 
-for i in `seq 1 $NUM_GPUS`;
+
+for i in `seq 0 $NUM_GPUS`;
 do
     GPUS=$GPUS,$i
 done

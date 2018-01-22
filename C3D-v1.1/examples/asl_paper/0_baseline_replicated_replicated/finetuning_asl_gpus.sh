@@ -9,6 +9,7 @@ if [ ! -f activitynet_iter_135000.caffemodel ]; then
 fi
 
 mkdir -p LOG_TRAIN snapshots
+chmod 777 LOG_TRAIN snapshots
 
 source /etc/profile.d/modules.sh
 module load cuda/8.0
