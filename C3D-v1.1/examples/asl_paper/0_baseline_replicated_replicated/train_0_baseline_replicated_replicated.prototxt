@@ -1,4 +1,4 @@
-name: "c3d_asl"
+name: "0_baseline_repliceted_replicated.prototxt"
 
 layer {
   name: "data"
@@ -16,15 +16,12 @@ layer {
     mirror: true
   }
   video_data_param {
-    source: "train7h.txt"
-    root_folder: "/data/sparks/share/asl/experiments/pimw_aligned_frames_7.5fps_rc3d/"
-    new_length: 45  # 8
-    # sampling_rate: 2
+    source: "/data/sparks/share/asl/experiments/datasets/train.txt" 
+    root_folder: "/data/sparks/share/asl/experiments/datasets/train/original_reduced_fps_train/"
+    new_length: 45  
     new_height: 128
     new_width: 171
-    # use_image: true
-    # show_data: false
-    batch_size: 12  # 24
+    batch_size: 12  
     shuffle: true
   }
 }
@@ -45,15 +42,12 @@ layer {
     mirror: false
   }
   video_data_param {
-    source: "train7h.txt"
-    root_folder: "/data/sparks/share/asl/experiments/pimw_aligned_frames_7.5fps_rc3d/"
-    new_length: 45  # 8
-    # sampling_rate: 2
+    source: "/data/sparks/share/asl/experiments/datasets/train.txt" 
+    root_folder: "/data/sparks/share/asl/experiments/datasets/train/original_reduced_fps_train/"
+    new_length: 45  
     new_height: 128
     new_width: 171
-    # use_image: true
-    # show_data: false
-    batch_size: 1  # 20
+    batch_size: 1 
     shuffle: true
   }
 }
@@ -64,7 +58,7 @@ layer {
   top: "label"
   include {
     phase: TEST
-    stage: "test-on-val"
+    stage: "test-on-test"
   }
   transform_param {
     crop_size: 112
@@ -74,15 +68,12 @@ layer {
     mirror: false
   }
   video_data_param {
-    source: "test7h.txt"
-    root_folder: "/data/sparks/share/asl/experiments/pimw_aligned_frames_7.5fps_rc3d/"
-    new_length: 45  # 8
-    # sampling_rate: 2
+    source: "/data/sparks/share/asl/experiments/datasets/test.txt"
+    root_folder: "/data/sparks/share/asl/experiments/datasets/test/original_reduced_fps_test/"
+    new_length: 45  
     new_height: 128
     new_width: 171
-    # use_image: true
-    # show_data: false
-    batch_size: 1  #  20
+    batch_size: 1  
     shuffle: true
   }
 }
@@ -570,7 +561,7 @@ layer {
     decay_mult: 0
   }
   inner_product_param {
-    num_output: 101
+    num_output:43
     weight_filler {
       type: "gaussian"
       std: 0.01
