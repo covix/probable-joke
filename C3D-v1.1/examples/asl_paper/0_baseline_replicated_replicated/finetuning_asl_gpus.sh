@@ -27,4 +27,4 @@ done
 GPUS=${GPUS:1}
 
 
-echo GLOG_log_dir="./LOG_TRAIN" $CAFFE_HOME/build/tools/caffe.bin train --solver=${SOLVER_FILE} --weights=activitynet_iter_135000.caffemodel --gpu=$GPUS
+GLOG_log_dir="./LOG_TRAIN" $CAFFE_HOME/build/tools/caffe.bin train --solver=${SOLVER_FILE} --weights=activitynet_iter_135000.caffemodel --gpu=$GPUS
