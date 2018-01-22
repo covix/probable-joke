@@ -5,7 +5,7 @@ do
   dim= `ls $TEST_FOLDER/$f |wc -l`
   for cl in {01..43};
   do
-    var="./select_closest_alignment.sh `$cl` `$dim`"
+    var="./select_closest_alignment.sh `$cl` `$dim` `$TRAIN_FOLDER`"
     n=$(eval $var)
     echo $n
   done
