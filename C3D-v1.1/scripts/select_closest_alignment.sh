@@ -1,8 +1,5 @@
 cl = $1
 dim = $2
-
-cl=01
-dim=82
 n=""
 smallest=180
 for f in `ls -d *M-$cl-*`;
