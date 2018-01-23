@@ -137,6 +137,7 @@ def random_marker():
 def get_data_label(path_to_log):
     label = path_to_log[path_to_log.rfind('/') + 1: path_to_log.rfind(
         get_log_file_suffix())]
+    label = label.split('.')[-2]
     return label
 
 
