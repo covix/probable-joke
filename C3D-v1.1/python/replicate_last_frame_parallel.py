@@ -32,6 +32,9 @@ def main():
             dest = os.path.join(input_folder, video_folder, frame_name)
             pool.apply_async(copy, (source, dest))
 
+    pool.close()
+    pool.join()
+
 
 if __name__ == '__main__':
     main()
