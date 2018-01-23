@@ -23,4 +23,6 @@ VideoThumbnails*
 # pipeline config
 config.sh
 
+# Cluster log files
 OAR*
+*.stderr

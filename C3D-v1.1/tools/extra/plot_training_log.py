@@ -166,7 +166,7 @@ def plot_chart(chart_type, png_prefix, path_to_log_list):
         use_marker = True
         if not use_marker:
             plt.plot(data[0], data[1], label=label, color=color,
-                     linewidth=linewidth)
+                     linewidth=linewidth, alpha=1. / len(path_to_log_list))
         else:
             marker = random_marker()
             plt.plot(data[0], data[1], label=label, color=color,
