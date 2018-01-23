@@ -25,6 +25,7 @@ def main():
     os.makedirs(output_folder)
 
     pool = multiprocessing.Pool(multiprocessing.cpu_count())
+    print "Using a Pool of", multiprocessing.cpu_count(), "processes"
 
     X = sorted(next(os.walk(input_folder))[1])
     for x in X:
