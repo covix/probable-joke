@@ -2,7 +2,6 @@ import os
 import shutil
 import sys
 import multiprocessing
-import time
 
 
 ACTUAL_FPS = 30
@@ -10,7 +9,6 @@ ACTUAL_FPS = 30
 
 def copy(source, dest):
     shutil.copyfile(source, dest)
-    print os.path.basename(os.path.dirname(source))
 
 
 def main():
@@ -29,7 +27,7 @@ def main():
 
     X = sorted(next(os.walk(input_folder))[1])
     for x in X:
-        # print x
+        print x
         folder = os.path.join(output_folder, x)
         os.mkdir(folder)
 
