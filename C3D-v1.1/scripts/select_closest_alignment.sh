@@ -1,8 +1,9 @@
 cl = $1
 dim = $2
+TRAIN_FOLDER = $3
 n=""
 smallest=180
-for f in `ls -d *M-$cl-*`;
+for f in `ls -d $TRAIN_FOLDER/*M-$cl-*`;
 do
   n=`ls $f | wc -l`
   val=`expr $dim - $n`
