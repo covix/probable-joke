@@ -15,7 +15,7 @@ base_lr: 1e-3
 momentum: 0.9
 weight_decay: 0.00005
 lr_policy: "step"
-gamma: 10
+gamma: .1
 stepsize: 1620  # 20 epochs
 # Display every 1 iterations
 display: 20
