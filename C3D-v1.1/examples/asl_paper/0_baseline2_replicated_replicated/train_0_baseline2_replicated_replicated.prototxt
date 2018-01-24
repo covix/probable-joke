@@ -1,4 +1,4 @@
-name: "0_baseline_repliceted_replicated.prototxt"
+name: "0_baseline2_repliceted_replicated.prototxt"
 
 layer {
   name: "data"
