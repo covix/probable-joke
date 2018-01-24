@@ -1,4 +1,4 @@
-net: "train_0_baseline_replicated_replicated.prototxt"
+net: "train_0_baseline2_replicated_replicated.prototxt"
 
 # 964 samples
 # Alignment only on the training set
@@ -25,6 +25,6 @@ display: 20
 max_iter: 3600
 # snapshot intermediate results
 snapshot: 81
-snapshot_prefix: "snapshots/0_baseline_replicated_replicated_1gpus_nesterov"
+snapshot_prefix: "snapshots/0_baseline2_replicated_replicated_1gpus_nesterov"
 solver_mode: GPU
 type: "Nesterov"
