@@ -1,4 +1,4 @@
-net: "train_0_baseline_replicated_replicated.prototxt"
+net: "train_0_baseline2_replicated_replicated.prototxt"
 
 # 964 samples
 # Alignment only on the training set
@@ -6,16 +6,20 @@ net: "train_0_baseline_replicated_replicated.prototxt"
 # gpus 1
 # 81 iter/epoch
 
+# params taken from `https://github.com/BVLC/caffe/blob/master/examples/mnist/lenet_solver_adam.prototxt`
+# and `http://caffe.berkeleyvision.org/tutorial/solver.html`
+
 test_iter: 240
 test_state: { stage: 'test-on-train' }
 test_iter: 240
 test_state: { stage: 'test-on-test' }
 test_interval: 81
-base_lr: 1e-3
+base_lr: 0.001
 momentum: 0.9
-weight_decay: 0.00005
-lr_policy: "step"
-gamma: .1
+momentum2: 0.999
+delta: 10e-8
+weight_decay: 0.0005
+lr_policy: "fixed"
 stepsize: 1620  # 20 epochs
 # Display every 1 iterations
 display: 20
@@ -23,5 +27,8 @@ display: 20
 max_iter: 3600
 # snapshot intermediate results
 snapshot: 81
-snapshot_prefix: "snapshots/0_baseline_replicated_replicated_1gpus_sgd"
+snapshot_prefix: "snapshots/0_baseline2_replicated_replicated_1gpus_adam"
 solver_mode: GPU
+type: "Adam"
+
+

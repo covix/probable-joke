@@ -6,13 +6,15 @@ net: "train_0_baseline_replicated_replicated.prototxt"
 # gpus 1
 # 81 iter/epoch
 
+# params taken from `https://github.com/BVLC/caffe/blob/master/examples/mnist/mnist_autoencoder_solver_nesterov.prototxt`
+
 test_iter: 240
 test_state: { stage: 'test-on-train' }
 test_iter: 240
 test_state: { stage: 'test-on-test' }
 test_interval: 81
 base_lr: 1e-3
-momentum: 0.9
+momentum: 0.95
 weight_decay: 0.00005
 lr_policy: "step"
 gamma: .1
@@ -23,5 +25,6 @@ display: 20
 max_iter: 3600
 # snapshot intermediate results
 snapshot: 81
-snapshot_prefix: "snapshots/0_baseline_replicated_replicated_1gpus_sgd"
+snapshot_prefix: "snapshots/0_baseline_replicated_replicated_1gpus_nesterov"
 solver_mode: GPU
+type: "Nesterov"
