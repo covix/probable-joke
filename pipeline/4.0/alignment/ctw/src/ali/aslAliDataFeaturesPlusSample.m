@@ -1,4 +1,4 @@
-function aslData = aslAliDataFeaturesPlusSample(aslSrc, filepath)
+efunction aslData = aslAliDataFeaturesPlusSample(aslSrc, filepath)
 %
 % Input
 %   aslSrc      -  path of the deep features
@@ -29,7 +29,7 @@ for i = 1 : m
 end
 
 sample = csvread(filepath);
-DPs{m} = sample.';
+DPs{m + 1} = sample.';
 
 aslData = struct();
 aslData.DPs = DPs;
