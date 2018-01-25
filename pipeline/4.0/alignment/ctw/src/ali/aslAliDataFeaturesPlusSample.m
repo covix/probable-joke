@@ -1,4 +1,4 @@
-efunction aslData = aslAliDataFeaturesPlusSample(aslSrc, filepath)
+function aslData = aslAliDataFeaturesPlusSample(aslSrc, filepath)
 %
 % Input
 %   aslSrc      -  path of the deep features
