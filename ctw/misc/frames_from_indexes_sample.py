@@ -13,7 +13,7 @@ def main():
     # matlab is 1-indexed
     print("INPUT_FOLDER: ",input_folder)
     aligned_idx = np.loadtxt(alignment_file, delimiter=',')
-    video_folder=alignment_file[:-4]
+    video_folder=alignment_file.split("/")[-1][:-4]
     indexes=aligned_idx[:,-1]
 
     for frame_idx, frame in enumerate(indexes):
