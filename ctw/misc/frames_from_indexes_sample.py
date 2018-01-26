@@ -15,7 +15,11 @@ def main():
     aligned_idx = np.loadtxt(alignment_file, delimiter=',')
     video_folder=alignment_file[:-4]
     indexes=aligned_idx[:,-1]
+
     for frame_idx, frame in enumerate(indexes):
+        print("INPUT_FOLDER: ",input_folder)
+        print("Video_Folder: ",video_folder)
+        print("JOIN: ", os.path.join(input_folder, video_folder))
         source = os.path.join(input_folder, video_folder,
                               "image_{:05d}.jpg".format(int(round(frame))))
         print("Source: ",source)
