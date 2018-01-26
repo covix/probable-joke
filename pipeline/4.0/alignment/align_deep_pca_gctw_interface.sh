@@ -18,5 +18,3 @@ CMD="\
 $MATLAB -r "$CMD" # > gctw.log 2>&1
 
 
-# Usage:
-# ./run_align_deep_pca_gctw.sh ../../../../experiments/datasets/train/pca_features_train/ 01 ../../../../experiments/datasets/test/pca_features_test/01-M-01-C-comp_features.csv bla
