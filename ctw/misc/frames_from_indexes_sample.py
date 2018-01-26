@@ -8,7 +8,7 @@ import numpy as np
 def main():
     input_folder = sys.argv[1]
     alignment_file = sys.argv[2]
-    output_folder = sys.argv[3] if len(sys.argv) > 3 else input_folder
+    output_folder = sys.argv[3]
 
     # matlab is 1-indexed
     aligned_idx = np.loadtxt(alignment_file, delimiter=',')
