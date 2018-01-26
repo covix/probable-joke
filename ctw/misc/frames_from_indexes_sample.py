@@ -1,3 +1,10 @@
+import sys
+import os
+import shutil
+import numpy as np
+
+
+
 def main():
     input_folder = sys.argv[1]
     alignment_file = sys.argv[2]
