@@ -8,4 +8,4 @@ ENR_CODE=`dirname $0`  # Current folder, containing supporting scripts and files
 
 source ${ENR_CODE}/../config.sh
 
-${ENR_CODE}/align_deep_pca_gctw_interface.sh $INPUT_FOLDER $TEST_SAMPLE $OUTPUT_FOLDER
+oarsub -l /core=1 -S "${ENR_CODE}/align_deep_pca_gctw_interface.sh $INPUT_FOLDER $TEST_SAMPLE $OUTPUT_FOLDER"
