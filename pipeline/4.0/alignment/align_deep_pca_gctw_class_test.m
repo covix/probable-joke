@@ -32,4 +32,5 @@ aliGtw = gtw(Xs, bas, aliUtw, [], parGtw, parCca, parGN);
 
 %% save indexes
 P = aliGtw.P;
-csvwrite(strcat(outputFolder, '/ali_gctw_deep_', class, '_P_test.csv'), P)
+[filepath,name,ext] = fileparts(testSample);
+csvwrite(strcat(outputFolder, '/ali_gctw_deep_', name, '_P_test.csv'), P)
