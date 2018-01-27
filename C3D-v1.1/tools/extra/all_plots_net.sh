@@ -36,5 +36,5 @@ mkdir -p $PLOT_FOLDER
 for i in `seq 0 7`;
 do
     echo $i
-    python ${DIR}/plot_training_log.py $i $PLOT_FOLDER $LOG_FILES
+    python2 ${DIR}/plot_training_log.py $i $PLOT_FOLDER $LOG_FILES
 done
