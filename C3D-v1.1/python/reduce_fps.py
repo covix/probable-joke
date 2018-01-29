@@ -69,8 +69,8 @@ def main():
         Y.sort()
         for idx, i in enumerate(range(0, len(Y), fps)):
             y = Y[i]
+	    source = "/".join([input_folder, x, y])
             y = "image_{:05d}.jpg".format(idx + 1)
-            source = "/".join([input_folder, x, y])
             dest = folder + y
             shutil.copyfile(source, dest)
         # create_video2(folder)
