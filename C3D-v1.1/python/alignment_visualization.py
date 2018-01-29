@@ -34,7 +34,7 @@ print "Original length => Aligned length"
 original_length = 0
 aligned_length = len(aligned.itervalues().next())
 
-for k in original.keys():
+for k in sorted(original.keys()):
     print '\t', len(original[k]), '=>', len(aligned[k]), k
     original_length = max(original_length, len(original[k]))
 
@@ -43,10 +43,15 @@ def plot_frames(d, length, step, title=''):
     fig = plt.figure()
 
     sp = 1
-    for k in d.keys():
+    for k in sorted(d.keys()):
+        title_set = False
         for i in range(0, length / step * step, step):
-            plt.subplot(3, length / step, sp)
+            ax = plt.subplot(3, length / step, sp)
             plt.axis('off')
+
+            if not title_set:
+                ax.set_title(k)
+                title_set = True
 
             if i < len(d[k]):
                 plt.imshow(d[k][i])
@@ -57,16 +62,16 @@ def plot_frames(d, length, step, title=''):
     return fig
 
 
-step = 8
+step = 3
 
 fig = plot_frames(original, original_length, step, "Original frames")
 fig.set_size_inches(16.8, 3.75)
-plt.savefig('../plots/alignment_visualization/original.png',
+plt.savefig('../plots/alignment_visualization/original_test.png',
             bbox_inches='tight', dpi=300)
 
 fig = plot_frames(aligned, aligned_length, step, "Aligned frames (GCTW)")
 fig.set_size_inches(16.8, 3.75)
-plt.savefig('../plots/alignment_visualization/aligned_gctw.png',
+plt.savefig('../plots/alignment_visualization/aligned_gctw_test.png',
             bbox_inches='tight', dpi=300)
 
 # plt.show()
