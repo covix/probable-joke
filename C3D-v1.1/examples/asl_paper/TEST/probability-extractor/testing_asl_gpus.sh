@@ -1,7 +1,8 @@
 #!/bin/bash
 
 MODEL_FILE=$1
-NUM_GPUS=$2
+WEIGHTS=$2
+NUM_GPUS=$3
 
 
 mkdir -p LOG_TRAIN snapshots
@@ -27,4 +28,4 @@ done
 GPUS=${GPUS:1}
 
 
-GLOG_log_dir="./LOG_TRAIN" $CAFFE_HOME/build/tools/caffe.bin test --model=${MODEL_FILE} --weights=1_aligned_aligned_4gpus_iter_588.caffemodel --gpu=$GPUS -iterations 6
+GLOG_log_dir="./LOG_TRAIN" $CAFFE_HOME/build/tools/caffe.bin test --model=$MODEL_FILE --weights=$WEIGHTS --gpu=$GPUS -iterations 6
