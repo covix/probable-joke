@@ -16,7 +16,7 @@ layer {
     mirror: false
   }
   video_data_param {
-    source: "/data/sparks/share/asl/experiments/datasets/test/aligned_gctw_sample_test_reduced_fps_class/test_c01.txt"
+    source: "/data/sparks/share/asl/experiments/datasets/labels/06-M-04-D-comp.txt"
     root_folder: "/data/sparks/share/asl/experiments/datasets/test/aligned_gctw_sample_test_all_classes/04/06-M-04-D-comp"
     new_length: 45
     new_height: 128
