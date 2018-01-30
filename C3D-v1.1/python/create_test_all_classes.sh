@@ -10,8 +10,8 @@ do
     touch $file
     for c in `ls $INPUT_FOLDER/$i/$f`;
     do
-      class=`cut -d'-' -f3<<<$i`
-      echo $i 1 $class 1 >> $file
+      class=$i
+      echo $c 1 $class 1 >> $file
     done
   done
 done

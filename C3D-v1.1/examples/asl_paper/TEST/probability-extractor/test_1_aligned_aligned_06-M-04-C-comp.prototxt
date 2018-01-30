@@ -17,7 +17,7 @@ layer {
   }
   video_data_param {
     source: "/data/sparks/share/asl/experiments/datasets/labels/06-M-04-C-comp.txt"
-    root_folder: "/data/sparks/share/asl/experiments/datasets/test/aligned_gctw_sample_test_all_classes/04/06-M-04-C-comp/"
+    root_folder: "/data/sparks/share/asl/experiments/datasets/test/aligned_gctw_sample_test_all_classes_reduced_fps/04/06-M-04-C-comp/"
     new_length: 45
     new_height: 128
     new_width: 171
