@@ -7,6 +7,6 @@ do
   for i in `ls $INPUT_FOLDER/$f`;
   do
     mkdir $OUTPUT_FOLDER/$f/$i
-    echo python reduce_fps_parallel.py $INPUT_FOLDER/$f/$i $OUTPUT_FOLDER/$f/$i 7.5
+    python reduce_fps_parallel.py $INPUT_FOLDER/$f/$i $OUTPUT_FOLDER/$f/$i 7.5
   done
 done
