@@ -4,9 +4,9 @@ OUTPUT_FOLDER=$2
 for f in `ls $INPUT_FOLDER`;
 do
   mkdir $OUTPUT_FOLDER/$f
-  for i in `ls $f`;
+  for i in `ls $INPUT_FOLDER/$f`;
   do
     mkdir $OUTPUT_FOLDER/$f/$i
-    echo python reduce_fps_parallel.py $INPUT_FOLDER $OUTPUT_FOLDER/$f/$i 7.5
+    echo python reduce_fps_parallel.py $INPUT_FOLDER/$f/$i $OUTPUT_FOLDER/$f/$i 7.5
   done
 done
