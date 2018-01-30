@@ -1,4 +1,4 @@
-for i in `echo 01 04 21 42 43`;
+for i in `echo 01 04 24 42 43`;
 do
     cp train_1_aligned_aligned.prototxt train_1_aligned_aligned_${i}.prototxt
     sed -i.sed_bak "s/test_c04/test_c${i}/g" train_1_aligned_aligned_${i}.prototxt
