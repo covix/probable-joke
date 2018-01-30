@@ -2,7 +2,7 @@
 
 MODEL_FILE=$1
 WEIGHTS=$2
-NUM_GPUS=$3
+NUM_GPUS=1
 
 
 mkdir -p LOG_TRAIN snapshots
