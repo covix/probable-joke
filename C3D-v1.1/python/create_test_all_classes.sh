@@ -1,4 +1,5 @@
 INPUT_FOLDER=$1
+ONE=1
 
 for i in `ls $INPUT_FOLDER`;
 do
@@ -11,7 +12,7 @@ do
     for c in `ls $INPUT_FOLDER/$i/$f`;
     do
       class=$i
-      echo $c 1 $class 1 >> $file
+      echo $c 1 $((class-ONE)) 1 >> $file
     done
   done
 done
