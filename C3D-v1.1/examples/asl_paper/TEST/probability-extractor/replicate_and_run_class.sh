@@ -14,3 +14,5 @@ done
 
 rm *.sed_bak
 
+
+# Usage example ./replicate_and_run_class.sh 1_aligned_aligned_2gpus_iter_738.caffemodel ../../../../../../experiments/datasets/test/aligned_gctw_sample_test_all_classes_reduced_fps/ 04

@@ -3,8 +3,10 @@ import sys
 import re
 import math
 
-import numpy as np
 from matplotlib import pyplot as plt
+import numpy as np
+import pandas as pd
+import seaborn as sns
 
 r = re.compile(r"Batch (\d+), prob = ([^\s]+)")
 
@@ -38,12 +40,62 @@ def parse_log(log_file):
 if __name__ == '__main__':
     input_folder = sys.argv[1]
 
+    threshold = 0.8
+
     log_files = [i for i in os.listdir(
         input_folder) if i.endswith(_get_log_extension())]
 
+    l = []
+    diags = []
     for log_file in log_files:
         print "Parsing:", log_file
         m = parse_log(os.path.join(input_folder, log_file))
+        diag = m.diagonal()
+        diags.append(diag)
+        y_pred = np.argmax(diag)
+
+        print '\tIndex:', y_pred
+        print '\tClass:', y_pred + 1
+        print 'Probability:', diag[y_pred]
+        print
+
+        l.append(m[3, 3])
+
+        sums = np.apply_along_axis(np.sum, 0, m)
+        ratios = diag / sums
+        ratios_th = ratios.copy()
+        ratios_th[diag < threshold] = 0
+        y_pred = np.argmax(ratios_th)
+
+        plt.figure()
+        plt.title("m")
+        plt.imshow(m, interpolation='none', cmap='Blues')
+
+        plt.figure()
+        plt.subplot(511)
+        plt.title("diag")
+        plt.imshow(diag.reshape((1, 43)), interpolation='none', cmap='Blues')
+
+        plt.subplot(512)
+        plt.title("sums")
+        plt.imshow(sums.reshape((1, 43)), interpolation='none', cmap='Blues')
+
+        plt.subplot(513)
+        plt.title("ratios")
+        plt.imshow(ratios.reshape((1, 43)), interpolation='none', cmap='Blues')
+
+        plt.subplot(514)
+        plt.title("ratios_th")
+        plt.imshow(ratios_th.reshape((1, 43)),
+                   interpolation='none', cmap='Blues')
+
+        plt.close()
+        plt.close()
+
+        print '\tIndex:', y_pred
+        print '\tClass:', y_pred + 1
+        print 'Probability:', diag[y_pred]
+        print
 
         plt.figure()
         plt.title(os.path.splitext(log_file)[0])
@@ -52,3 +104,5 @@ if __name__ == '__main__':
         plt.savefig('plots/{}.png'.format(os.path.splitext(log_file)[0]))
         plt.close()
 
+        print
+        print
