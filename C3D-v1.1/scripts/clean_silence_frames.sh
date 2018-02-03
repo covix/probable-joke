@@ -3,9 +3,9 @@ VIDEO_FOLDER=$2
 OUTPUT_FOLDER=$3
 for f in `ls $FEATURES_FOLDER`;
 do
-	#echo indexes=`python script.py $FEATURES_FOLDER/$f/$f_features.csv`
-  echo start=`cut -d" " -f1<<<"11 30"`
-  echo end=`cut -d" " -f2<<<"11 30"`
+	indexes=`python script.py $FEATURES_FOLDER/$f/$f_features.csv`
+  echo start=`cut -d" " -f1<<<$indexes`
+  echo end=`cut -d" " -f2<<<$indexes`
   echo frames=`ls $VIDEO_FOLDER/$f`
   echo frames=`cut -d" " -f$start,$end <<<$frames`
   echo mkdir -p $OUTPUT_FOLDER/$f
