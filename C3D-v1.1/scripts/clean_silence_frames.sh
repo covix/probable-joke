@@ -3,7 +3,7 @@ VIDEO_FOLDER=$2
 OUTPUT_FOLDER=$3
 for f in `ls $FEATURES_FOLDER`;
 do
-	indexes=`python script.py $FEATURES_FOLDER/$f/$f_features.csv`
+  indexes=`python script.py $FEATURES_FOLDER/$f/$f_features.csv`
   echo start=`cut -d" " -f1<<<$indexes`
   echo end=`cut -d" " -f2<<<$indexes`
   echo frames=`ls $VIDEO_FOLDER/$f`
