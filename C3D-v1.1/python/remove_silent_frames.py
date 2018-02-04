@@ -2,10 +2,6 @@ import os
 import sys
 import numpy as np
 
-from matplotlib import pyplot as plt
-# from scipy.ndimage.filters import gaussian_filter1d
-# from scipy.signal import savgol_filter
-
 FEATURES_FILE = sys.argv[1]
 
 #=========================================================================================
