@@ -48,7 +48,7 @@ aliCtw = ctw(Xs, aliUtw, aliT, parCtw, parCca, parDtw);
 aliGtw = gtw(Xs, bas, aliUtw, aliT, parGtw, parCca, parGN);
 
 %% show alignment result
-shAliCmp(Xs, Xs, {aliDtw, aliDdtw, aliImw, aliCtw, aliGtw}, aliT, parCca, parDtw, parGN, 1);
+shAliCmp(Xs, Xs, {aliDtw, aliDdtw, aliImw, aliCtw, aliGtw}, [], parCca, parDtw, parGN, 1);
 
 %% show basis
 shAliP(bas{1}.P, 'fig', 2);

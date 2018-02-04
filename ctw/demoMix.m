@@ -5,7 +5,7 @@
 %   create  -  Feng Zhou (zhfe99@gmail.com), 01-20-2012
 %   modify  -  Feng Zhou (zhfe99@gmail.com), 05-05-2013
 
-clear variables;
+clear variables;    
 prSet(1);
 
 %% src parameter

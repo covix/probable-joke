@@ -7,10 +7,10 @@ clear variables;
 addPath
 
 %% algorithm parameter
-parCca = st('d', 3, 'lams', .1); % CCA: reduce dimension to keep at least 0.95 energy
+parCca = st('d', 1.0, 'lams', .1); % CCA: reduce dimension to keep at least 0.95 energy
 parGN = st('nItMa', 2, 'inp', 'linear'); % Gauss-Newton: 2 iterations to update the weight in GTW, 
 parGtw = st('nItMa', 20);
-parPimw = st('lA', 1, 'lB', 1); % IMW: regularization weight
+% parPimw = st('lA', 1, 'lB', 1); % IMW: regularization weight
 
 
 %% src
@@ -30,22 +30,23 @@ Xs = pcas(X0s, st('d', min(cellDim(X0s, 1)), 'cat', 'n'));
 %% monotonic basis
 ns = cellDim(Xs, 2);
 l = round(max(ns) * 1.1);
-bas = baTems(l, ns, 'pol', [5 .5], 'tan', [5 1 1]); % 2 polynomial and 3 tangent functions
+bas = baTems(l, ns, 'tra', 100, 'pol', [5 .5], 'tan', [5 1 1]); % 2 polynomial and 3 tangent functions
 
 %% utw (initialization)
 aliUtw = utw(Xs, bas, []);
 
 %% pimw
-aliPimw = pimw(Xs, aliUtw, [], parPimw, []);
+% aliPimw = pimw(Xs, aliUtw, [], parPimw, []);
 
 %% gtw
-% aliGtw = gtw(Xs, bas, aliUtw, [], parGtw, parCca, parGN);
+aliGtw = gtw(Xs, bas, aliUtw, [], parGtw, parCca, parGN);
 
 %% save indexes
 % save('aliGtw.mat', 'aliGtw');
 % save('aliPimw.mat', 'aliPimw');
-P = aliPimw.P;
-csvwrite('data/asl/aligned_deep_features/ali_pimw_bm_P_all.csv', P)
+P = aliGtw.P;
+% csvwrite('data/asl/aligned_deep_features/ali_pimw_bm_P_all.csv', P)
+% csvwrite('data/asl/aligned_deep_features/ali_pimw_bm_P_all.csv', P)
 
 
 %% show result

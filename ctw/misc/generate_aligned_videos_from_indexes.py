@@ -14,7 +14,7 @@ def main():
     aligned_idx = np.loadtxt(alignment_file, delimiter=',')
 
     files = sorted(os.listdir(input_folder))
-    assert len(files) == aligned_idx.shape[1], "lenght differs"
+    # assert len(files) == aligned_idx.shape[1], "lenght differs"
 
     for idx, f in enumerate(files):
         print idx, f
@@ -29,3 +29,4 @@ def main():
 
 if __name__ == '__main__':
     main()
+
