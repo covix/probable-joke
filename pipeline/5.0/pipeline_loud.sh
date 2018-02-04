@@ -44,10 +44,12 @@ chmod 777 $LOUD_FEATURES_TEST
 #--- Get PCA features -------------------------------------------------------------------
 
 echo "Applying PCA on train..."
-python $PYTHON_SCRIPTS_FOLDER/apply_pca.py $LOUD_FEATURES_TRAIN $LOUD_PCA_FEATURES_TRAIN 10
+mkdir -p $LOUD_PCA_FEATURES_TRAIN
+python $PYTHON_SCRIPTS_FOLDER/apply_pca.py $LOUD_FEATURES_TRAIN $LOUD_PCA_FEATURES_TRAIN 15
 
 echo "Applying PCA on test..."
-python $PYTHON_SCRIPTS_FOLDER/apply_pca.py $LOUD_FEATURES_TEST $LOUD_PCA_FEATURES_TEST 10
+mkdir -p $LOUD_PCA_FEATURES_TEST
+python $PYTHON_SCRIPTS_FOLDER/apply_pca.py $LOUD_FEATURES_TEST $LOUD_PCA_FEATURES_TEST 15
 
 
 
