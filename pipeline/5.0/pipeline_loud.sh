@@ -26,6 +26,10 @@ echo "Create loud_test..."
 echo "Create loud_test_features..."
 ./clean_silence_features.sh $ORIGINAL_FEATURES_TEST $LOUD_FEATURES_TEST
 
-echo "Alignment tomorrow"
+chmod 777 $LOUD_FRAMES_TRAIN
+chmod 777 $LOUD_FEATURES_TRAIN
+chmod 777 $LOUD_FRAMES_TEST
+chmod 777 $LOUD_FEATURES_TEST
+echo "Alignment boh"
 #------------------------------------------------------------------------
 #Alignment...
