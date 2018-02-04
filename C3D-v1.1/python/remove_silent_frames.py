@@ -4,13 +4,13 @@ import numpy as np
 
 FEATURES_FILE = sys.argv[1]
 OUTPUT_FOLDER = sys.argv[2]
-FRAMES_OR_FEATURES = sys.argv[3]
+FRAMES_OR_FEATURES = int(sys.argv[3])
 
 # Usage: FRAMES_OR_FEATURES = 0 --> FRAMES
 #        FRAMES_OR_FEATURES = 1 --> FEATURES
 
 
-#FEATURES_FILE = "/media/schenock/01D1B41ED893D2C0/Projects/probable-joke/data/features/01-M-04-C-comp_features.csv" 
+#FEATURES_FILE = "/media/schenock/01D1B41ED893D2C0/Projects/probable-joke/data/features/01-M-04-C-comp_features.csv"
 
 
 #========= LEFT PART =====================================================================
@@ -96,7 +96,7 @@ above_right = [frame for frame in above if frame > middle_right + index_middle]
 from_frame = max(above_left) + 2
 to_frame = min(above_right) - 2
 
-if FRAMES_OR_FEATURES == 1:        
+if FRAMES_OR_FEATURES == 1:
     # FEATURES
 
     # Create and save new features file
@@ -113,6 +113,3 @@ if FRAMES_OR_FEATURES == 1:
 else:
     # FRAMES
     print(from_frame, to_frame)
-
-
-
