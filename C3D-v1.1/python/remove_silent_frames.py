@@ -4,11 +4,16 @@ import numpy as np
 
 FEATURES_FILE = sys.argv[1]
 OUTPUT_FOLDER = sys.argv[2]
+FRAMES_OR_FEATURES = sys.argv[3]
+
+# Usage: FRAMES_OR_FEATURES = 0 --> FRAMES
+#        FRAMES_OR_FEATURES = 1 --> FEATURES
+
 
 #FEATURES_FILE = "/media/schenock/01D1B41ED893D2C0/Projects/probable-joke/data/features/01-M-04-C-comp_features.csv" 
 
-#=========================================================================================
-# LEFT PART
+
+#========= LEFT PART =====================================================================
 
 # Read correlation coeffs
 features = np.loadtxt(FEATURES_FILE)
@@ -45,8 +50,8 @@ middle_left = np.where(left_part==mini)[0]
 above_left = [frame for frame in above if frame < middle_left]
 
 
-# =======================================================================================================
-# RIGHT PART
+
+# ======== RIGHT PART ============================================================================
 
 # Read correlation coeffs
 features = np.loadtxt(FEATURES_FILE)
@@ -85,26 +90,29 @@ middle_right = np.where(right_part==mini)[0]
 above_right = [frame for frame in above if frame > middle_right + index_middle]
 
 
-#---------------------
-# OUTPUT
 
-# Boundaries
+#========= OUTPUT ====================
+
 from_frame = max(above_left) + 2
 to_frame = min(above_right) - 2
 
-# Create and save new features file
-new_features = features[from_frame:to_frame,]
+if FRAMES_OR_FEATURES == 1:        
+    # FEATURES
 
-fname = FEATURES_FILE.split("/")[-1]
+    # Create and save new features file
+    new_features = features[from_frame:to_frame,]
 
-np.savetxt(os.path.join(OUTPUT_FOLDER, fname), new_features)
+    fname = FEATURES_FILE.split("/")[-1]
 
-# Prints
-print("Features length: ", len(features))
-print("New features length: ", len(new_features))
-print("Cut video between: ", max(above_left) + 2, min(above_right) - 2)
+    np.savetxt(os.path.join(OUTPUT_FOLDER, fname), new_features)
 
-
+    # Prints
+    print("Features length: ", len(features))
+    print("New features length: ", len(new_features))
+    print("Cut video between: ", max(above_left) + 2, min(above_right) - 2)
+else:
+    # FRAMES
+    print(from_frame, to_frame)
 
 
 
