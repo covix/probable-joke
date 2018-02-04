@@ -1,5 +1,5 @@
-TRAIN_FOLDER=/data/sparks/share/asl/experiments/datasets/train/
-TEST_FOLDER=/data/sparks/share/asl/experiments/datasets/test/
+TRAIN_FOLDER=/data/sparks/share/asl/experiments/datasets/train
+TEST_FOLDER=/data/sparks/share/asl/experiments/datasets/test
 SCRIPTS_FOLDER=/data/sparks/share/asl/experiments/datasets/scripts_data
 
 ORIGINAL_FRAMES_TRAIN=$TRAIN_FOLDER/original_train
