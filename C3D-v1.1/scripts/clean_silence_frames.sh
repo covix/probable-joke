@@ -2,7 +2,7 @@ FEATURES_FOLDER=$1
 VIDEO_FOLDER=$2
 OUTPUT_FOLDER=$3
 suffix=_features.csv
-REMOVE_SILENT_FRAME_PATH =/data/sparks/share/asl/experiments/dataset/scripts_data/remove_silent_frames.py
+REMOVE_SILENT_FRAME_PATH=/data/sparks/share/asl/experiments/dataset/scripts_data/remove_silent_frames.py
 for f in `ls $FEATURES_FOLDER`;
 do
   echo video $f
