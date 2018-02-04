@@ -12,7 +12,7 @@ echo "Moving the frames by class.."
 for class in {01..43};
 do
 mkdir $OUTPUT_FOLDER/$class
-for f in `ls -d $INPUT_FOLDER/*M-$class-*`;
+for f in `ls $INPUT_FOLDER/*M-$class-*`;
 do
         cp -r $INPUT_FOLDER/$f $OUTPUT_FOLDER/$class
 done
