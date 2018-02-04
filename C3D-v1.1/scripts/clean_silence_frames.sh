@@ -6,7 +6,7 @@ REMOVE_SILENT_FRAME_PATH=/data/sparks/share/asl/experiments/datasets/scripts_dat
 for f in `ls $FEATURES_FOLDER`;
 do
   echo video $f
-  indexes=`python $REMOVE_SILENT_FRAME_PATH $FEATURES_FOLDER/$f/$f$suffix 0`
+  indexes=`python $REMOVE_SILENT_FRAME_PATH $FEATURES_FOLDER/$f/$f$suffix $OUTPUT_FOLDER/$f 0`
   indexes=${indexes:1:-1}
   ind1=`cut -d"," -f1 <<<$indexes`
   ind2=`cut -d"," -f2 <<<$indexes`
