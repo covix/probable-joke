@@ -41,6 +41,16 @@ chmod 777 $LOUD_FRAMES_TEST
 chmod 777 $LOUD_FEATURES_TEST
 
 
+#--- Get PCA features -------------------------------------------------------------------
+
+echo "Applying PCA on train..."
+python $PYTHON_SCRIPTS_FOLDER/apply_pca.py $LOUD_FEATURES_TRAIN $LOUD_PCA_FEATURES_TRAIN 10
+
+echo "Applying PCA on test..."
+python $PYTHON_SCRIPTS_FOLDER/apply_pca.py $LOUD_FEATURES_TEST $LOUD_PCA_FEATURES_TEST 10
+
+
+
 #--- Moving frames by class -------------------------------------------------------------
 
 # Moving by class
@@ -54,11 +64,7 @@ sh $SCRIPTS_FOLDER/move_frames.sh $LOUD_FRAMES_TEST $LOUD_FRAMES_CLASS_TEST
 
 #--- Get PCA features -------------------------------------------------------------------
 
-echo "Applying PCA on train..."
-python $PYTHON_SCRIPTS_FOLDER/apply_pca.py $LOUD_FEATURES_TRAIN $LOUD_PCA_FEATURES_TRAIN 10
 
-echo "Applying PCA on test..."
-python $PYTHON_SCRIPTS_FOLDER/apply_pca.py $LOUD_FEATURES_TEST $LOUD_PCA_FEATURES_TEST 10
 
 
 #--- Alignment --------------------------------------------------------------------------
