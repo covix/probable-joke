@@ -19,6 +19,9 @@ LOUD_FRAMES_CLASS_TEST=$TEST_FOLDER/loud_frames_class_test
 LOUD_PCA_FEATURES_TRAIN=$TRAIN_FOLDER/pca_features_loud_train
 LOUD_PCA_FEATURES_TEST=$TEST_FOLDER/pca_features_loud_test
 
+LOUD_PCA_FEATURES_CLASS_TRAIN=$TRAIN_FOLDER/pca_features_loud_class_train
+LOUD_PCA_FEATURES_CLASS_TEST=$TEST_FOLDER/pca_features_loud_class_test
+
 
 
 #Create loud_train
@@ -64,10 +67,14 @@ echo "Moving frames by class test.."
 sh $SCRIPTS_FOLDER/move_frames.sh $LOUD_FRAMES_TEST $LOUD_FRAMES_CLASS_TEST
 
 
-#--- Get PCA features -------------------------------------------------------------------
+#--- Moving features by class -------------------------------------------------------------
+# Moving by class
+echo "Moving features by class.."
+sh $SCRIPTS_FOLDER/move_frames.sh $LOUD_PCA_FEATURES_TRAIN $LOUD_PCA_FEATURES_CLASS_TRAIN
 
-
-
+# Moving by class test
+echo "Moving frames by class test.."
+sh $SCRIPTS_FOLDER/move_frames.sh $LOUD_PCA_FEATURES_TEST $LOUD_PCA_FEATURES_CLASS_TEST
 
 #--- Alignment --------------------------------------------------------------------------
 
@@ -75,6 +82,3 @@ sh $SCRIPTS_FOLDER/move_frames.sh $LOUD_FRAMES_TEST $LOUD_FRAMES_CLASS_TEST
 
 
 #--- Unify videos ----------------------------------------------------------------------
-
-
-

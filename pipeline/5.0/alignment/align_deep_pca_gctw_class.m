@@ -1,4 +1,4 @@
-function align_deep_pca_gctw_class_test(inputFolder, class, testSample, outputFolder, ctwFolder)
+function align_deep_pca_gctw_class(inputFolder, class, outputFolder, ctwFolder)
 % TODO desc
 %
 % History
@@ -15,7 +15,7 @@ parGN = st('nItMa', 2, 'inp', 'linear'); % Gauss-Newton: 2 iterations to update 
 parGtw = st('nItMa', 100);
 
 %% data
-aslData = aslAliDataFeaturesPlusSample(inputFolder, testSample);
+aslData = aslAliDataFeatures(inputFolder);
 X0s = aslData.DPs;
 Xs = pcas(X0s, st('d', min(cellDim(X0s, 1)), 'cat', 'n'));
 
@@ -32,5 +32,4 @@ aliGtw = gtw(Xs, bas, aliUtw, [], parGtw, parCca, parGN);
 
 %% save indexes
 P = aliGtw.P;
-[filepath,name,ext] = fileparts(testSample);
-csvwrite(strcat(outputFolder, '/ali_gctw_deep_', name, '_P_test.csv'), P)
+csvwrite(strcat(outputFolder, '/ali_gctw_deep_', class, '_P.csv'), P)
