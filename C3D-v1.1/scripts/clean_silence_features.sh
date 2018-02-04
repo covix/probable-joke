@@ -9,4 +9,4 @@ do
 done
 
 #Usage example
-#./clean_silence_features /data/sparks/share/asl/experiments/datasets/train/deep_features_train /data/sparks/share/asl/experiments/datasets/train/loud_train
+#./clean_silence_features.sh /data/sparks/share/asl/experiments/datasets/train/deep_features_train /data/sparks/share/asl/experiments/datasets/train/loud_train
