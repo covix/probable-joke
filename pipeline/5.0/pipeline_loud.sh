@@ -13,14 +13,19 @@ LOUD_FRAMES_TEST=$TRAIN_FOLDER/loud_test
 
 
 #Create loud_train
+echo "Create loud_train..."
 ./clean_silence_frames.sh $ORIGINAL_FRAMES_TRAIN $LOUD_FRAMES_TRAIN
+echo "Create loud_train_features..."
 #Create loud_train_features
 ./clean_silence_features.sh $ORIGINAL_FEATURES_TRAIN $LOUD_FEATURES_TRAIN
 
 #Create loud_test
+echo "Create loud_test..."
 ./clean_silence_frames.sh $ORIGINAL_FRAMES_TEST $LOUD_FRAMES_TEST
 #Create loud_test_features
+echo "Create loud_test_features..."
 ./clean_silence_features.sh $ORIGINAL_FEATURES_TEST $LOUD_FEATURES_TEST
 
+echo "Alignment tomorrow"
 #------------------------------------------------------------------------
 #Alignment...
