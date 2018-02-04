@@ -1,6 +1,7 @@
 TRAIN_FOLDER=/data/sparks/share/asl/experiments/datasets/train
 TEST_FOLDER=/data/sparks/share/asl/experiments/datasets/test
 SCRIPTS_FOLDER=/data/sparks/share/asl/experiments/datasets/scripts_data
+PYTHON_SCRIPTS_FOLDER=/data/sparks/share/asl/probable-joke/C3D-v1.1/python
 
 ORIGINAL_FRAMES_TRAIN=$TRAIN_FOLDER/original_train
 ORIGINAL_FEATURES_TRAIN=$TRAIN_FOLDER/deep_features_train
@@ -14,6 +15,10 @@ LOUD_FRAMES_TEST=$TEST_FOLDER/loud_test
 
 LOUD_FRAMES_CLASS_TRAIN=$TRAIN_FOLDER/loud_frames_class_train
 LOUD_FRAMES_CLASS_TEST=$TEST_FOLDER/loud_frames_class_test
+
+LOUD_PCA_FEATURES_TRAIN=$TRAIN_FOLDER/pca_features_loud_train
+LOUD_PCA_FEATURES_TEST=$TEST_FOLDER/pca_features_loud_test
+
 
 
 #Create loud_train
@@ -36,7 +41,7 @@ chmod 777 $LOUD_FRAMES_TEST
 chmod 777 $LOUD_FEATURES_TEST
 
 
-#--- Moving -------------------------------------------------------------
+#--- Moving frames by class -------------------------------------------------------------
 
 # Moving by class
 echo "Moving frames by class.."
@@ -47,4 +52,20 @@ echo "Moving frames by class test.."
 sh $SCRIPTS_FOLDER/move_frames.sh $LOUD_FRAMES_TEST $LOUD_FRAMES_CLASS_TEST
 
 
-#--- Alignment --------------------------------------------------------------
+#--- Get PCA features -------------------------------------------------------------------
+
+echo "Applying PCA on train..."
+python $PYTHON_SCRIPTS_FOLDER/apply_pca.py $LOUD_FEATURES_TRAIN $LOUD_PCA_FEATURES_TRAIN 10
+
+echo "Applying PCA on test..."
+python $PYTHON_SCRIPTS_FOLDER/apply_pca.py $LOUD_FEATURES_TEST $LOUD_PCA_FEATURES_TEST 10
+
+
+#--- Alignment --------------------------------------------------------------------------
+
+
+
+
+#--- Unify videos ----------------------------------------------------------------------
+
+
