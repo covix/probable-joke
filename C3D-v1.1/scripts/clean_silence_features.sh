@@ -5,7 +5,7 @@ suffix=_features.csv
 for f in `ls $FEATURES_FOLDER`;
 do
   mkdir -p $OUTPUT_FOLDER/$f
-  python remove_silent_frames.py $FEATURES_FOLDER/$f/$f$suffix $OUTPUT_FOLDER/$f
+  python remove_silent_frames.py $FEATURES_FOLDER/$f/$f$suffix $OUTPUT_FOLDER/$f 1
 done
 
 #Usage example
