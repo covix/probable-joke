@@ -8,10 +8,6 @@ from matplotlib import pyplot as plt
 
 FEATURES_FILE = sys.argv[1]
 
-FEATURES_FILE = "/media/schenock/01D1B41ED893D2C0/Projects/probable-joke/data/features/01-M-04-C-comp_features.csv"
-
-
-
 #=========================================================================================
 # LEFT PART
 
