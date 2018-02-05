@@ -60,7 +60,7 @@ for folder in sorted(os.listdir(data_dir)):
         feature_vector = list(net.blobs[layer].data[0])
 
         # Print the shape of the data
-        print 'Data shape: ' + str(net.blobs[layer].data[0].shape)
+        # print 'Data shape: ' + str(net.blobs[layer].data[0].shape)
 
         # Flatten/Reshape
         feature_vector = np.ndarray.flatten(np.asarray(feature_vector))
