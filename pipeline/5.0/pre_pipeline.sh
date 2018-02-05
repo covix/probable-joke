@@ -1,11 +1,11 @@
-$VIDEO_FOLDER=/data/sparks/share/asl/data/VideoThumbnailsMotion/
-$FRAMES_FOLDER=/data/sparks/share/asl/data/asl_png
-$TRAIN_LABELS=/data/sparks/share/asl/experiments/datasets/train.txt
-$TEST_LABELS=/data/sparks/share/asl/experiments/datasets/test.txt
-$TRAIN_FOLDER=/data/sparks/share/asl/experiments/datasets/original_train
-$TEST_FOLDER=/data/sparks/share/asl/experiments/datasets/original_test
+VIDEO_FOLDER=/data/sparks/share/asl/data/VideoThumbnailsMotion/
+FRAMES_FOLDER=/data/sparks/share/asl/data/asl_png
+TRAIN_LABELS=/data/sparks/share/asl/experiments/datasets/train.txt
+TEST_LABELS=/data/sparks/share/asl/experiments/datasets/test.txt
+TRAIN_FOLDER=/data/sparks/share/asl/experiments/datasets/original_train
+TEST_FOLDER=/data/sparks/share/asl/experiments/datasets/original_test
 
-$SCRIPTS_FOLDER=/data/sparks/share/asl/probable-joke/C3D-v1.1/scripts
+SCRIPTS_FOLDER=/data/sparks/share/asl/probable-joke/C3D-v1.1/scripts
 
 # exit form the script on failure
 set -e
