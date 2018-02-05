@@ -2,17 +2,20 @@
 
 INPUT_FOLDER=$1
 OUTPUT_FOLDER=$2
-CLASS=$3
 
 MATLAB=/usr/local/bin/matlab2017a
 
-ENR_CODE=`dirname $0`  # Current folder
-echo $ENR_CODE
+for i in {01..43};
+do
 
-CMD="\
-    addpath(genpath([cd '/' '$ENR_CODE'])); \
-    align_deep_pca_gctw_class('${INPUT_FOLDER}/${i}', '$CLASS', '$OUTPUT_FOLDER', '$ENR_CODE'); \
-    exit;
-"
+    ENR_CODE=`dirname $0`  # Current folder
 
-$MATLAB -r "$CMD" # > gctw.log 2>&1
+    CMD="\
+        addpath(genpath([cd '/' '$ENR_CODE'])); \
+        align_deep_pca_gctw_class('${INPUT_FOLDER}/${i}', '$i', '$OUTPUT_FOLDER', '$ENR_CODE'); \
+        exit;
+    "
+
+    $MATLAB -r "$CMD" # > gctw.log 2>&1
+
+done
