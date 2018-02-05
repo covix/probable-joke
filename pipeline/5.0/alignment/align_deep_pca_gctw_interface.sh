@@ -10,7 +10,6 @@ for i in {01..01};
 do
 
     ENR_CODE=`dirname $0`  # Current folder
-    echo $ENR_CODE
 
     CMD="\
         addpath(genpath(['$ENR_CODE'])); \
@@ -21,7 +20,3 @@ do
     $MATLAB -r "$CMD" # > gctw.log 2>&1
 
 done
-
-
-
-addpath(genpath([cd '/' '/data/sparks/share/asl/probable-joke/pipeline/5.0/alignment']));
