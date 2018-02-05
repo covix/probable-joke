@@ -65,7 +65,19 @@ if [[ ! -d $FEATURES_TRAIN_FOLDER ]]; then
     mkdir -p $FEATURES_TRAIN_FOLDER
     cp $PYTHON_SCRIPTS_FOLDER/extract_features.py $CAFFE_FOLDER/python
     python $CAFFE_FOLDER/python/extract_features.py $TRAIN_FOLDER $MODEL_PATH $NET $MEAN_FILE $FEATURES_TRAIN_FOLDER $LAYER
-    chmod 777 $TEST_FOLDER
+    chmod 777 $FEATURES_TRAIN_FOLDER
+else
+    echo "Skipping extract features train"
+fi
+
+
+if [[ ! -d $FEATURES_TEST_FOLDER ]]; then
+    #Create original_test
+    echo "Extract features train..."
+    mkdir -p $FEATURES_TEST_FOLDER
+    cp $PYTHON_SCRIPTS_FOLDER/extract_features.py $CAFFE_FOLDER/python
+    python $CAFFE_FOLDER/python/extract_features.py $TEST_FOLDER $MODEL_PATH $NET $MEAN_FILE $FEATURES_TEST_FOLDER $LAYER
+    chmod 777 $FEATURES_TEST_FOLDER
 else
     echo "Skipping extract features train"
 fi
