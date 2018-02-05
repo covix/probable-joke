@@ -16,7 +16,7 @@ if [[ ! -d $FRAMES_FOLDER ]]; then
     #Extract frames
     echo "Create extract frames"
     mkdir -p $FRAMES_FOLDER
-    sh extract_frames.sh $VIDEO_FOLDER $FRAMES_FOLDER
+    sh $SCRIPTS_FOLDER/extract_frames.sh $VIDEO_FOLDER $FRAMES_FOLDER
     chmod 777 $FRAMES_FOLDER
 else
     echo "Skipping extract frames"
