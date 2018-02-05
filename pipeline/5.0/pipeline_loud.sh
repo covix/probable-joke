@@ -44,12 +44,13 @@ fi
 
 
 if [[ ! -d $LOUD_FEATURES_TRAIN ]]; then
-    echo "Create loud_train_features..."
     #Create loud_train_features
+    echo "Create loud_train_features..."
     echo sh $SCRIPTS_FOLDER/clean_silence_features.sh $ORIGINAL_FEATURES_TRAIN $LOUD_FEATURES_TRAIN
+    chmod 777 $LOUD_FEATURES_TRAIN
 else
     echo "Skipping loud_train_features"
-    chmod 777 $LOUD_FEATURES_TRAIN
+    
 fi
 
 
