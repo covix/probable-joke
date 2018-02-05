@@ -32,7 +32,7 @@ LOUD_ALIGNMENT_INDEXES_TRAIN=$TRAIN_FOLDER/alignment_indexes_loud_train
 set -e
 
 
-# check if the folder already exists, if so pass to the next step 
+# check if the folder already exists, if so pass to the next step
 if [[ ! -d $LOUD_FRAMES_TRAIN ]]; then
     #Create loud_train
     echo "Create loud_train..."
@@ -50,7 +50,7 @@ if [[ ! -d $LOUD_FEATURES_TRAIN ]]; then
     chmod 777 $LOUD_FEATURES_TRAIN
 else
     echo "Skipping loud_train_features"
-    
+
 fi
 
 
@@ -80,6 +80,7 @@ if [[ ! -d $LOUD_PCA_FEATURES_TRAIN ]]; then
     echo "Applying PCA on train..."
     mkdir -p $LOUD_PCA_FEATURES_TRAIN
     echo python $PYTHON_SCRIPTS_FOLDER/apply_pca.py $LOUD_FEATURES_TRAIN $LOUD_PCA_FEATURES_TRAIN 15
+    chmod 777 $LOUD_PCA_FEATURES_TRAIN
 else
     echo "Skipping PCA on train"
 fi
@@ -89,6 +90,7 @@ if [[ ! -d $LOUD_PCA_FEATURES_TEST ]]; then
     echo "Applying PCA on test..."
     mkdir -p $LOUD_PCA_FEATURES_TEST
     echo python $PYTHON_SCRIPTS_FOLDER/apply_pca.py $LOUD_FEATURES_TEST $LOUD_PCA_FEATURES_TEST 15
+    chmod 777 $LOUD_PCA_FEATURES_TEST
 else
     echo "Skipping PCA on test"
 fi
@@ -100,7 +102,8 @@ if [[ ! -d $LOUD_FRAMES_CLASS_TRAIN ]]; then
     # Moving by class train
     echo "Moving train frames by class..."
     sh $SCRIPTS_FOLDER/move_frames.sh $LOUD_FRAMES_TRAIN $LOUD_FRAMES_CLASS_TRAIN
-else 
+    chmod 777 $LOUD_FRAMES_CLASS_TRAIN
+else
     echo "Skipping moving train frames"
 fi
 
@@ -109,7 +112,8 @@ if [[ ! -d $LOUD_FRAMES_CLASS_TEST ]]; then
     # Moving by class test
     echo "Moving test frames by class..."
     sh $SCRIPTS_FOLDER/move_frames.sh $LOUD_FRAMES_TEST $LOUD_FRAMES_CLASS_TEST
-else 
+    chmod 777 $LOUD_FRAMES_CLASS_TEST
+else
     echo "Skipping moving test frames"
 fi
 
@@ -119,6 +123,7 @@ if [[ ! -d $LOUD_PCA_FEATURES_CLASS_TRAIN ]]; then
     # Moving by class train
     echo "Moving train features by class..."
     sh $SCRIPTS_FOLDER/move_frames.sh $LOUD_PCA_FEATURES_TRAIN $LOUD_PCA_FEATURES_CLASS_TRAIN
+    chmod 777 $LOUD_PCA_FEATURES_CLASS_TRAIN
 else
     echo "Skipping moving train features by class"
 fi
@@ -128,7 +133,7 @@ if [[ ! -d $LOUD_PCA_FEATURES_CLASS_TEST ]]; then
     # Moving by class test
     echo "Moving test features by class..."
     sh $SCRIPTS_FOLDER/move_frames.sh $LOUD_PCA_FEATURES_TEST $LOUD_PCA_FEATURES_CLASS_TEST
-
+    chmod 777 $LOUD_PCA_FEATURES_CLASS_TEST
 else
     echo "Skipping moving test features by class"
 fi
@@ -141,6 +146,7 @@ if [[ ! -d $LOUD_ALIGNMENT_INDEXES_TRAIN ]]; then
     echo "Aligning train features by class..."
     mkdir -p $LOUD_ALIGNMENT_INDEXES_TRAIN
     sh $ALIGNMENT_SCRIPTS_FOLDER/run_align_deep_pca_gctw.sh $LOUD_PCA_FEATURES_CLASS_TRAIN $LOUD_ALIGNMENT_INDEXES_TRAIN
+    chmod 777 $LOUD_ALIGNMENT_INDEXES_TRAIN
 else
     echo "Skipping aligning train features by class"
 fi
