@@ -7,6 +7,7 @@ CLASS=$3
 MATLAB=/usr/local/bin/matlab2017a
 
 ENR_CODE=`dirname $0`  # Current folder
+echo $ENR_CODE
 
 CMD="\
     addpath(genpath([cd '/' '$ENR_CODE'])); \

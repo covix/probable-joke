@@ -5,7 +5,8 @@ OUTPUT_FOLDER=$2
 
 ENR_CODE=`dirname $0`  # Current folder, containing supporting scripts and files
 
-for i in {01..43};
+# for i in {01..43};
+for i in {01..02};
 do
     oarsub -l /core=1 -S  "${ENR_CODE}/align_deep_pca_gctw_interface.sh $INPUT_FOLDER $OUTPUT_FOLDER $i"
 done
