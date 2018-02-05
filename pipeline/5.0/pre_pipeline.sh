@@ -64,7 +64,7 @@ if [[ ! -d $FEATURES_TRAIN_FOLDER ]]; then
     echo "Extract features train..."
     mkdir -p $FEATURES_TRAIN_FOLDER
     cp $PYTHON_SCRIPTS_FOLDER/extract_features.py $CAFFE_FOLDER/python
-    python $CAFFE_FOLDER/python $TRAIN_FOLDER $MODEL_PATH $NET $MEAN_FILE $FEATURES_TRAIN_FOLDER $LAYER
+    python $CAFFE_FOLDER/python/extract_features.py $TRAIN_FOLDER $MODEL_PATH $NET $MEAN_FILE $FEATURES_TRAIN_FOLDER $LAYER
     chmod 777 $TEST_FOLDER
 else
     echo "Skipping extract features train"
