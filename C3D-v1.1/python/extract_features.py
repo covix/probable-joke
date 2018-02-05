@@ -43,7 +43,7 @@ for folder in sorted(os.listdir(data_dir)):
 
 
     for image_file in sorted(os.listdir(data_dir + '/' + folder)):
-        print 'Processing image: ' + image_file
+        # print 'Processing image: ' + image_file
         # Load image
         img = caffe.io.load_image(data_dir + '/' + folder + '/' + image_file)
 
