@@ -6,6 +6,8 @@ function align_deep_pca_gctw_class(inputFolder, class, outputFolder, ctwFolder)
 
 %% add libraries path
 footpath = cd;
+disp("Adding to path: ");
+disp(genpath([footpath '/' ctwFolder '/ctw/src']));
 addpath(genpath([footpath '/' ctwFolder '/ctw/src']));
 addpath(genpath([footpath '/' ctwFolder '/ctw/lib']));
 

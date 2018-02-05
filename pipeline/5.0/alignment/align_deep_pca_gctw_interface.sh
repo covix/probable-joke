@@ -5,10 +5,12 @@ OUTPUT_FOLDER=$2
 
 MATLAB=/usr/local/bin/matlab2017a
 
-for i in {01..43};
+echo "Alert: aligning only one class"
+for i in {01..01};
 do
 
     ENR_CODE=`dirname $0`  # Current folder
+    echo $ENR_CODE
 
     CMD="\
         addpath(genpath([cd '/' '$ENR_CODE'])); \
