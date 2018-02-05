@@ -5,15 +5,13 @@ OUTPUT_FOLDER=$2
 
 MATLAB=/usr/local/bin/matlab2017a
 
-echo "Alert: aligning only one class"
-for i in {01..01};
+for i in {01..43};
 do
 
     ENR_CODE=`dirname $0`  # Current folder
-    echo $ENR_CODE
 
     CMD="\
-        addpath(genpath([cd '/' '$ENR_CODE'])); \
+        addpath(genpath([$ENR_CODE'])); \
         align_deep_pca_gctw_class('${INPUT_FOLDER}/${i}', '$i', '$OUTPUT_FOLDER', '$ENR_CODE'); \
         exit;
     "
