@@ -2,9 +2,6 @@ import os
 import sys
 import numpy as np
 import caffe
-import matplotlib.pyplot as plt
-from sklearn.decomposition import PCA
-from PIL import Image
 
 
 data_dir = sys.argv[1]
@@ -14,8 +11,8 @@ imagemean_path = sys.argv[4]
 output_dir = sys.argv[5]
 layer = sys.argv[6]
 
-N_COMP = sys.argv[7] if len(sys.argv) == 8 else 100
-N_COMP = int(N_COMP)
+caffe.set_mode_gpu()
+caffe.set_device(0)
 
 # Create caffe Net object
 net = caffe.Net(deploy_prototxt_path, model_path, caffe.TEST)
@@ -35,7 +32,7 @@ net.blobs['data'].reshape(1,3,224,224)
 
 
 # Preprocess and extract features from all files in a folder data_dir
-for folder in os.listdir(data_dir):
+for folder in sorted(os.listdir(data_dir)):
     current_output_dir = output_dir + '/' + folder
     video_feature_matrix = []
     print 'In data folder: ' + folder + " , output folder: " + current_output_dir
