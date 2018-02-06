@@ -5,10 +5,9 @@ OUTPUT_FOLDER=$2
 
 MATLAB=/usr/local/bin/matlab2017a
 
-echo "Alert: aligning only one class"
-for i in {01..01};
+for i in {01..43};
 do
-
+    echo Aligning class $i
     ENR_CODE=`dirname $0`  # Current folder
 
     CMD="\
