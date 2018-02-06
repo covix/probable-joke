@@ -13,6 +13,8 @@ do
     echo Aligning class $i
     echo Aligning class $i > gctw.log
 
+    mkdir -p $OUTPUT_FOLDER/$i
+
     CMD="\
         addpath(genpath(['$ENR_CODE'])); \
         align_deep_pca_gctw_class_train('${INPUT_FOLDER}/${i}', '$i', '$OUTPUT_FOLDER', '$ENR_CODE'); \
