@@ -9,6 +9,7 @@ footpath = cd;
 addpath(genpath([footpath '/' ctwFolder '/ctw/src']));
 addpath(genpath([footpath '/' ctwFolder '/ctw/lib']));
 
+
 %% algorithm parameter
 parCca = st('d', 0.95, 'lams', .1); % CCA: reduce dimension to keep at least 0.95 energy
 parGN = st('nItMa', 2, 'inp', 'linear'); % Gauss-Newton: 2 iterations to update the weight in GTW,
