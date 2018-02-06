@@ -14,11 +14,8 @@ do
     echo Aligning class $i > gctw.log
 
     CMD="\
-        try; \
-            addpath(genpath(['$ENR_CODE'])); \
-            align_deep_pca_gctw_class_train('${INPUT_FOLDER}/${i}', '$i', '$OUTPUT_FOLDER', '$ENR_CODE'); \
-        catch; \
-        end; \
+        addpath(genpath(['$ENR_CODE'])); \
+        align_deep_pca_gctw_class_train('${INPUT_FOLDER}/${i}', '$i', '$OUTPUT_FOLDER', '$ENR_CODE'); \
         exit;
     "
 
