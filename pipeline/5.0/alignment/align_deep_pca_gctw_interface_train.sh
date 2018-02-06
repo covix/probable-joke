@@ -4,6 +4,7 @@ INPUT_FOLDER=$1
 OUTPUT_FOLDER=$2
 
 MATLAB=/usr/local/bin/matlab2017a
+ENR_CODE=`dirname $0`  # Current folder
 
 > gctw.log
 
@@ -11,7 +12,6 @@ for i in {01..43};
 do
     echo Aligning class $i
     echo Aligning class $i > gctw.log
-    ENR_CODE=`dirname $0`  # Current folder
 
     CMD="\
         try; \
