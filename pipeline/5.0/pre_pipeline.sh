@@ -29,8 +29,10 @@ CAFFE_FOLDER=/data/sparks/share/R-C3D/caffe3d/
 # exit form the script on failure
 set -e
 
-#Start pre-pipeline
+# load the virtual environment
+source /data/sparks/share/asl/asl/bin/activate
 
+# check if the folder already exists, if so pass to the next step
 if [[ ! -d $FRAMES_FOLDER ]]; then
     #Extract frames
     echo "Create extract frames..."
