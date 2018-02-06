@@ -89,7 +89,7 @@ fi
 if [[ ! -d $LOUD_PCA_FEATURES_TRAIN ]]; then
     echo "Applying PCA on train..."
     mkdir -p $LOUD_PCA_FEATURES_TRAIN
-    python $PYTHON_SCRIPTS_FOLDER/apply_pca.py $LOUD_FEATURES_TRAIN $LOUD_PCA_FEATURES_TRAIN 15
+    python $PYTHON_SCRIPTS_FOLDER/apply_pca.py $LOUD_FEATURES_TRAIN $LOUD_PCA_FEATURES_TRAIN 15 $PCA_MODEL
     chmod -R 777 $LOUD_PCA_FEATURES_TRAIN
 else
     echo "Skipping PCA on train"
@@ -99,7 +99,7 @@ fi
 if [[ ! -d $LOUD_PCA_FEATURES_TEST ]]; then
     echo "Applying PCA on test..."
     mkdir -p $LOUD_PCA_FEATURES_TEST
-    python $PYTHON_SCRIPTS_FOLDER/apply_pca_model.py $LOUD_FEATURES_TEST $LOUD_PCA_FEATURES_TEST PCA_MODEL
+    python $PYTHON_SCRIPTS_FOLDER/apply_pca_model.py $LOUD_FEATURES_TEST $LOUD_PCA_FEATURES_TEST $PCA_MODEL
     chmod -R 777 $LOUD_PCA_FEATURES_TEST
 else
     echo "Skipping PCA on test"
