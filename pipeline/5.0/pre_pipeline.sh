@@ -100,7 +100,7 @@ else
 fi
 
 
-if [[ ! -d $TEST_FOLDER_REDUCED_FPS]]; then
+if [[ ! -d $TEST_FOLDER_REDUCED_FPS ]]; then
     #Create reduced fps test
     echo "Create reduced fps test..."
     mkdir -p $TEST_FOLDER_REDUCED_FPS
