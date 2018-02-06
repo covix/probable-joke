@@ -43,7 +43,7 @@ for folder in sorted(os.listdir(data_dir)):
 
 
     for image_file in sorted(os.listdir(data_dir + '/' + folder)):
-        print 'Processing image: ' + image_file
+        # print 'Processing image: ' + image_file
         # Load image
         img = caffe.io.load_image(data_dir + '/' + folder + '/' + image_file)
 
@@ -60,7 +60,7 @@ for folder in sorted(os.listdir(data_dir)):
         feature_vector = list(net.blobs[layer].data[0])
 
         # Print the shape of the data
-        print 'Data shape: ' + str(net.blobs[layer].data[0].shape)
+        # print 'Data shape: ' + str(net.blobs[layer].data[0].shape)
 
         # Flatten/Reshape
         feature_vector = np.ndarray.flatten(np.asarray(feature_vector))

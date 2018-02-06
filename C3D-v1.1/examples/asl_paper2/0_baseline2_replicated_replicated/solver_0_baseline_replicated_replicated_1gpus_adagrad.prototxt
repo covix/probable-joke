@@ -1,0 +1,28 @@
+net: "train_0_baseline2_replicated_replicated.prototxt"
+
+# 964 samples
+# Alignment only on the training set
+# batch_size 12
+# gpus 1
+# 81 iter/epoch
+
+# params taken from `https://github.com/BVLC/caffe/blob/master/examples/mnist/mnist_autoencoder_solver_adagrad.prototxt`
+
+test_iter: 240
+test_state: { stage: 'test-on-train' }
+test_iter: 240
+test_state: { stage: 'test-on-test' }
+test_interval: 81
+base_lr: 0.01
+weight_decay: 0.0005
+lr_policy: "fixed"
+stepsize: 1620  # 20 epochs
+# Display every 1 iterations
+display: 20
+# The maximum number of iterations
+max_iter: 3600
+# snapshot intermediate results
+snapshot: 81
+snapshot_prefix: "snapshots/0_baseline2_replicated_replicated_1gpus_adagrad"
+solver_mode: GPU
+type: "AdaGrad"

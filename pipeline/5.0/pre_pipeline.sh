@@ -13,11 +13,12 @@ FEATURES_TEST_FOLDER=/data/sparks/share/asl/experiments/datasets/train/deep_feat
 SCRIPTS_FOLDER=/data/sparks/share/asl/probable-joke/C3D-v1.1/scripts
 PYTHON_SCRIPTS_FOLDER=/data/sparks/share/asl/probable-joke/C3D-v1.1/python
 
-
 MODEL_PATH=/data/sparks/share/video-caffe/models/bvlc_googlenet
 NET=/data/sparks/share/video-caffe/models/bvlc_googlenet/deploy.prototxt
-MEAN_FILE=/data/sparks/share/asl/imagenet_mean.binaryproto
+MEAN_FILE=/data/sparks/share/asl/probable-joke/C3D-v1.1/data/imagenet/ilsvrc_2012_mean.npy
 LAYER="pool5/7x7_s1"
+
+CAFFE_FOLDER=/data/sparks/share/R-C3D/caffe3d/
 
 
 # exit form the script on failure
@@ -62,8 +63,21 @@ if [[ ! -d $FEATURES_TRAIN_FOLDER ]]; then
     #Create original_test
     echo "Extract features train..."
     mkdir -p $FEATURES_TRAIN_FOLDER
-    sh $PYTHON_SCRIPTS_FOLDER/extract_features.py $TRAIN_FOLDER $MODEL_PATH $NET $MEAN_FILE $FEATURES_TRAIN_FOLDER $LAYER
-    chmod 777 $TEST_FOLDER
+    cp $PYTHON_SCRIPTS_FOLDER/extract_features.py $CAFFE_FOLDER/python
+    python $CAFFE_FOLDER/python/extract_features.py $TRAIN_FOLDER $MODEL_PATH $NET $MEAN_FILE $FEATURES_TRAIN_FOLDER $LAYER
+    chmod 777 $FEATURES_TRAIN_FOLDER
+else
+    echo "Skipping extract features train"
+fi
+
+
+if [[ ! -d $FEATURES_TEST_FOLDER ]]; then
+    #Create original_test
+    echo "Extract features train..."
+    mkdir -p $FEATURES_TEST_FOLDER
+    cp $PYTHON_SCRIPTS_FOLDER/extract_features.py $CAFFE_FOLDER/python
+    python $CAFFE_FOLDER/python/extract_features.py $TEST_FOLDER $MODEL_PATH $NET $MEAN_FILE $FEATURES_TEST_FOLDER $LAYER
+    chmod 777 $FEATURES_TEST_FOLDER
 else
     echo "Skipping extract features train"
 fi
