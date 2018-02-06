@@ -10,6 +10,11 @@ TEST_FOLDER=/data/sparks/share/asl/experiments/datasets/test/original_test
 FEATURES_TRAIN_FOLDER=/data/sparks/share/asl/experiments/datasets/train/deep_features_train
 FEATURES_TEST_FOLDER=/data/sparks/share/asl/experiments/datasets/test/deep_features_test
 
+TRAIN_FOLDER_REDUCED_FPS=/data/sparks/share/asl/experiments/datasets/train/original_reduced_fps_train
+TEST_FOLDER_REDUCED_FPS=/data/sparks/share/asl/experiments/datasets/test/original_reduced_fps_test
+FPS="7.5"
+LENGTH="45"
+
 SCRIPTS_FOLDER=/data/sparks/share/asl/probable-joke/C3D-v1.1/scripts
 PYTHON_SCRIPTS_FOLDER=/data/sparks/share/asl/probable-joke/C3D-v1.1/python
 
@@ -60,7 +65,7 @@ fi
 
 
 if [[ ! -d $FEATURES_TRAIN_FOLDER ]]; then
-    #Create original_test
+    #Create deep_features_train
     echo "Extract features train..."
     mkdir -p $FEATURES_TRAIN_FOLDER
     cp $PYTHON_SCRIPTS_FOLDER/extract_features.py $CAFFE_FOLDER/python
@@ -72,7 +77,7 @@ fi
 
 
 if [[ ! -d $FEATURES_TEST_FOLDER ]]; then
-    #Create original_test
+    #Create deep_features_test
     echo "Extract features train..."
     mkdir -p $FEATURES_TEST_FOLDER
     cp $PYTHON_SCRIPTS_FOLDER/extract_features.py $CAFFE_FOLDER/python
@@ -80,4 +85,28 @@ if [[ ! -d $FEATURES_TEST_FOLDER ]]; then
     chmod 777 $FEATURES_TEST_FOLDER
 else
     echo "Skipping extract features train"
+fi
+
+
+if [[ ! -d $TRAIN_FOLDER_REDUCED_FPS ]]; then
+    #Create reduced fps train
+    echo "Create reduced fps train..."
+    mkdir -p $TRAIN_FOLDER_REDUCED_FPS
+    python $PYTHON_SCRIPTS_FOLDER/reduce_fps_parallel.py $TRAIN_FOLDER $TRAIN_FOLDER_REDUCED_FPS $FPS
+    python $PYTHON_SCRIPTS_FOLDER/replicate_last_frame_parallel.py $TRAIN_FOLDER_REDUCED_FPS $LENGTH
+    chmod 777 $TRAIN_FOLDER_REDUCED_FPS
+else
+    echo "Skipping reduced fps train"
+fi
+
+
+if [[ ! -d $TEST_FOLDER_REDUCED_FPS ]]; then
+    #Create reduced fps test
+    echo "Create reduced fps test..."
+    mkdir -p $TEST_FOLDER_REDUCED_FPS
+    python $PYTHON_SCRIPTS_FOLDER/reduce_fps_parallel.py $TEST_FOLDER $TEST_FOLDER_REDUCED_FPS $FPS
+    python $PYTHON_SCRIPTS_FOLDER/replicate_last_frame_parallel.py $TEST_FOLDER_REDUCED_FPS $LENGTH
+    chmod 777 $TEST_FOLDER_REDUCED_FPS
+else
+    echo "Skipping reduced fps test"
 fi
