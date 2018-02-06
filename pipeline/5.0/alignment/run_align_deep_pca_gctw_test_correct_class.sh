@@ -10,7 +10,7 @@ for CLASS_FOLDER in `ls $TRAIN_FOLDER`
 do
     echo "Started alignment for class " $class_folder 
     echo
-    #mkdir $OUTPUT_FOLDER/$CLASS_FOLDER
+    mkdir -p $OUTPUT_FOLDER/$CLASS_FOLDER
 
     for TEST_SAMPLE in `ls $TEST_FOLDER/$CLASS_FOLDER`
     do
