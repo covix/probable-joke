@@ -31,6 +31,8 @@ LOUD_ALIGNMENT_INDEXES_TRAIN=$TRAIN_FOLDER/alignment_indexes_loud_train
 # exit form the script on failure
 set -e
 
+# load the virtual environment
+source /data/sparks/share/asl/asl/bin/activate
 
 # check if the folder already exists, if so pass to the next step
 if [[ ! -d $LOUD_FRAMES_TRAIN ]]; then
