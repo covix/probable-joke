@@ -7,7 +7,7 @@ OUTPUT_FOLDER=$4
 
 ENR_CODE=`dirname $0`  # Current folder
 
-source ${ENR_CODE}/../config.sh
+MATLAB=/usr/local/bin/matlab2017a
 
 CMD="\
     addpath(genpath([cd '/' '$ENR_CODE'])); \
