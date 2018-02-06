@@ -8,7 +8,6 @@ for i in `find $INPUT_FOLDER -type f -name "*M*.${FORMAT}"`
 do
     name="${i##*/}"
     name="${name%.*}"
-
     echo $name
     mkdir -p ${OUTPUT_FOLDER}/${name}
     ffmpeg -v 0 -i $i ${OUTPUT_FOLDER}/${name}/image_%05d.png
