@@ -1,4 +1,4 @@
-function align_deep_pca_gctw_class(inputFolder, class, outputFolder, ctwFolder)
+function align_deep_pca_gctw_class_train(inputFolder, class, outputFolder, ctwFolder)
 % TODO desc
 %
 % History
