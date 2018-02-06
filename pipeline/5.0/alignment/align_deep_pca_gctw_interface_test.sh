@@ -10,12 +10,8 @@ ENR_CODE=`dirname $0`  # Current folder
 MATLAB=/usr/local/bin/matlab2017a
 
 CMD="\
-    try; \
-        addpath(genpath(['$ENR_CODE'])); \
-        align_deep_pca_gctw_class_test('${INPUT_FOLDER}/${CLASS}', '$CLASS', '$TEST_SAMPLE', '$OUTPUT_FOLDER', '$ENR_CODE'); \
-    catch; \
-    end; \
-    exit;
+    addpath(genpath(['$ENR_CODE'])); \
+    align_deep_pca_gctw_class_test('${INPUT_FOLDER}/${CLASS}', '$CLASS', '$TEST_SAMPLE', '$OUTPUT_FOLDER', '$ENR_CODE'); \
 "
 
 $MATLAB -r "$CMD" # > gctw.log 2>&1
