@@ -187,10 +187,10 @@ else
 fi
 
 
+echo "WROOOOOOONG need to do it just for test sample"
 if [[ ! -d $LOUD_ALIGNED_FRAMES_TEST ]]; then
     # Extract aligned frames test
     echo "Extracting aligned test frames..."
-    echo "WROOOOOOONG need to do it just for test sample"
     mkdir -p $LOUD_ALIGNED_FRAMES_TEST
     sh $PYTHON_SCRIPTS_FOLDER/extract_aligned_frames_from_indexes_interface.sh $LOUD_FRAMES_TEST $LOUD_ALIGNMENT_INDEXES_TEST $LOUD_ALIGNED_FRAMES_TEST
     chmod 777 $LOUD_ALIGNED_FRAMES_TEST
