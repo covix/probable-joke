@@ -8,7 +8,7 @@ TRAIN_FOLDER=/data/sparks/share/asl/experiments/datasets/train/original_train
 TEST_FOLDER=/data/sparks/share/asl/experiments/datasets/test/original_test
 
 FEATURES_TRAIN_FOLDER=/data/sparks/share/asl/experiments/datasets/train/deep_features_train
-FEATURES_TEST_FOLDER=/data/sparks/share/asl/experiments/datasets/train/deep_features_test
+FEATURES_TEST_FOLDER=/data/sparks/share/asl/experiments/datasets/test/deep_features_test
 
 SCRIPTS_FOLDER=/data/sparks/share/asl/probable-joke/C3D-v1.1/scripts
 PYTHON_SCRIPTS_FOLDER=/data/sparks/share/asl/probable-joke/C3D-v1.1/python
