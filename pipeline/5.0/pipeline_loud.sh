@@ -62,6 +62,7 @@ if [[ ! -d $LOUD_FRAMES_TRAIN ]]; then
     echo "Create loud_train..."
     mkdir -p $LOUD_FRAMES_TRAIN
     CMD="$SCRIPTS_FOLDER/clean_silence_frames.sh $ORIGINAL_FEATURES_TRAIN $ORIGINAL_FRAMES_TRAIN $LOUD_FRAMES_TRAIN"
+    echo oarsub -l /core=1 -S $CMD
     OAR_SUB_OUTPUT=`oarsub -l /core=1 -S $CMD`
     echo $OAR_SUB_OUTPUT
     ANTERIOR_LOUD_FRAMES_TRAIN=`echo $OAR_SUB_OUTPUT | cut -d'=' -f2`
@@ -77,6 +78,7 @@ if [[ ! -d $LOUD_FEATURES_TRAIN ]]; then
     echo "Create loud_train_features..."
     mkdir -p $LOUD_FEATURES_TRAIN
     CMD="$SCRIPTS_FOLDER/clean_silence_features.sh $ORIGINAL_FEATURES_TRAIN $LOUD_FEATURES_TRAIN"
+    echo oarsub -l /core=1 -S $CMD
     OAR_SUB_OUTPUT=`oarsub -l /core=1 -S $CMD`
     echo $OAR_SUB_OUTPUT
     ANTERIOR_LOUD_FEATURES_TRAIN=`echo $OAR_SUB_OUTPUT | cut -d'=' -f2`
@@ -93,6 +95,7 @@ if [[ ! -d $LOUD_FRAMES_TEST ]]; then
     echo "Create loud_test..."
     mkdir -p $LOUD_FRAMES_TEST
     CMD="$SCRIPTS_FOLDER/clean_silence_frames.sh $ORIGINAL_FEATURES_TEST $ORIGINAL_FRAMES_TEST $LOUD_FRAMES_TEST"
+    echo oarsub -l /core=1 -S $CMD
     OAR_SUB_OUTPUT=`oarsub -l /core=1 -S $CMD`
     echo $OAR_SUB_OUTPUT
     ANTERIOR_LOUD_FRAMES_TEST=`echo $OAR_SUB_OUTPUT | cut -d'=' -f2`
@@ -108,6 +111,7 @@ if [[ ! -d $LOUD_FEATURES_TEST ]]; then
     echo "Create loud_test_features..."
     mkdir -python $LOUD_FEATURES_TEST
     CMD="$SCRIPTS_FOLDER/clean_silence_features.sh $ORIGINAL_FEATURES_TEST $LOUD_FEATURES_TEST"
+    echo oarsub -l /core=1 -S $CMD
     OAR_SUB_OUTPUT=`oarsub -l /core=1 -S $CMD`
     echo $OAR_SUB_OUTPUT
     ANTERIOR_LOUD_FEATURES_TEST=`echo $OAR_SUB_OUTPUT | cut -d'=' -f2`
@@ -124,6 +128,7 @@ if [[ ! -d $LOUD_PCA_FEATURES_TRAIN ]]; then
     echo "Applying PCA on train..."
     mkdir -p $LOUD_PCA_FEATURES_TRAIN
     CMD="./python_pipeline_wrapper.sh $PYTHON_SCRIPTS_FOLDER/apply_pca.py $LOUD_FEATURES_TRAIN $LOUD_PCA_FEATURES_TRAIN 15 $PCA_MODEL"
+    echo oarsub $ANTERIOR_LOUD_FEATURES_TRAIN -l /core=10 -S "$CMD"
     OAR_SUB_OUTPUT=`oarsub $ANTERIOR_LOUD_FEATURES_TRAIN -l /core=10 -S "$CMD"`
     echo $OAR_SUB_OUTPUT
     ANTERIOR_LOUD_PCA_FEATURES_TRAIN=`echo $OAR_SUB_OUTPUT | cut -d'=' -f2`
@@ -139,7 +144,8 @@ if [[ ! -d $LOUD_PCA_FEATURES_TEST ]]; then
     echo "Applying PCA on test..."
     mkdir -p $LOUD_PCA_FEATURES_TEST
     CMD="./python_pipeline_wrapper.sh $PYTHON_SCRIPTS_FOLDER/apply_pca_model.py $LOUD_FEATURES_TEST $LOUD_PCA_FEATURES_TEST $PCA_MODEL"
-    OAR_SUB_OUTPUT=`oarsub $ANTERIOR_LOUD_FEATURES_TRAIN $ANTERIOR_LOUD_FEATURES_TEST -l /core=10 -S "$CMD"`
+    echo oarsub $ANTERIOR_LOUD_FEATURES_TRAIN $ANTERIOR_LOUD_FEATURES_TEST -l /core=10 -S $CMD
+    OAR_SUB_OUTPUT=`oarsub $ANTERIOR_LOUD_FEATURES_TRAIN $ANTERIOR_LOUD_FEATURES_TEST -l /core=10 -S $CMD`
     echo $OAR_SUB_OUTPUT
     ANTERIOR_LOUD_PCA_FEATURES_TEST=`echo $OAR_SUB_OUTPUT | cut -d'=' -f2`
     ANTERIOR_LOUD_PCA_FEATURES_TEST="--anterior=$ANTERIOR_LOUD_PCA_FEATURES_TEST"
