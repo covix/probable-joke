@@ -180,7 +180,7 @@ if [[ ! -d $LOUD_ALIGNED_FRAMES_TRAIN ]]; then
     # Extract aligned frames train
     echo "Extracting aligned train frames..."
     mkdir -p $LOUD_ALIGNED_FRAMES_TRAIN
-    sh $PYTHON_SCRIPTS_FOLDER/extract_aligned_frames_from_indexes_interface.sh $LOUD_FRAMES_TRAIN $LOUD_ALIGNMENT_INDEXES_TRAIN $LOUD_ALIGNED_FRAMES_TRAIN
+    sh $PYTHON_SCRIPTS_FOLDER/extract_aligned_frames_from_indexes_interface.sh $LOUD_FRAMES_CLASS_TRAIN $LOUD_ALIGNMENT_INDEXES_TRAIN $LOUD_ALIGNED_FRAMES_TRAIN
     chmod -R 777 $LOUD_ALIGNED_FRAMES_TRAIN
 else
     echo "Skipping extracting aligned train frames"
@@ -192,7 +192,7 @@ if [[ ! -d $LOUD_ALIGNED_FRAMES_TEST ]]; then
     # Extract aligned frames test
     echo "Extracting aligned test frames..."
     mkdir -p $LOUD_ALIGNED_FRAMES_TEST
-    sh $PYTHON_SCRIPTS_FOLDER/extract_aligned_frames_from_indexes_interface.sh $LOUD_FRAMES_TEST $LOUD_ALIGNMENT_INDEXES_TEST $LOUD_ALIGNED_FRAMES_TEST
+    sh $PYTHON_SCRIPTS_FOLDER/extract_aligned_frames_from_indexes_interface.sh $LOUD_FRAMES_CLASS_TEST $LOUD_ALIGNMENT_INDEXES_TEST $LOUD_ALIGNED_FRAMES_TEST
     chmod -R 777 $LOUD_ALIGNED_FRAMES_TEST
 else
     echo "Skipping extracting aligned test frames"
