@@ -37,12 +37,9 @@ TEST_FOLDER_REDUCED_FPS=/data/sparks/share/asl/experiments/datasets/test/aligned
 FPS="7.5"
 LENGTH="45"
 
-
+    
 # exit form the script on failure
 set -e
-
-# load the virtual environment
-source /data/sparks/share/asl/asl/bin/activate
 
 ANTERIOR_LOUD_FRAMES_TRAIN=
 ANTERIOR_LOUD_FRAMES_TEST=
@@ -65,7 +62,7 @@ if [[ ! -d $LOUD_FRAMES_TRAIN ]]; then
     echo "Create loud_train..."
     mkdir -p $LOUD_FRAMES_TRAIN
     CMD="$SCRIPTS_FOLDER/clean_silence_frames.sh $ORIGINAL_FEATURES_TRAIN $ORIGINAL_FRAMES_TRAIN $LOUD_FRAMES_TRAIN"
-    OAR_SUB_OUTPUT=`oarsub -l /core=1 -S "$CMD"`
+    OAR_SUB_OUTPUT=`oarsub -l /core=1 -S $CMD`
     echo $OAR_SUB_OUTPUT
     ANTERIOR_LOUD_FRAMES_TRAIN=`echo $OAR_SUB_OUTPUT | cut -d'=' -f2`
     ANTERIOR_LOUD_FRAMES_TRAIN="--anterior=$ANTERIOR_LOUD_FRAMES_TRAIN"
@@ -80,7 +77,7 @@ if [[ ! -d $LOUD_FEATURES_TRAIN ]]; then
     echo "Create loud_train_features..."
     mkdir -p $LOUD_FEATURES_TRAIN
     CMD="$SCRIPTS_FOLDER/clean_silence_features.sh $ORIGINAL_FEATURES_TRAIN $LOUD_FEATURES_TRAIN"
-    OAR_SUB_OUTPUT=`oarsub -l /core=1 -S "$CMD"`
+    OAR_SUB_OUTPUT=`oarsub -l /core=1 -S $CMD`
     echo $OAR_SUB_OUTPUT
     ANTERIOR_LOUD_FEATURES_TRAIN=`echo $OAR_SUB_OUTPUT | cut -d'=' -f2`
     ANTERIOR_LOUD_FEATURES_TRAIN="--anterior=$ANTERIOR_LOUD_FEATURES_TRAIN"
@@ -96,7 +93,7 @@ if [[ ! -d $LOUD_FRAMES_TEST ]]; then
     echo "Create loud_test..."
     mkdir -p $LOUD_FRAMES_TEST
     CMD="$SCRIPTS_FOLDER/clean_silence_frames.sh $ORIGINAL_FEATURES_TEST $ORIGINAL_FRAMES_TEST $LOUD_FRAMES_TEST"
-    OAR_SUB_OUTPUT=`oarsub -l /core=1 -S "$CMD"`
+    OAR_SUB_OUTPUT=`oarsub -l /core=1 -S $CMD`
     echo $OAR_SUB_OUTPUT
     ANTERIOR_LOUD_FRAMES_TEST=`echo $OAR_SUB_OUTPUT | cut -d'=' -f2`
     ANTERIOR_LOUD_FRAMES_TEST="--anterior=$ANTERIOR_LOUD_FRAMES_TEST"
@@ -109,9 +106,9 @@ fi
 if [[ ! -d $LOUD_FEATURES_TEST ]]; then
     #Create loud_test_features
     echo "Create loud_test_features..."
-    mkdir -p $LOUD_FEATURES_TEST
+    mkdir -python $LOUD_FEATURES_TEST
     CMD="$SCRIPTS_FOLDER/clean_silence_features.sh $ORIGINAL_FEATURES_TEST $LOUD_FEATURES_TEST"
-    OAR_SUB_OUTPUT=`oarsub -l /core=1 -S "$CMD"`
+    OAR_SUB_OUTPUT=`oarsub -l /core=1 -S $CMD`
     echo $OAR_SUB_OUTPUT
     ANTERIOR_LOUD_FEATURES_TEST=`echo $OAR_SUB_OUTPUT | cut -d'=' -f2`
     ANTERIOR_LOUD_FEATURES_TEST="--anterior=$ANTERIOR_LOUD_FEATURES_TEST"
@@ -126,8 +123,8 @@ fi
 if [[ ! -d $LOUD_PCA_FEATURES_TRAIN ]]; then
     echo "Applying PCA on train..."
     mkdir -p $LOUD_PCA_FEATURES_TRAIN
-    CMD="python $PYTHON_SCRIPTS_FOLDER/apply_pca.py $LOUD_FEATURES_TRAIN $LOUD_PCA_FEATURES_TRAIN 15 $PCA_MODEL"
-    OAR_SUB_OUTPUT=`oarsub $ANTERIOR_LOUD_FEATURES_TRAIN -l /core=1 -S "$CMD"`
+    CMD="./python_pipeline_wrapper.sh $PYTHON_SCRIPTS_FOLDER/apply_pca.py $LOUD_FEATURES_TRAIN $LOUD_PCA_FEATURES_TRAIN 15 $PCA_MODEL"
+    OAR_SUB_OUTPUT=`oarsub $ANTERIOR_LOUD_FEATURES_TRAIN -l /core=1 -S $CMD`
     echo $OAR_SUB_OUTPUT
     ANTERIOR_LOUD_PCA_FEATURES_TRAIN=`echo $OAR_SUB_OUTPUT | cut -d'=' -f2`
     ANTERIOR_LOUD_PCA_FEATURES_TRAIN="--anterior=$ANTERIOR_LOUD_PCA_FEATURES_TRAIN"
@@ -140,8 +137,8 @@ fi
 if [[ ! -d $LOUD_PCA_FEATURES_TEST ]]; then
     echo "Applying PCA on test..."
     mkdir -p $LOUD_PCA_FEATURES_TEST
-    CMD="python $PYTHON_SCRIPTS_FOLDER/apply_pca_model.py $LOUD_FEATURES_TEST $LOUD_PCA_FEATURES_TEST $PCA_MODEL"
-    OAR_SUB_OUTPUT=`oarsub $ANTERIOR_LOUD_FEATURES_TRAIN $ANTERIOR_LOUD_FEATURES_TEST -l /core=1 -S "$CMD"`
+    CMD="./python_pipeline_wrapper.sh $PYTHON_SCRIPTS_FOLDER/apply_pca_model.py $LOUD_FEATURES_TEST $LOUD_PCA_FEATURES_TEST $PCA_MODEL"
+    OAR_SUB_OUTPUT=`oarsub $ANTERIOR_LOUD_FEATURES_TRAIN $ANTERIOR_LOUD_FEATURES_TEST -l /core=1 -S $CMD`
     echo $OAR_SUB_OUTPUT
     ANTERIOR_LOUD_PCA_FEATURES_TEST=`echo $OAR_SUB_OUTPUT | cut -d'=' -f2`
     ANTERIOR_LOUD_PCA_FEATURES_TEST="--anterior=$ANTERIOR_LOUD_PCA_FEATURES_TEST"
@@ -157,7 +154,7 @@ if [[ ! -d $LOUD_FRAMES_CLASS_TRAIN ]]; then
     # Moving by class train
     echo "Moving train frames by class..."
     CMD="$SCRIPTS_FOLDER/move_frames.sh $LOUD_FRAMES_TRAIN $LOUD_FRAMES_CLASS_TRAIN"
-    OAR_SUB_OUTPUT=`oarsub $ANTERIOR_LOUD_FRAMES_TRAIN -l /core=1 -S "$CMD"`
+    OAR_SUB_OUTPUT=`oarsub $ANTERIOR_LOUD_FRAMES_TRAIN -l /core=1 -S $CMD`
     echo $OAR_SUB_OUTPUT
     ANTERIOR_LOUD_FRAMES_CLASS_TRAIN=`echo $OAR_SUB_OUTPUT | cut -d'=' -f2`
     ANTERIOR_LOUD_FRAMES_CLASS_TRAIN="--anterior=$ANTERIOR_LOUD_FRAMES_CLASS_TRAIN"
@@ -171,7 +168,7 @@ if [[ ! -d $LOUD_FRAMES_CLASS_TEST ]]; then
     # Moving by class test
     echo "Moving test frames by class..."
     CMD="$SCRIPTS_FOLDER/move_frames.sh $LOUD_FRAMES_TEST $LOUD_FRAMES_CLASS_TEST"
-    OAR_SUB_OUTPUT=`oarsub $ANTERIOR_LOUD_FRAMES_TEST -l /core=1 -S "$CMD"`
+    OAR_SUB_OUTPUT=`oarsub $ANTERIOR_LOUD_FRAMES_TEST -l /core=1 -S $CMD`
     echo $OAR_SUB_OUTPUT
     ANTERIOR_LOUD_FRAMES_CLASS_TEST=`echo $OAR_SUB_OUTPUT | cut -d'=' -f2`
     ANTERIOR_LOUD_FRAMES_CLASS_TEST="--anterior=$ANTERIOR_LOUD_FRAMES_CLASS_TEST"
@@ -187,7 +184,7 @@ if [[ ! -d $LOUD_PCA_FEATURES_CLASS_TRAIN ]]; then
     # Moving by class train
     echo "Moving train features by class..."
     CMD="$SCRIPTS_FOLDER/move_frames.sh $LOUD_PCA_FEATURES_TRAIN $LOUD_PCA_FEATURES_CLASS_TRAIN"
-    OAR_SUB_OUTPUT=`oarsub $ANTERIOR_LOUD_PCA_FEATURES_TRAIN -l /core=1 -S "$CMD"`
+    OAR_SUB_OUTPUT=`oarsub $ANTERIOR_LOUD_PCA_FEATURES_TRAIN -l /core=1 -S $CMD`
     echo $OAR_SUB_OUTPUT
     ANTERIOR_LOUD_PCA_FEATURES_CLASS_TRAIN=`echo $OAR_SUB_OUTPUT | cut -d'=' -f2`
     ANTERIOR_LOUD_PCA_FEATURES_CLASS_TRAIN="--anterior=$ANTERIOR_LOUD_PCA_FEATURES_CLASS_TRAIN"
@@ -201,7 +198,7 @@ if [[ ! -d $LOUD_PCA_FEATURES_CLASS_TEST ]]; then
     # Moving by class test
     echo "Moving test features by class..."
     CMD="$SCRIPTS_FOLDER/move_frames.sh $LOUD_PCA_FEATURES_TEST $LOUD_PCA_FEATURES_CLASS_TEST"
-    OAR_SUB_OUTPUT=`oarsub $ANTERIOR_LOUD_PCA_FEATURES_TEST -l /core=1 -S "$CMD"`
+    OAR_SUB_OUTPUT=`oarsub $ANTERIOR_LOUD_PCA_FEATURES_TEST -l /core=1 -S $CMD`
     echo $OAR_SUB_OUTPUT
     ANTERIOR_LOUD_PCA_FEATURES_CLASS_TEST=`echo $OAR_SUB_OUTPUT | cut -d'=' -f2`
     ANTERIOR_LOUD_PCA_FEATURES_CLASS_TEST="--anterior=$ANTERIOR_LOUD_PCA_FEATURES_CLASS_TEST"
@@ -218,7 +215,7 @@ if [[ ! -d $LOUD_ALIGNMENT_INDEXES_TRAIN ]]; then
     echo "Aligning train features by class..."
     mkdir -p $LOUD_ALIGNMENT_INDEXES_TRAIN
     CMD="$ALIGNMENT_SCRIPTS_FOLDER/run_align_deep_pca_gctw_train.sh $LOUD_PCA_FEATURES_CLASS_TRAIN $LOUD_ALIGNMENT_INDEXES_TRAIN"
-    OAR_SUB_OUTPUT=`oarsub $ANTERIOR_LOUD_PCA_FEATURES_CLASS_TRAIN -l /core=1 -S "$CMD"`
+    OAR_SUB_OUTPUT=`oarsub $ANTERIOR_LOUD_PCA_FEATURES_CLASS_TRAIN -l /core=1 -S $CMD`
     echo $OAR_SUB_OUTPUT
     ANTERIOR_LOUD_ALIGNMENT_INDEXES_TRAIN=`echo $OAR_SUB_OUTPUT | cut -d'=' -f2`
     ANTERIOR_LOUD_ALIGNMENT_INDEXES_TRAIN="--anterior=$ANTERIOR_LOUD_ALIGNMENT_INDEXES_TRAIN"
@@ -248,7 +245,7 @@ if [[ ! -d $LOUD_ALIGNED_FRAMES_TRAIN ]]; then
     echo "Extracting aligned train frames..."
     mkdir -p $LOUD_ALIGNED_FRAMES_TRAIN
     CMD="$PYTHON_SCRIPTS_FOLDER/extract_aligned_frames_from_indexes_interface.sh $LOUD_FRAMES_CLASS_TRAIN $LOUD_ALIGNMENT_INDEXES_TRAIN $LOUD_ALIGNED_FRAMES_TRAIN"
-    OAR_SUB_OUTPUT=`oarsub $ANTERIOR_LOUD_ALIGNMENT_INDEXES_TRAIN $ANTERIOR_LOUD_FRAMES_CLASS_TRAIN -l /core=1 -S "$CMD"`
+    OAR_SUB_OUTPUT=`oarsub $ANTERIOR_LOUD_ALIGNMENT_INDEXES_TRAIN $ANTERIOR_LOUD_FRAMES_CLASS_TRAIN -l /core=1 -S $CMD`
     echo $OAR_SUB_OUTPUT
     ANTERIOR_LOUD_ALIGNED_FRAMES_TRAIN=`echo $OAR_SUB_OUTPUT | cut -d'=' -f2`
     ANTERIOR_LOUD_ALIGNED_FRAMES_TRAIN="--anterior=$ANTERIOR_LOUD_ALIGNED_FRAMES_TRAIN"
@@ -264,7 +261,7 @@ if [[ ! -d $LOUD_ALIGNED_FRAMES_TEST ]]; then
     echo "Extracting aligned test frames..."
     mkdir -p $LOUD_ALIGNED_FRAMES_TEST
     CMD="$PYTHON_SCRIPTS_FOLDER/frames_from_indexes_sample.sh $LOUD_FRAMES_TEST $LOUD_ALIGNMENT_INDEXES_TEST $LOUD_ALIGNED_FRAMES_TEST"
-    OAR_SUB_OUTPUT=`oarsub $ANTERIOR_LOUD_ALIGNMENT_INDEXES_TEST $ANTERIOR_LOUD_FRAMES_TEST -l /core=1 -S "$CMD"`
+    OAR_SUB_OUTPUT=`oarsub $ANTERIOR_LOUD_ALIGNMENT_INDEXES_TEST $ANTERIOR_LOUD_FRAMES_TEST -l /core=1 -S $CMD`
     echo $OAR_SUB_OUTPUT
     ANTERIOR_LOUD_ALIGNED_FRAMES_TEST=`echo $OAR_SUB_OUTPUT | cut -d'=' -f2`
     ANTERIOR_LOUD_ALIGNED_FRAMES_TEST="--anterior=$ANTERIOR_LOUD_ALIGNED_FRAMES_TEST"
@@ -283,7 +280,7 @@ if [[ ! -d $TRAIN_FOLDER_REDUCED_FPS ]]; then
     # python $PYTHON_SCRIPTS_FOLDER/reduce_fps_parallel.py $LOUD_ALIGNED_FRAMES_TRAIN $TRAIN_FOLDER_REDUCED_FPS $FPS
     # python $PYTHON_SCRIPTS_FOLDER/replicate_last_frame_parallel.py $TRAIN_FOLDER_REDUCED_FPS $LENGTH
     CMD="$PYTHON_SCRIPTS_FOLDER/reduce_fps_and_pad_interface.sh $LOUD_ALIGNED_FRAMES_TRAIN $TRAIN_FOLDER_REDUCED_FPS $FPS $LENGTH"
-    OAR_SUB_OUTPUT=`oarsub $ANTERIOR_LOUD_ALIGNED_FRAMES_TRAIN -l /core=1 -S "$CMD"`
+    OAR_SUB_OUTPUT=`oarsub $ANTERIOR_LOUD_ALIGNED_FRAMES_TRAIN -l /core=1 -S $CMD`
     echo $OAR_SUB_OUTPUT
     chmod -R 777 $TRAIN_FOLDER_REDUCED_FPS
 else
@@ -298,7 +295,7 @@ if [[ ! -d $TEST_FOLDER_REDUCED_FPS ]]; then
     # python $PYTHON_SCRIPTS_FOLDER/reduce_fps_parallel.py $LOUD_ALIGNED_FRAMES_TEST $TEST_FOLDER_REDUCED_FPS $FPS
     # python $PYTHON_SCRIPTS_FOLDER/replicate_last_frame_parallel.py $TEST_FOLDER_REDUCED_FPS $LENGTH
     CMD="$PYTHON_SCRIPTS_FOLDER/reduce_fps_and_pad_interface.sh $LOUD_ALIGNED_FRAMES_TEST $TEST_FOLDER_REDUCED_FPS $FPS $LENGTH"
-    OAR_SUB_OUTPUT=`oarsub $ANTERIOR_LOUD_ALIGNED_FRAMES_TEST -l /core=1 -S "$CMD"`
+    OAR_SUB_OUTPUT=`oarsub $ANTERIOR_LOUD_ALIGNED_FRAMES_TEST -l /core=1 -S $CMD`
     echo $OAR_SUB_OUTPUT
     chmod -R 777 $TEST_FOLDER_REDUCED_FPS
 else
