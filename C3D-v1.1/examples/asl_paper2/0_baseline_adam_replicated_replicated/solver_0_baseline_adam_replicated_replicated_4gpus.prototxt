@@ -1,4 +1,4 @@
-net: "train_0_baseline_replicated_replicated.prototxt"
+net: "train_0_baseline_adam_replicated_replicated.prototxt"
 
 # 964 samples
 # Alignment only on the training set
@@ -24,6 +24,6 @@ display: 5
 max_iter: 1800
 # snapshot intermediate results
 snapshot: 21
-snapshot_prefix: "snapshots/0_baseline_replicated_replicated_4gpus"
+snapshot_prefix: "snapshots/0_baseline_adam_replicated_replicated_4gpus"
 solver_mode: GPU
 type: "Adam"
