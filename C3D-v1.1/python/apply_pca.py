@@ -9,7 +9,8 @@ from sklearn.externals import joblib
 
 data_dir = sys.argv[1]
 output_dir = sys.argv[2]
-N_COMP = int(sys.argv[3])
+n_components = int(sys.argv[3])
+output_model_file = sys.argv[4]
 
 feature_matrix_data = []
 frame_indices = []
@@ -37,7 +38,7 @@ feature_matrix_data = np.concatenate(feature_matrix_data)
 print 'PCA Data shape: ', feature_matrix_data.shape
 
 # Build pca model
-pca = PCA(n_components=N_COMP)
+pca = PCA(n_components=n_components)
 
 pca_data_fit = pca.fit_transform(feature_matrix_data)
 
@@ -55,8 +56,5 @@ print 'PCA explained variance ratio: ' + str(pca.explained_variance_ratio_)
 print 'Explained variance: ' + str(sum(pca.explained_variance_ratio_))
 print 'Shape after: ' + str(pca_data_fit.shape)
 
-joblib.dump(pca, os.path.join(output_dir, 'pca_train.pkl'))
-
-# plt.imshow(pca_data_fit, interpolation='nearest')
-# plt.gray()
-# plt.show()
+joblib.dump(pca, output_model_file)
+print 'PCA model saved to:', output_model_file

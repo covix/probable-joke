@@ -53,4 +53,3 @@ for idx, i in enumerate(frame_indices):
 print 'PCA explained variance ratio: ' + str(pca.explained_variance_ratio_)
 print 'Explained variance: ' + str(sum(pca.explained_variance_ratio_))
 print 'Shape after: ' + str(pca_data_fit.shape)
-
