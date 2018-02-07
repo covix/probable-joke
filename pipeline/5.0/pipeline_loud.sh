@@ -146,7 +146,7 @@ if [[ ! -d $LOUD_PCA_FEATURES_TEST ]]; then
     mkdir -p $LOUD_PCA_FEATURES_TEST
     CMD="./python_pipeline_wrapper.sh $PYTHON_SCRIPTS_FOLDER/apply_pca_model.py $LOUD_FEATURES_TEST $LOUD_PCA_FEATURES_TEST $PCA_MODEL"
     echo oarsub $ANTERIOR_LOUD_FEATURES_TRAIN $ANTERIOR_LOUD_FEATURES_TEST -l /core=10 -S $CMD
-    OAR_SUB_OUTPUT=`oarsub $ANTERIOR_LOUD_FEATURES_TRAIN $ANTERIOR_LOUD_FEATURES_TEST -l /core=10 -S "$CMD"`
+    OAR_SUB_OUTPUT=`oarsub $ANTERIOR_LOUD_FEATURES_TEST $ANTERIOR_LOUD_PCA_FEATURES_TRAIN -l /core=10 -S "$CMD"`
     echo $OAR_SUB_OUTPUT
     ANTERIOR_LOUD_PCA_FEATURES_TEST=`echo $OAR_SUB_OUTPUT | cut -d'=' -f2`
     ANTERIOR_LOUD_PCA_FEATURES_TEST="--anterior=$ANTERIOR_LOUD_PCA_FEATURES_TEST"
@@ -268,7 +268,6 @@ else
 fi
 
 
-echo "WROOOOOOONG need to do it just for test sample"
 if [[ ! -d $LOUD_ALIGNED_FRAMES_TEST ]]; then
     # Extract aligned frames test
     echo "Extracting aligned test frames..."
