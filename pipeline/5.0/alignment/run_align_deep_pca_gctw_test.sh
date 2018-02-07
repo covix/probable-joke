@@ -6,6 +6,8 @@ TEST_SAMPLE=$3
 OUTPUT_FOLDER=$4
 ANTERIOR=$5
 
+ANTERIOR=`echo $ANTERIOR | tr : ' '`
+
 
 ENR_CODE=`dirname $0`  # Current folder, containing supporting scripts and files
 

@@ -6,7 +6,7 @@ OUTPUT_FOLDER=$3
 ID1=$4
 ID2=$5
 
-ID="$ID1 $ID2"
+ID="$ID1:$ID2"
 
 ENR_CODE=`dirname $0`  # Current folder, containing supporting scripts and files
 
@@ -23,7 +23,7 @@ do
     do
         echo "Sample " $TEST_SAMPLE " is being aligned.."
         CMD="${ENR_CODE}/run_align_deep_pca_gctw_test.sh $TRAIN_FOLDER $CLASS_FOLDER $TEST_FOLDER/$CLASS_FOLDER/$TEST_SAMPLE $OUTPUT_FOLDER/$CLASS_FOLDER $WAIT_ID"
-        ID="--anterior=$($CMD) $ID"
+        ID="--anterior=$($CMD):$ID"
         echo $ID
     done
 done
