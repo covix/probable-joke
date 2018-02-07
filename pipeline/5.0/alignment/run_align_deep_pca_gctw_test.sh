@@ -8,7 +8,7 @@ OUTPUT_FOLDER=$4
 ENR_CODE=`dirname $0`  # Current folder, containing supporting scripts and files
 
 OAR_SUB_OUTPUT=`oarsub -l /core=1 -S "${ENR_CODE}/align_deep_pca_gctw_interface_test.sh $INPUT_FOLDER $CLASS $TEST_SAMPLE $OUTPUT_FOLDER"`
-echo `echo $OAR_SUB_OUTPUT | cut -d'=' -f2
+echo `echo $OAR_SUB_OUTPUT | cut -d'=' -f2`
 
 # ${ENR_CODE}/align_deep_pca_gctw_interface_test.sh $INPUT_FOLDER $CLASS $TEST_SAMPLE $OUTPUT_FOLDER
 
