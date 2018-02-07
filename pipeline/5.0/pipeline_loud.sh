@@ -61,6 +61,7 @@ ANTERIOR_LOUD_PCA_FEATURES_CLASS_TEST=
 if [[ ! -d $LOUD_FRAMES_TRAIN ]]; then
     #Create loud_train
     echo "Create loud_train..."
+    mkdir -p $LOUD_FRAMES_TRAIN
     CMD="sh $SCRIPTS_FOLDER/clean_silence_frames.sh $ORIGINAL_FEATURES_TRAIN $ORIGINAL_FRAMES_TRAIN $LOUD_FRAMES_TRAIN"
     OAR_SUB_OUTPUT=`oarsub -l /core=1 -S "$CMD"`
     ANTERIOR_LOUD_FRAMES_TRAIN=`echo $OAR_SUB_OUTPUT | cut -d'=' -f2`
@@ -74,6 +75,7 @@ fi
 if [[ ! -d $LOUD_FEATURES_TRAIN ]]; then
     #Create loud_train_features
     echo "Create loud_train_features..."
+    mkdir -p $LOUD_FEATURES_TRAIN
     CMD="sh $SCRIPTS_FOLDER/clean_silence_features.sh $ORIGINAL_FEATURES_TRAIN $LOUD_FEATURES_TRAIN"
     OAR_SUB_OUTPUT=`oarsub -l /core=1 -S "$CMD"`
     ANTERIOR_LOUD_FEATURES_TRAIN=`echo $OAR_SUB_OUTPUT | cut -d'=' -f2`
@@ -88,6 +90,7 @@ fi
 if [[ ! -d $LOUD_FRAMES_TEST ]]; then
     #Create loud_test
     echo "Create loud_test..."
+    mkdir -p $LOUD_FRAMES_TEST
     CMD="sh $SCRIPTS_FOLDER/clean_silence_frames.sh $ORIGINAL_FEATURES_TEST $ORIGINAL_FRAMES_TEST $LOUD_FRAMES_TEST"
     OAR_SUB_OUTPUT=`oarsub -l /core=1 -S "$CMD"`
     ANTERIOR_LOUD_FRAMES_TEST=`echo $OAR_SUB_OUTPUT | cut -d'=' -f2`
@@ -101,6 +104,7 @@ fi
 if [[ ! -d $LOUD_FEATURES_TEST ]]; then
     #Create loud_test_features
     echo "Create loud_test_features..."
+    mkdir -p $LOUD_FEATURES_TEST
     CMD="sh $SCRIPTS_FOLDER/clean_silence_features.sh $ORIGINAL_FEATURES_TEST $LOUD_FEATURES_TEST"
     OAR_SUB_OUTPUT=`oarsub -l /core=1 -S "$CMD"`
     ANTERIOR_LOUD_FEATURES_TEST=`echo $OAR_SUB_OUTPUT | cut -d'=' -f2`
