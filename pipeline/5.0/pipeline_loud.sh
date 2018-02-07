@@ -161,6 +161,7 @@ fi
 if [[ ! -d $LOUD_FRAMES_CLASS_TRAIN ]]; then
     # Moving by class train
     echo "Moving train frames by class..."
+    mkdir -p $LOUD_FRAMES_CLASS_TRAIN
     CMD="$SCRIPTS_FOLDER/move_frames.sh $LOUD_FRAMES_TRAIN $LOUD_FRAMES_CLASS_TRAIN"
     OAR_SUB_OUTPUT=`oarsub $ANTERIOR_LOUD_FRAMES_TRAIN -l /core=1 -S "$CMD"`
     echo $OAR_SUB_OUTPUT
@@ -175,6 +176,7 @@ fi
 if [[ ! -d $LOUD_FRAMES_CLASS_TEST ]]; then
     # Moving by class test
     echo "Moving test frames by class..."
+    mkdir -p $LOUD_FRAMES_CLASS_TEST
     CMD="$SCRIPTS_FOLDER/move_frames.sh $LOUD_FRAMES_TEST $LOUD_FRAMES_CLASS_TEST"
     OAR_SUB_OUTPUT=`oarsub $ANTERIOR_LOUD_FRAMES_TEST -l /core=1 -S "$CMD"`
     echo $OAR_SUB_OUTPUT
@@ -191,6 +193,7 @@ fi
 if [[ ! -d $LOUD_PCA_FEATURES_CLASS_TRAIN ]]; then
     # Moving by class train
     echo "Moving train features by class..."
+    mkdir -p $LOUD_PCA_FEATURES_CLASS_TRAIN
     CMD="$SCRIPTS_FOLDER/move_frames.sh $LOUD_PCA_FEATURES_TRAIN $LOUD_PCA_FEATURES_CLASS_TRAIN"
     OAR_SUB_OUTPUT=`oarsub $ANTERIOR_LOUD_PCA_FEATURES_TRAIN -l /core=1 -S "$CMD"`
     echo $OAR_SUB_OUTPUT
@@ -205,6 +208,7 @@ fi
 if [[ ! -d $LOUD_PCA_FEATURES_CLASS_TEST ]]; then
     # Moving by class test
     echo "Moving test features by class..."
+    mkdir -p $LOUD_PCA_FEATURES_CLASS_TEST
     CMD="$SCRIPTS_FOLDER/move_frames.sh $LOUD_PCA_FEATURES_TEST $LOUD_PCA_FEATURES_CLASS_TEST"
     OAR_SUB_OUTPUT=`oarsub $ANTERIOR_LOUD_PCA_FEATURES_TEST -l /core=1 -S "$CMD"`
     echo $OAR_SUB_OUTPUT
