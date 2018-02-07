@@ -30,8 +30,8 @@ LOUD_ALIGNMENT_INDEXES_TEST=$TEST_FOLDER/alignment_indexes_loud_test
 LOUD_ALIGNED_FRAMES_TRAIN=$TRAIN_FOLDER/aligned_frames_loud_train
 LOUD_ALIGNED_FRAMES_TEST=$TEST_FOLDER/aligned_frames_loud_test
 
-TRAIN_FOLDER_REDUCED_FPS=/data/sparks/share/asl/experiments/datasets/train/aligned_reduced_fps_train
-TEST_FOLDER_REDUCED_FPS=/data/sparks/share/asl/experiments/datasets/test/aligned_reduced_fps_test
+TRAIN_FOLDER_REDUCED_FPS=/data/sparks/share/asl/experiments/datasets/train/aligned_reduced_fps_loud_train
+TEST_FOLDER_REDUCED_FPS=/data/sparks/share/asl/experiments/datasets/test/aligned_reduced_fps_loud_test
 FPS="7.5"
 LENGTH="45"
 
