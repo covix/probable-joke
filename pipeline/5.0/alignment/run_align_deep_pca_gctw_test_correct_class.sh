@@ -6,7 +6,7 @@ OUTPUT_FOLDER=$3
 
 ENR_CODE=`dirname $0`  # Current folder, containing supporting scripts and files
 
-for CLASS_FOLDER in `ls $TRAIN_FOLDER`
+for CLASS_FOLDER in `ls $TRAIN_FOLDER | head -n 2`
 do
     echo "Started alignment for class " $class_folder 
     echo
