@@ -7,8 +7,8 @@ OUTPUT_FOLDER=$4
 
 ENR_CODE=`dirname $0`  # Current folder, containing supporting scripts and files
 
-# oarsub -l /core=1 -S "${ENR_CODE}/align_deep_pca_gctw_interface_test.sh $INPUT_FOLDER $CLASS $TEST_SAMPLE $OUTPUT_FOLDER"
-${ENR_CODE}/align_deep_pca_gctw_interface_test.sh $INPUT_FOLDER $CLASS $TEST_SAMPLE $OUTPUT_FOLDER
+oarsub -l /core=1 -S "${ENR_CODE}/align_deep_pca_gctw_interface_test.sh $INPUT_FOLDER $CLASS $TEST_SAMPLE $OUTPUT_FOLDER"
+# ${ENR_CODE}/align_deep_pca_gctw_interface_test.sh $INPUT_FOLDER $CLASS $TEST_SAMPLE $OUTPUT_FOLDER
 
 # Usage:
 # ./run_align_deep_pca_gctw_test.sh ../../../../experiments/datasets/train/pca_features_train/ 01 ../../../../experiments/datasets/test/pca_features_test/01-M-01-C-comp_features.csv bla
