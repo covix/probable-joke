@@ -27,8 +27,8 @@ LOUD_PCA_FEATURES_CLASS_TEST=$TEST_FOLDER/pca_features_loud_class_test
 LOUD_ALIGNMENT_INDEXES_TRAIN=$TRAIN_FOLDER/alignment_indexes_loud_train
 LOUD_ALIGNMENT_INDEXES_TEST=$TEST_FOLDER/alignment_indexes_loud_test
 
-LOUD_ALIGNED_FRAMES_TRAIN=$TRAIN_FOLDER/aligned_frames_train
-LOUD_ALIGNED_FRAMES_TEST=$TEST_FOLDER/aligned_frames_test
+LOUD_ALIGNED_FRAMES_TRAIN=$TRAIN_FOLDER/aligned_frames_loud_train
+LOUD_ALIGNED_FRAMES_TEST=$TEST_FOLDER/aligned_frames_loud_test
 
 TRAIN_FOLDER_REDUCED_FPS=/data/sparks/share/asl/experiments/datasets/train/aligned_reduced_fps_train
 TEST_FOLDER_REDUCED_FPS=/data/sparks/share/asl/experiments/datasets/test/aligned_reduced_fps_test
