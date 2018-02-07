@@ -12,16 +12,14 @@ FRAMES_OR_FEATURES = int(sys.argv[3])
 
 #FEATURES_FILE = "/media/schenock/01D1B41ED893D2C0/Projects/probable-joke/data/features/01-M-04-C-comp_features.csv"
 
-
-#========= LEFT PART =====================================================================
-
 # Read correlation coeffs
 features = np.loadtxt(FEATURES_FILE)
 correlation_coeffs = np.corrcoef(features)
 
-# Get last frame idx
 first_frame = 0
 last_frame = len(correlation_coeffs[0]) - 1
+
+#========= LEFT PART =====================================================================
 
 # Calculate middle value
 middle_value = (len(correlation_coeffs[0]) - 1) / 2
@@ -36,7 +34,7 @@ left_part = correlation_with_first[:index_middle]
 maxi = max(left_part)
 mini = min(left_part)
 
-threshold = (((maxi - mini) / 2) + mini)*1.1
+threshold = (((maxi - mini) / 2)*1.5) + mini
 
 if threshold >= 1:
     threshold = (((maxi - mini) / 2) + mini)
@@ -53,15 +51,6 @@ above_left = [frame for frame in above if frame < middle_left]
 
 # ======== RIGHT PART ============================================================================
 
-# Read correlation coeffs
-features = np.loadtxt(FEATURES_FILE)
-correlation_coeffs = np.corrcoef(features)
-
-# Get last frame idx
-first_frame = 0
-last_frame = len(correlation_coeffs[0]) - 1
-
-
 # Calculate middle value
 middle_value = (len(correlation_coeffs[0]) - 1) / 2
 index_middle = int(middle_value)
@@ -76,7 +65,7 @@ left_part = correlation_with_first[:index_middle]
 maxi = max(right_part)
 mini = min(right_part)
 
-threshold = (((maxi - mini) / 2) + mini)*1.1
+threshold = (((maxi - mini) / 2)*1.5) + mini
 
 if threshold >= 1:
     threshold = (((maxi - mini) / 2) + mini)
