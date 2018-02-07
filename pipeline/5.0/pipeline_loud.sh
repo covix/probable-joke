@@ -127,6 +127,8 @@ fi
 if [[ ! -d $LOUD_PCA_FEATURES_TRAIN ]]; then
     echo "Applying PCA on train..."
     mkdir -p $LOUD_PCA_FEATURES_TRAIN
+    touch $PCA_MODEL
+    chmod 777 $PCA_MODEL
     CMD="./python_pipeline_wrapper.sh $PYTHON_SCRIPTS_FOLDER/apply_pca.py $LOUD_FEATURES_TRAIN $LOUD_PCA_FEATURES_TRAIN 15 $PCA_MODEL"
     echo oarsub $ANTERIOR_LOUD_FEATURES_TRAIN -l /core=10 -S "$CMD"
     OAR_SUB_OUTPUT=`oarsub $ANTERIOR_LOUD_FEATURES_TRAIN -l /core=10 -S "$CMD"`
@@ -134,7 +136,6 @@ if [[ ! -d $LOUD_PCA_FEATURES_TRAIN ]]; then
     ANTERIOR_LOUD_PCA_FEATURES_TRAIN=`echo $OAR_SUB_OUTPUT | cut -d'=' -f2`
     ANTERIOR_LOUD_PCA_FEATURES_TRAIN="--anterior=$ANTERIOR_LOUD_PCA_FEATURES_TRAIN"
     chmod -R 777 $LOUD_PCA_FEATURES_TRAIN
-    chmod 777 $PCA_MODEL
 else
     echo "Skipping PCA on train"
 fi
