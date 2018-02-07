@@ -3,7 +3,10 @@
 TRAIN_FOLDER=$1  # organised in classes
 TEST_FOLDER=$2  # organised in classes
 OUTPUT_FOLDER=$3
-ID=$4
+ID1=$4
+ID2=$5
+
+ID="$ID1 $ID2"
 
 ENR_CODE=`dirname $0`  # Current folder, containing supporting scripts and files
 
