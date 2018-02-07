@@ -17,6 +17,7 @@ frame_indices = []
 video_names = []
 k = 0
 for folder in os.listdir(data_dir):
+    print "Loading", data_dir
 
     features_file_name = os.listdir(data_dir + '/' + folder)[0]
 
