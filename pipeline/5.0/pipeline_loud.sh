@@ -109,7 +109,7 @@ fi
 if [[ ! -d $LOUD_FEATURES_TEST ]]; then
     #Create loud_test_features
     echo "Create loud_test_features..."
-    mkdir -python $LOUD_FEATURES_TEST
+    mkdir -p $LOUD_FEATURES_TEST
     CMD="$SCRIPTS_FOLDER/clean_silence_features.sh $ORIGINAL_FEATURES_TEST $LOUD_FEATURES_TEST"
     echo oarsub -l /core=1 -S $CMD
     OAR_SUB_OUTPUT=`oarsub -l /core=1 -S "$CMD"`
