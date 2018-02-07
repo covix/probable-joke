@@ -129,6 +129,7 @@ if [[ ! -d $LOUD_PCA_FEATURES_TRAIN ]]; then
     ANTERIOR_LOUD_PCA_FEATURES_TRAIN=`echo $OAR_SUB_OUTPUT | cut -d'=' -f2`
     ANTERIOR_LOUD_PCA_FEATURES_TRAIN="--anterior=$ANTERIOR_LOUD_PCA_FEATURES_TRAIN"
     chmod -R 777 $LOUD_PCA_FEATURES_TRAIN
+    chmod 777 $PCA_MODEL
 else
     echo "Skipping PCA on train"
 fi
@@ -138,7 +139,7 @@ if [[ ! -d $LOUD_PCA_FEATURES_TEST ]]; then
     echo "Applying PCA on test..."
     mkdir -p $LOUD_PCA_FEATURES_TEST
     CMD="./python_pipeline_wrapper.sh $PYTHON_SCRIPTS_FOLDER/apply_pca_model.py $LOUD_FEATURES_TEST $LOUD_PCA_FEATURES_TEST $PCA_MODEL"
-    OAR_SUB_OUTPUT=`oarsub $ANTERIOR_LOUD_FEATURES_TRAIN $ANTERIOR_LOUD_FEATURES_TEST -l /core=10 -S $CMD`
+    OAR_SUB_OUTPUT=`oarsub $ANTERIOR_LOUD_FEATURES_TRAIN $ANTERIOR_LOUD_FEATURES_TEST -l /core=10 -S "$CMD"`
     echo $OAR_SUB_OUTPUT
     ANTERIOR_LOUD_PCA_FEATURES_TEST=`echo $OAR_SUB_OUTPUT | cut -d'=' -f2`
     ANTERIOR_LOUD_PCA_FEATURES_TEST="--anterior=$ANTERIOR_LOUD_PCA_FEATURES_TEST"
@@ -154,7 +155,7 @@ if [[ ! -d $LOUD_FRAMES_CLASS_TRAIN ]]; then
     # Moving by class train
     echo "Moving train frames by class..."
     CMD="$SCRIPTS_FOLDER/move_frames.sh $LOUD_FRAMES_TRAIN $LOUD_FRAMES_CLASS_TRAIN"
-    OAR_SUB_OUTPUT=`oarsub $ANTERIOR_LOUD_FRAMES_TRAIN -l /core=1 -S $CMD`
+    OAR_SUB_OUTPUT=`oarsub $ANTERIOR_LOUD_FRAMES_TRAIN -l /core=1 -S "$CMD"`
     echo $OAR_SUB_OUTPUT
     ANTERIOR_LOUD_FRAMES_CLASS_TRAIN=`echo $OAR_SUB_OUTPUT | cut -d'=' -f2`
     ANTERIOR_LOUD_FRAMES_CLASS_TRAIN="--anterior=$ANTERIOR_LOUD_FRAMES_CLASS_TRAIN"
@@ -168,7 +169,7 @@ if [[ ! -d $LOUD_FRAMES_CLASS_TEST ]]; then
     # Moving by class test
     echo "Moving test frames by class..."
     CMD="$SCRIPTS_FOLDER/move_frames.sh $LOUD_FRAMES_TEST $LOUD_FRAMES_CLASS_TEST"
-    OAR_SUB_OUTPUT=`oarsub $ANTERIOR_LOUD_FRAMES_TEST -l /core=1 -S $CMD`
+    OAR_SUB_OUTPUT=`oarsub $ANTERIOR_LOUD_FRAMES_TEST -l /core=1 -S "$CMD"`
     echo $OAR_SUB_OUTPUT
     ANTERIOR_LOUD_FRAMES_CLASS_TEST=`echo $OAR_SUB_OUTPUT | cut -d'=' -f2`
     ANTERIOR_LOUD_FRAMES_CLASS_TEST="--anterior=$ANTERIOR_LOUD_FRAMES_CLASS_TEST"
