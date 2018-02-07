@@ -16,7 +16,7 @@ do
     do
         echo "Sample " $TEST_SAMPLE " is being aligned.."
         CMD="${ENR_CODE}/run_align_deep_pca_gctw_test.sh $TRAIN_FOLDER $CLASS_FOLDER $TEST_FOLDER/$CLASS_FOLDER/$TEST_SAMPLE $OUTPUT_FOLDER/$CLASS_FOLDER"
-        ID=$(CMD)
+        ID=$($CMD)
         echo $ID
     done
 done
