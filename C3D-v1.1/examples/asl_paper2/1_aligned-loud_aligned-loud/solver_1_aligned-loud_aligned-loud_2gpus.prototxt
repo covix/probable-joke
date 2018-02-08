@@ -1,4 +1,4 @@
-net: "solver_1_aligned-loud_aligned-loud_2gpus.prototxt"
+net: "1_aligned-loud_aligned-loud_2gpus.prototxt"
 
 # 964 samples
 # Alignment only on the training set
