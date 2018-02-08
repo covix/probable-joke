@@ -4,6 +4,12 @@ function align_deep_pca_gctw_class_train(inputFolder, class, outputFolder, ctwFo
 % History
 %   create  -  Luca Coviello (luca.coviello@gmail.com), 01-16-2018
 
+outfile = strcat(outputFolder, "/", class, '.csv');
+
+if exist(outfile, 'file') == 2
+    exit
+end
+
 %% add libraries path
 footpath = cd;
 disp("Adding to path: ");
@@ -34,4 +40,4 @@ aliGtw = gtw(Xs, bas, aliUtw, [], parGtw, parCca, parGN);
 
 %% save indexes
 P = aliGtw.P;
-csvwrite(strcat(outputFolder,"/" class,'.csv'), P)
+csvwrite(outfile, P)
