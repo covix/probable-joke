@@ -46,7 +46,8 @@ def plot_frames(d, length, step, title=''):
     for k in sorted(d.keys()):
         title_set = False
         for i in range(0, length / step * step, step):
-            ax = plt.subplot(3, length / step, sp)
+            # `len(d.keys())` was 3 before, cause i was using it with 3 videos
+            ax = plt.subplot(len(d.keys()), length / step, sp)
             plt.axis('off')
 
             if not title_set:
