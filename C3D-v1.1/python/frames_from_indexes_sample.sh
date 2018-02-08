@@ -2,6 +2,8 @@ INPUT_FOLDER=$1
 ALIGN_IDX_FOLDER=$2
 OUTPUT_FOLDER=$3
 
+ENR_DIR=`dirname $0`
+
 for CLASS in {01..43};
 do
     echo "For sample class: " $CLASS
@@ -24,7 +26,7 @@ do
             echo -e "\t\tCreating output folder: " $VID_OUTPUT_FOLDER
             mkdir -p $VID_OUTPUT_FOLDER
 
-            python frames_from_indexes_sample.py $VID_INPUT_FOLDER $VID_ALIGN_FILE $VID_OUTPUT_FOLDER
-        done 
+            python $ENR_DIR/frames_from_indexes_sample.py $VID_INPUT_FOLDER $VID_ALIGN_FILE $VID_OUTPUT_FOLDER
+        done
     done
 done
