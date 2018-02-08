@@ -4,16 +4,14 @@ function align_deep_pca_gctw_class_train(inputFolder, class, outputFolder, ctwFo
 % History
 %   create  -  Luca Coviello (luca.coviello@gmail.com), 01-16-2018
 
-outfile = strcat(outputFolder, "/", class, '.csv');
 
+outfile = strcat(outputFolder, '/', class, '.csv');
 if exist(outfile, 'file') == 2
     exit
 end
 
 %% add libraries path
 footpath = cd;
-disp("Adding to path: ");
-disp(genpath([footpath '/' ctwFolder '/ctw/src']));
 addpath(genpath([footpath '/' ctwFolder '/ctw/src']));
 addpath(genpath([footpath '/' ctwFolder '/ctw/lib']));
 
