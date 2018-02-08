@@ -1,5 +1,6 @@
 name=$1
-for a in`oarstat |grep $name cut -d" " -f1`;
+a=`oarstat -u $name | cut -d" " -f1`
+for i in $a;
 do
-  oardel $a
+  oardel $i
 done
