@@ -1,0 +1,28 @@
+net: "train_0_baseline_nesterov_replicated_replicated.prototxt"
+
+# 964 samples
+# Alignment only on the training set
+# batch_size 12
+# gpus 1
+# 81 iter/epoch
+
+test_iter: 240
+test_state: { stage: 'test-on-train' }
+test_iter: 240
+test_state: { stage: 'test-on-test' }
+test_interval: 81
+base_lr: 1e-2
+momentum: 0.95
+weight_decay: 0.00005
+lr_policy: "step"
+stepsize: 10000
+gamma: 0.1
+# Display every 1 iterations
+display: 20
+# The maximum number of iterations
+max_iter: 3600
+# snapshot intermediate results
+snapshot: 81
+snapshot_prefix: "snapshots/0_baseline_nesterov_replicated_replicated_1gpus_sgd"
+solver_mode: GPU
+type: "Nesterov"
