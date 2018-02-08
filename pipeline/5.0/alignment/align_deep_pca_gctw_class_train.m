@@ -7,6 +7,7 @@ function align_deep_pca_gctw_class_train(inputFolder, class, outputFolder, ctwFo
 
 outfile = strcat(outputFolder, '/', class, '.csv');
 if exist(outfile, 'file') == 2
+    disp(strcat('Skipping for ', class));
     exit
 end
 
