@@ -6,11 +6,14 @@ function align_deep_pca_gctw_class_test(inputFolder, class, testSample, outputFo
 
 [filepath, name, ext] = fileparts(testSample);
 outfile = strcat(outputFolder, '/', name, '.csv');
+disp(outfile)
+disp(exist(outfile, 'file'))
 if exist(outfile, 'file') == 2
     disp('im in the if!');
     exit
 end
 
+disp('naturally exiting')
 exit
 disp('exited');
 
