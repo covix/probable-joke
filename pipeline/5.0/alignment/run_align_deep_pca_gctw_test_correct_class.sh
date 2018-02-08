@@ -19,7 +19,6 @@ do
     WAIT_ID=$ID
     ID=
     echo "WAIT_ID is: $WAIT_ID"
-
     for TEST_SAMPLE in `ls $ORIGINAL_FOLDER | grep "\-$CLASS_FOLDER\-"`
     do
         echo "Sample $TEST_SAMPLE will be aligned.."

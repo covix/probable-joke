@@ -16,7 +16,6 @@ momentum: 0.9
 momentum2: 0.999
 weight_decay: 0.00005
 lr_policy: "fixed"
-gamma: 1
 stepsize: 9999999
 # Display every 1 iterations
 display: 5
