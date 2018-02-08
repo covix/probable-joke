@@ -30,7 +30,7 @@ def extract_frames(output_folder, max_nframe):
         name = "/".join([output_folder, i])
         folder = "/".join(["frames_" + output_folder, i[:-4]])
         os.makedirs(folder)
-        out = "/".join([folder, "%06d"]) + ".jpg"
+        out = "/".join([folder, "%06d"]) + ".png"
         command = ['ffmpeg', '-i', name, out]
         ffmpeg = subprocess.Popen(
             command, stderr=subprocess.PIPE, stdout=subprocess.PIPE)
@@ -41,7 +41,7 @@ def extract_frames(output_folder, max_nframe):
             last = "/".join([folder, X[-1]])
             for c in range(max_nframe - len(X)):
                 new = "/".join([folder, format(int(last[-10:-4]
-                                                   ) + c + 1, "06") + ".jpg"])
+                                                   ) + c + 1, "06") + ".png"])
                 print(last, new)
                 shutil.copyfile(last, new)
         if(len(X) > max_nframe):

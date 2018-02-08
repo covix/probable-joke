@@ -24,11 +24,10 @@ transformer.set_raw_scale('data', 255.0)
 
 
 #load the image in the data layer
-im = caffe.io.load_image('examples/images/cat.jpg')
+im = caffe.io.load_image('examples/images/cat.png')
 net.blobs['data'].data[...] = transformer.preprocess('data', im)
 
 #compute
 out = net.forward()
 
 print out['prob'].argmax()
-

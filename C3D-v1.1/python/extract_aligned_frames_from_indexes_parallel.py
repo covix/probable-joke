@@ -32,9 +32,9 @@ def main():
 
         for frame_idx, frame in enumerate(aligned_idx[:, idx]):
             source = os.path.join(input_folder, video_folder,
-                                  "image_{:05d}.jpg".format(int(round(frame))))
+                                  "image_{:05d}.png".format(int(round(frame))))
             dest = os.path.join(output_folder, video_folder,
-                                "image_{:05d}.jpg".format(frame_idx + 1))
+                                "image_{:05d}.png".format(frame_idx + 1))
             pool.apply_async(copy, (source, dest))
 
     pool.close()

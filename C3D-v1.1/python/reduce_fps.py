@@ -70,7 +70,7 @@ def main():
         for idx, i in enumerate(range(0, len(Y), fps)):
             y = Y[i]
 	    source = "/".join([input_folder, x, y])
-            y = "image_{:05d}.jpg".format(idx + 1)
+            y = "image_{:05d}.png".format(idx + 1)
             dest = folder + y
             shutil.copyfile(source, dest)
         # create_video2(folder)

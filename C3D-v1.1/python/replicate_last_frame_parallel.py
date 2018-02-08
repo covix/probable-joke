@@ -28,7 +28,7 @@ def main():
 
         # remaining frames
         for i in range(final_length - len(frames)):
-            frame_name = "image_{:05d}.jpg".format(len(frames) + i + 1)
+            frame_name = "image_{:05d}.png".format(len(frames) + i + 1)
             dest = os.path.join(input_folder, video_folder, frame_name)
             pool.apply_async(copy, (source, dest))
 
