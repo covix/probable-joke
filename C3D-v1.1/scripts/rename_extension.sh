@@ -14,3 +14,6 @@ do
       mv $f $i/$filename.$NEW_EXTENSION
   done
 done
+
+# Usage example
+# ./rename_extension.sh ../data/test_asl/ png jpg
