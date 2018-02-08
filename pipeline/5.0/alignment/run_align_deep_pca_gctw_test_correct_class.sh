@@ -16,15 +16,16 @@ do
     echo "Queueing alignment for class " $CLASS_FOLDER
     echo
     mkdir -p $OUTPUT_FOLDER/$CLASS_FOLDER
-    WAIT_ID=$ID
-    ID=
+    # WAIT_ID=$ID
+    # ID=
     echo "WAIT_ID is: $WAIT_ID"
 
     for TEST_SAMPLE in `ls $ORIGINAL_FOLDER | grep "\-$CLASS_FOLDER\-"`
     do
         echo "Sample $TEST_SAMPLE will be aligned.."
-        CMD="${ENR_CODE}/run_align_deep_pca_gctw_test.sh $TRAIN_FOLDER $CLASS_FOLDER $TEST_FOLDER/$CLASS_FOLDER/${TEST_SAMPLE}_features.csv $OUTPUT_FOLDER/$CLASS_FOLDER $WAIT_ID"
-        ID="--anterior=$($CMD):$ID"
+        CMD="${ENR_CODE}/run_align_deep_pca_gctw_test.sh $TRAIN_FOLDER $CLASS_FOLDER $TEST_FOLDER/$CLASS_FOLDER/${TEST_SAMPLE}_features.csv $OUTPUT_FOLDER/$CLASS_FOLDER $ID"
+        # ID="--anterior=$($CMD):$ID"
+        ID="--anterior=$($CMD)"
         echo $ID
     done
 done
