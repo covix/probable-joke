@@ -6,7 +6,7 @@ TEST_SAMPLE=$3
 OUTPUT_FOLDER=$4
 ANTERIOR=$5
 
-NODE=nef020.inria.fr
+NODE=nef025.inria.fr
 
 ANTERIOR=`echo $ANTERIOR | tr : ' '`
 
