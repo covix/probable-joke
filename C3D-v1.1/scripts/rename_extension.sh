@@ -11,8 +11,7 @@ do
     do
       filename=${f##*/}
       filename="${filename%.*}"
-      echo $f $i/$filename.$NEW_EXTENSION
-      #mv $f $i/$filename.$NEW_EXTENSION
+      mv $f $i/$filename.$NEW_EXTENSION
   done
 done
 
