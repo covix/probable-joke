@@ -2,6 +2,7 @@ TRAIN_FOLDER=$1
 TEST_FOLDER=$2
 OUTPUT_FOLDER=$3
 CLASS_ID=$4
+HOST=${5:-nef025.inria.fr}
 
 
 # pad the number 
@@ -23,7 +24,7 @@ do
         echo "Sample $TEST_SAMPLE is being aligned to class $CLASS"
         mkdir -p $OUTPUT_FOLDER/$CLASS_ID/$CLASS
 
-        CMD="${ENR_CODE}/run_align_deep_pca_gctw_test.sh $TRAIN_FOLDER/$CLASS $CLASS_ID $TEST_FOLDER/$CLASS_ID/$TEST_SAMPLE $OUTPUT_FOLDER/$CLASS_ID/$CLASS $WAIT_ID"
+        CMD="${ENR_CODE}/run_align_deep_pca_gctw_test.sh $TRAIN_FOLDER/$CLASS $CLASS_ID $TEST_FOLDER/$CLASS_ID/$TEST_SAMPLE $OUTPUT_FOLDER/$CLASS_ID/$CLASS $WAIT_ID $HOST"
         ID="--anterior=$($CMD):$ID"
 
         count=${ID//[^:]}
