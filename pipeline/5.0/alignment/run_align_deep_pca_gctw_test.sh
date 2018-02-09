@@ -13,7 +13,7 @@ ANTERIOR=`echo $ANTERIOR | tr : ' '`
 
 ENR_CODE=`dirname $0`  # Current folder, containing supporting scripts and files
 
-OAR_SUB_OUTPUT=`oarsub $ANTERIOR -l /core=7 -p "host='$NODE'" -n loud_alignment_indexes_test_$CLASS -S "${ENR_CODE}/align_deep_pca_gctw_interface_test.sh $INPUT_FOLDER $CLASS $TEST_SAMPLE $OUTPUT_FOLDER"`
+OAR_SUB_OUTPUT=`oarsub $ANTERIOR -l /core=7 -p "host='$NODE'" -n alignment_indexes_test_$CLASS -S "${ENR_CODE}/align_deep_pca_gctw_interface_test.sh $INPUT_FOLDER $CLASS $TEST_SAMPLE $OUTPUT_FOLDER"`
 ID=`echo $OAR_SUB_OUTPUT | cut -d'=' -f2`
 echo $ID
 

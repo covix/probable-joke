@@ -11,6 +11,7 @@ do
     for align_file in `ls $ALIGN_IDX_FOLDER/$CLASS`
     do
         SAMPLE_FOLDER=`echo $align_file | cut -d"." -f1`
+        SAMPLE_FOLDER=`echo $align_file | cut -d"_" -f1`
         echo -e "\t\tCreating video for: " $align_file " in " $SAMPLE_FOLDER
         echo
         VID_INPUT_FOLDER=$INPUT_FOLDER/$SAMPLE_FOLDER
