@@ -1,8 +1,3 @@
-# TRAIN_FOLDER=/data/sparks/share/asl/experiments/datasets/train/pca_features_original_class_train/
-# TEST_FOLDER=/data/sparks/share/asl/experiments/datasets/test/pca_features_original_class_test/
-# OUTPUT_FOLDER=/data/sparks/share/asl/experiments/datasets/test/indexes_alignment_sample_new
-# CLASS_ID=04
-
 TRAIN_FOLDER=$1
 TEST_FOLDER=$2
 OUTPUT_FOLDER=$3
@@ -40,3 +35,11 @@ do
 
     done
 done
+
+
+# Usage example
+# ./run_align_deep_pca_gctw_test_class_all_classes.sh \
+#     /data/sparks/share/asl/experiments/datasets/train/pca_features_original_class_train/ \
+#     /data/sparks/share/asl/experiments/datasets/test/pca_features_original_class_test/ \
+#     /data/sparks/share/asl/experiments/datasets/test/alignment_indexes_loud_test_all_classes \
+#     04
