@@ -4,11 +4,19 @@ function align_deep_pca_gctw_class_test(inputFolder, class, testSample, outputFo
 % History
 %   create  -  Luca Coviello (luca.coviello@gmail.com), 01-16-2018
 
+[filepath, name, ext] = fileparts(testSample);
+outfile = strcat(outputFolder, '/', name, '.csv');
+disp(outfile)
+disp(exist(outfile, 'file'))
+if exist(outfile, 'file') == 2
+    disp(strcat('Skipping for ', name));
+    exit
+end
+
 %% add libraries path
 footpath = cd;
 addpath(genpath([footpath '/' ctwFolder '/ctw/src']));
 addpath(genpath([footpath '/' ctwFolder '/ctw/lib']));
-
 
 %% algorithm parameter
 parCca = st('d', 0.95, 'lams', .1); % CCA: reduce dimension to keep at least 0.95 energy
@@ -33,5 +41,4 @@ aliGtw = gtw(Xs, bas, aliUtw, [], parGtw, parCca, parGN);
 
 %% save indexes
 P = aliGtw.P;
-[filepath,name,ext] = fileparts(testSample);
-csvwrite(strcat(outputFolder, '/ali_gctw_deep_', name, '_P_test.csv'), P)
+csvwrite(outfile, P)

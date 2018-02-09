@@ -18,7 +18,7 @@ do
   a=1
   for i in $frames;
   do
-    new=$(printf "image_%05d.jpg" "$a")
+    new=$(printf "image_%05d.png" "$a")
     cp $VIDEO_FOLDER/$f/$i $OUTPUT_FOLDER/$f/$new
     let a=a+1
   done

@@ -11,11 +11,11 @@ test_state: { stage: 'test-on-train' }
 test_iter: 240
 test_state: { stage: 'test-on-test' }
 test_interval: 41
-base_lr: 1e-3
+base_lr: 2e-3
 momentum: 0.9
+momentum2: 0.999
 weight_decay: 0.00005
-lr_policy: "step"
-gamma: 1
+lr_policy: "fixed"
 stepsize: 9999999
 # Display every 1 iterations
 display: 10
@@ -25,3 +25,4 @@ max_iter: 1800
 snapshot: 41
 snapshot_prefix: "snapshots/0_baseline_replicated_replicated_2gpus"
 solver_mode: GPU
+type: "Adam"

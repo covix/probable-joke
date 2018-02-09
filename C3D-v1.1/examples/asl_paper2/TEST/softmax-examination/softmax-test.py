@@ -31,4 +31,3 @@ net.blobs['data'].data[...] = transformer.preprocess('data', im)
 out = net.forward()
 
 print out['prob'].argmax()
-

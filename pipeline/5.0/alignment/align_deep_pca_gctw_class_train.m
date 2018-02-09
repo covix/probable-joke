@@ -4,10 +4,15 @@ function align_deep_pca_gctw_class_train(inputFolder, class, outputFolder, ctwFo
 % History
 %   create  -  Luca Coviello (luca.coviello@gmail.com), 01-16-2018
 
+
+outfile = strcat(outputFolder, '/', class, '.csv');
+if exist(outfile, 'file') == 2
+    disp(strcat('Skipping for ', class));
+    exit
+end
+
 %% add libraries path
 footpath = cd;
-disp("Adding to path: ");
-disp(genpath([footpath '/' ctwFolder '/ctw/src']));
 addpath(genpath([footpath '/' ctwFolder '/ctw/src']));
 addpath(genpath([footpath '/' ctwFolder '/ctw/lib']));
 
@@ -34,4 +39,4 @@ aliGtw = gtw(Xs, bas, aliUtw, [], parGtw, parCca, parGN);
 
 %% save indexes
 P = aliGtw.P;
-csvwrite(strcat(outputFolder, '/ali_gctw_deep_', class, '_P.csv'), P)
+csvwrite(outfile, P)

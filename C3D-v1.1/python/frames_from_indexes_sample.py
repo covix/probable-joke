@@ -14,15 +14,15 @@ def main():
     print("PYTHON: Output folder: ", output_folder)
 
     aligned_idx = np.loadtxt(alignment_file, delimiter=',')
-    
+
     indexes = aligned_idx[:,-1]
 
     for frame_idx, frame in enumerate(indexes):
-             
-        source = os.path.join(input_folder, "image_{:05d}.jpg".format(int(round(frame))))
+
+        source = os.path.join(input_folder, "image_{:05d}.png".format(int(round(frame))))
         print("Source: ",source)
 
-        dest = os.path.join(output_folder, "image_{:05d}.jpg".format(frame_idx + 1))
+        dest = os.path.join(output_folder, "image_{:05d}.png".format(frame_idx + 1))
         print("Destination: ",dest)
 
         shutil.copyfile(source, dest)

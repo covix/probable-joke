@@ -8,5 +8,5 @@ do
     name=`basename $i | cut -d. -f 1`
     echo $name
     mkdir -p data/asl/$name
-    ffmpeg -v 0 -i $i data/asl/$name/%06d.jpg
+    ffmpeg -v 0 -i $i data/asl/$name/%06d.png
 done
