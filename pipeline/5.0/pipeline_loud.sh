@@ -315,4 +315,37 @@ else
 fi
 
 
+#--- Change permissions of every folder -------------------------------------------------
+#Create reduced fps test
+echo "Changing permissions..."
+CMD="for i in $ORIGINAL_FRAMES_TRAIN \
+    $ORIGINAL_FEATURES_TRAIN \
+    $LOUD_FEATURES_TRAIN \
+    $LOUD_FRAMES_TRAIN \
+    $ORIGINAL_FRAMES_TEST \
+    $ORIGINAL_FEATURES_TEST \
+    $LOUD_FEATURES_TEST \
+    $LOUD_FRAMES_TEST \
+    $LOUD_FRAMES_CLASS_TRAIN \
+    $LOUD_FRAMES_CLASS_TEST \
+    $LOUD_PCA_FEATURES_TRAIN \
+    $LOUD_PCA_FEATURES_TEST \
+    $PCA_MODEL \
+    $LOUD_PCA_FEATURES_CLASS_TRAIN \
+    $LOUD_PCA_FEATURES_CLASS_TEST \
+    $LOUD_ALIGNMENT_INDEXES_TRAIN \
+    $LOUD_ALIGNMENT_INDEXES_TEST \
+    $LOUD_ALIGNED_FRAMES_TRAIN \
+    $LOUD_ALIGNED_FRAMES_TEST \
+    $TRAIN_FOLDER_REDUCED_FPS \
+    $TEST_FOLDER_REDUCED_FPS
+do
+    chmod -R 777 $i &
+done
+"
+OAR_SUB_OUTPUT=`oarsub -n test_folder_reduced_fps $ANTERIOR_LOUD_ALIGNED_FRAMES_TRAIN $ANTERIOR_LOUD_ALIGNED_FRAMES_TEST -l /core=1 -S "$CMD"`
+echo $OAR_SUB_OUTPUT
+
+
+
 #--- Unify videos -----------------------------------------------------------------------
