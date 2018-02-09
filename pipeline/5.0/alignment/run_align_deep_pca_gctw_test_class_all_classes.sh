@@ -23,7 +23,7 @@ do
         echo "Sample $TEST_SAMPLE is being aligned to class $CLASS"
         mkdir -p $OUTPUT_FOLDER/$CLASS_ID/$CLASS
 
-        CMD="${ENR_CODE}/run_align_deep_pca_gctw_test.sh $TRAIN_FOLDER/ $CLASS_ID $TEST_FOLDER/$CLASS_ID/$TEST_SAMPLE $OUTPUT_FOLDER/$CLASS_ID/$CLASS $WAIT_ID"
+        CMD="${ENR_CODE}/run_align_deep_pca_gctw_test.sh $TRAIN_FOLDER/ $CLASS $TEST_FOLDER/$CLASS_ID/$TEST_SAMPLE $OUTPUT_FOLDER/$CLASS_ID/$CLASS $WAIT_ID"
         ID="--anterior=$($CMD):$ID"
 
         count=${ID//[^:]}
