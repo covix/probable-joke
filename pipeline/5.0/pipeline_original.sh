@@ -4,6 +4,7 @@ TRAIN_FOLDER=/data/sparks/share/asl/experiments/datasets/train
 TEST_FOLDER=/data/sparks/share/asl/experiments/datasets/test
 SCRIPTS_FOLDER=/data/sparks/share/asl/experiments/datasets/scripts_data
 PYTHON_SCRIPTS_FOLDER=/data/sparks/share/asl/probable-joke/C3D-v1.1/python
+BASH_SCRIPTS_FOLDER=/data/sparks/share/asl/probable-joke/C3D-v1.1/scripts
 ALIGNMENT_SCRIPTS_FOLDER=/data/sparks/share/asl/probable-joke/pipeline/5.0/alignment
 
 ORIGINAL_FRAMES_TRAIN=$TRAIN_FOLDER/original_train
@@ -226,6 +227,8 @@ if [[ ! -d $TRAIN_FOLDER_REDUCED_FPS ]]; then
     CMD="$PYTHON_SCRIPTS_FOLDER/reduce_fps_and_pad_interface.sh $ORIGINAL_ALIGNED_FRAMES_TRAIN $TRAIN_FOLDER_REDUCED_FPS $FPS $LENGTH"
     OAR_SUB_OUTPUT=`oarsub -n train_folder_reduced_fps $ANTERIOR_ORIGINAL_ALIGNED_FRAMES_TRAIN -l /core=1 -S "$CMD"`
     echo $OAR_SUB_OUTPUT
+    ANTERIOR_TRAIN_FOLDER_REDUCED_FPS=`echo $OAR_SUB_OUTPUT | cut -d'=' -f2`
+    ANTERIOR_TRAIN_FOLDER_REDUCED_FPS="--anterior=$ANTERIOR_TRAIN_FOLDER_REDUCED_FPS"
     chmod -R 777 $TRAIN_FOLDER_REDUCED_FPS
 else
     echo "Skipping reduced fps train"
@@ -241,10 +244,22 @@ if [[ ! -d $TEST_FOLDER_REDUCED_FPS ]]; then
     CMD="$PYTHON_SCRIPTS_FOLDER/reduce_fps_and_pad_interface.sh $ORIGINAL_ALIGNED_FRAMES_TEST $TEST_FOLDER_REDUCED_FPS $FPS $LENGTH"
     OAR_SUB_OUTPUT=`oarsub -n test_folder_reduced_fps $ANTERIOR_ORIGINAL_ALIGNED_FRAMES_TEST -l /core=1 -S "$CMD"`
     echo $OAR_SUB_OUTPUT
+    ANTERIOR_TEST_FOLDER_REDUCED_FPS=`echo $OAR_SUB_OUTPUT | cut -d'=' -f2`
+    ANTERIOR_TEST_FOLDER_REDUCED_FPS="--anterior=$ANTERIOR_TEST_FOLDER_REDUCED_FPS"
     chmod -R 777 $TEST_FOLDER_REDUCED_FPS
 else
     echo "Skipping reduced fps test"
 fi
+
+echo "Changing extension train..."
+CMD="$BASH_SCRIPTS_FOLDER/rename_extension.sh $TRAIN_FOLDER_REDUCED_FPS"
+OAR_SUB_OUTPUT=`oarsub -n change_extension $ANTERIOR_TRAIN_FOLDER_REDUCED_FPS -l /core=1 -S "$CMD"`
+echo $OAR_SUB_OUTPUT
+
+echo "Changing extension test..."
+CMD="$BASH_SCRIPTS_FOLDER/rename_extension.sh $TEST_FOLDER_REDUCED_FPS"
+OAR_SUB_OUTPUT=`oarsub -n change_extension $ANTERIOR_TEST_FOLDER_REDUCED_FPS -l /core=1 -S "$CMD"`
+echo $OAR_SUB_OUTPUT
 
 
 #--- Unify videos -----------------------------------------------------------------------
