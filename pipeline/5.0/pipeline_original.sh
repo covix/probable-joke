@@ -169,7 +169,7 @@ else
 fi
 
 
-if [[ ! -d $ORIGINAL_ALIGNMENT_INDEXES_TEST ]]; then
+#if [[ ! -d $ORIGINAL_ALIGNMENT_INDEXES_TEST ]]; then
     # Aligning test
     echo "Aligning test features by class..."
     mkdir -p $ORIGINAL_ALIGNMENT_INDEXES_TEST
@@ -179,9 +179,9 @@ if [[ ! -d $ORIGINAL_ALIGNMENT_INDEXES_TEST ]]; then
     ANTERIOR_ORIGINAL_ALIGNMENT_INDEXES_TEST=${OAR_SUB_OUTPUT#*ANTERIOR=}
     ANTERIOR_ORIGINAL_ALIGNMENT_INDEXES_TEST=`echo $ANTERIOR_ORIGINAL_ALIGNMENT_INDEXES_TEST | tr : ' '`
     chmod -R 777 $ORIGINAL_ALIGNMENT_INDEXES_TEST
-else
-    echo "Skipping aligning test features by class"
-fi
+#else
+#    echo "Skipping aligning test features by class"
+#fi
 
 
 #--- Aligned frames extraction ----------------------------------------------------------
