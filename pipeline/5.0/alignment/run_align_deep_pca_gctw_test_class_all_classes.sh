@@ -49,4 +49,4 @@ done
 
 
 #Other useage example :D
-./run_align_deep_pca_gctw_test_class_all_classes.sh /data/sparks/share/asl/experiments/datasets/train/pca_features_original_class_train/ /data/sparks/share/asl/experiments/datasets/test/pca_features_original_class_test/ /data/sparks/share/asl/experiments/datasets/test/alignment_indexes_original_test_all_classes 01 32 nef003.inria.fr # if possible
+#./run_align_deep_pca_gctw_test_class_all_classes.sh /data/sparks/share/asl/experiments/datasets/train/pca_features_original_class_train/ /data/sparks/share/asl/experiments/datasets/test/pca_features_original_class_test/ /data/sparks/share/asl/experiments/datasets/test/alignment_indexes_original_test_all_classes 01 32 nef003.inria.fr # if possible
