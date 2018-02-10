@@ -10,7 +10,7 @@ CLASS_ID=$4  # 04
 # CLASS_ID=04
 
 
-# pad the number 
+# pad the number
 CLASS_ID=`seq -f '%02g' $CLASS_ID $CLASS_ID`
 
 ENR_DIR=`dirname $0`
@@ -19,7 +19,7 @@ ENR_DIR=`dirname $0`
 for SAMPLE_FOLDER in `ls $ALIGN_IDX_FOLDER/$CLASS_ID`
 do
     echo $SAMPLE_FOLDER
-    
+
     for CLASS in {01..43}
     do
         # SAMPLE_FOLDER=`echo $align_file | cut -d"." -f1`
@@ -49,11 +49,11 @@ done
 #         SAMPLE_FOLDER=`echo $align_file | cut -d"_" -f1`
 #         echo -e "\t\tCreating video for: " $align_file " in " $SAMPLE_FOLDER
 #         echo
-        
+
 #         VID_INPUT_FOLDER=$INPUT_FOLDER/$SAMPLE_FOLDER
 #         VID_ALIGN_FILE=$ALIGN_IDX_FOLDER/$CLASS/$align_file
 #         VID_OUTPUT_FOLDER=$OUTPUT_FOLDER/$SAMPLE_FOLDER/
-        
+
 #         echo -e "\t\tCreating output folder: " $VID_OUTPUT_FOLDER
 #         mkdir -p $VID_OUTPUT_FOLDER
 
@@ -67,4 +67,4 @@ done
 #     /data/sparks/share/asl/experiments/datasets/test/loud_test \
 #     /data/sparks/share/asl/experiments/datasets/test/alignment_indexes_loud_test_all_classes \
 #     /data/sparks/share/asl/experiments/datasets/test/aligned_frames_loud_test_all_classes/ \
-#     04    
+#     04
