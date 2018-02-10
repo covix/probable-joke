@@ -4,10 +4,10 @@ OUTPUT_FOLDER=$3
 CLASS_ID=$4  # 04
 
 
-INPUT_FOLDER=/data/sparks/share/asl/experiments/datasets/test/loud_test
-ALIGN_IDX_FOLDER=/data/sparks/share/asl/experiments/datasets/test/alignment_indexes_loud_test_all_classes
-OUTPUT_FOLDER=/data/sparks/share/asl/experiments/datasets/test/aligned_frames_loud_test_all_classes/
-CLASS_ID=04
+# INPUT_FOLDER=/data/sparks/share/asl/experiments/datasets/test/loud_test
+# ALIGN_IDX_FOLDER=/data/sparks/share/asl/experiments/datasets/test/alignment_indexes_loud_test_all_classes
+# OUTPUT_FOLDER=/data/sparks/share/asl/experiments/datasets/test/aligned_frames_loud_test_all_classes/
+# CLASS_ID=04
 
 
 # pad the number 
