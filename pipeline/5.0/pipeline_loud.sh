@@ -245,7 +245,7 @@ fi
 
 
 # Aligning test
-if false; then
+if [[ ! -d $LOUD_ALIGNMENT_INDEXES_TEST ]]; then
     echo "Aligning test features by class..."
     mkdir -p $LOUD_ALIGNMENT_INDEXES_TEST
     CMD="$ALIGNMENT_SCRIPTS_FOLDER/run_align_deep_pca_gctw_test_correct_class.sh $LOUD_PCA_FEATURES_CLASS_TRAIN $LOUD_PCA_FEATURES_CLASS_TEST $LOUD_ALIGNMENT_INDEXES_TEST $ORIGINAL_FEATURES_TEST $ANTERIOR_LOUD_PCA_FEATURES_CLASS_TRAIN $ANTERIOR_LOUD_PCA_FEATURES_CLASS_TEST"
@@ -255,7 +255,7 @@ if false; then
     ANTERIOR_LOUD_ALIGNMENT_INDEXES_TEST=`echo $ANTERIOR_LOUD_ALIGNMENT_INDEXES_TEST | tr : ' '`
     chmod -R 777 $LOUD_ALIGNMENT_INDEXES_TEST
 else
-   echo "The check in matlab doesn't work"
+   echo "Skipping aligning test features by class"
 fi
 
 #--- Aligned frames extraction ----------------------------------------------------------
