@@ -53,6 +53,9 @@ ANTERIOR_ORIGINAL_FRAMES_CLASS_TEST=
 ANTERIOR_ORIGINAL_PCA_FEATURES_CLASS_TRAIN=
 ANTERIOR_ORIGINAL_PCA_FEATURES_CLASS_TEST=
 
+ANTERIOR_TRAIN_FOLDER_REDUCED_FPS=
+ANTERIOR_TEST_FOLDER_REDUCED_FPS=
+
 
 #--- Get PCA features -------------------------------------------------------------------
 
@@ -169,7 +172,7 @@ else
 fi
 
 
-#if [[ ! -d $ORIGINAL_ALIGNMENT_INDEXES_TEST ]]; then
+if [[ ! -d $ORIGINAL_ALIGNMENT_INDEXES_TEST ]]; then
     # Aligning test
     echo "Aligning test features by class..."
     mkdir -p $ORIGINAL_ALIGNMENT_INDEXES_TEST
@@ -179,9 +182,9 @@ fi
     ANTERIOR_ORIGINAL_ALIGNMENT_INDEXES_TEST=${OAR_SUB_OUTPUT#*ANTERIOR=}
     ANTERIOR_ORIGINAL_ALIGNMENT_INDEXES_TEST=`echo $ANTERIOR_ORIGINAL_ALIGNMENT_INDEXES_TEST | tr : ' '`
     chmod -R 777 $ORIGINAL_ALIGNMENT_INDEXES_TEST
-#else
-#    echo "Skipping aligning test features by class"
-#fi
+else
+    echo "Skipping aligning test features by class"
+fi
 
 
 #--- Aligned frames extraction ----------------------------------------------------------
