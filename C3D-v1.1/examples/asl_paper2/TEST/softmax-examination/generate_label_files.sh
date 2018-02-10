@@ -10,10 +10,11 @@ mkdir -p $OUTPUT_FOLDER
 for CLASS_ID in {1..43}
 do
     CLASS_ID_MINUS_1=$((CLASS_ID-ONE))
-    LABEL_FILE="$OUTPUT_FOLDER/c_${CLASS_ID_PADDED}.txt"
-    
+
     # pad the number 
+
     CLASS_ID_PADDED=`seq -f '%02g' $CLASS_ID $CLASS_ID`
+    LABEL_FILE="$OUTPUT_FOLDER/c_${CLASS_ID_PADDED}.txt"
 
     > $LABEL_FILE
 
