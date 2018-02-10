@@ -4,6 +4,7 @@ TRAIN_FOLDER=/data/sparks/share/asl/experiments/datasets/train
 TEST_FOLDER=/data/sparks/share/asl/experiments/datasets/test
 SCRIPTS_FOLDER=/data/sparks/share/asl/experiments/datasets/scripts_data
 PYTHON_SCRIPTS_FOLDER=/data/sparks/share/asl/probable-joke/C3D-v1.1/python
+BASH_SCRIPTS_FOLDER=/data/sparks/share/asl/probable-joke/C3D-v1.1/scripts
 ALIGNMENT_SCRIPTS_FOLDER=/data/sparks/share/asl/probable-joke/pipeline/5.0/alignment
 
 ORIGINAL_FRAMES_TRAIN=$TRAIN_FOLDER/original_train
