@@ -17,13 +17,13 @@ mkdir -p $OUTPUT_FOLDER/$CLASS_ID
 
 for TEST_SAMPLE in `ls $TEST_FOLDER/$CLASS_ID`
 do
-
+    TEST_SAMPLE_ID=${TEST_SAMPLE%_*}
     for CLASS in {01..43}
     do
         echo "Sample $TEST_SAMPLE is being aligned to class $CLASS"
-        mkdir -p $OUTPUT_FOLDER/$CLASS_ID/$CLASS
+        mkdir -p $OUTPUT_FOLDER/$CLASS_ID/$TEST_SAMPLE_ID/$CLASS
 
-        CMD="${ENR_CODE}/run_align_deep_pca_gctw_test.sh $TRAIN_FOLDER/ $CLASS $TEST_FOLDER/$CLASS_ID/$TEST_SAMPLE $OUTPUT_FOLDER/$CLASS_ID/$CLASS $WAIT_ID"
+        CMD="${ENR_CODE}/run_align_deep_pca_gctw_test.sh $TRAIN_FOLDER/ $CLASS $TEST_FOLDER/$CLASS_ID/$TEST_SAMPLE $OUTPUT_FOLDER/$CLASS_ID/$TEST_SAMPLE_ID/$CLASS $WAIT_ID"
         ID="--anterior=$($CMD):$ID"
 
         count=${ID//[^:]}
