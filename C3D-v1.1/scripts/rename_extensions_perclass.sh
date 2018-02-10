@@ -8,6 +8,7 @@ NEW_EXTENSION=${3:-jpg}
 for video in "$INPUT_FOLDER"/*
 do
   for i in "$video"/*
+    do
       for f in "$i"/*."$OLD_EXTENSION"
       do
         filename=${f##*/}
