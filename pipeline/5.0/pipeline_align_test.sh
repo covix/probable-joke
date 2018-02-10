@@ -1,6 +1,8 @@
 # Aligns all videos from input folder to class class_id and saves them in
 # OUTPUT_FOLDER. Afterwards they are reduced by FPS_RATE
 
+source /data/sparks/share/asl/asl/bin/activate
+
 INPUT_FOLDER=/data/sparks/share/asl/experiments/datasets/test/original_test
 ALIGN_IDX_FOLDER=/data/sparks/share/asl/experiments/datasets/test/alignment_indexes_original_test_all_classes
 OUTPUT_FOLDER=/data/sparks/share/asl/experiments/datasets/test/aligned_frames_original_test_all_classes/
