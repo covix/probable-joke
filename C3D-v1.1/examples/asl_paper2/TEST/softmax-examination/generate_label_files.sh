@@ -20,7 +20,7 @@ do
 
     for SAMPLE in `ls $INPUT_FOLDER | grep "\-$CLASS_ID_PADDED"`
     do
-        echo $SAMPLE $FRAME_IDX $CLASS_ID_MINUS_1 $PAD > $LABEL_FILE
+        echo $SAMPLE $FRAME_IDX $CLASS_ID_MINUS_1 $PAD >> $LABEL_FILE
     done
 done
 
