@@ -167,7 +167,10 @@ def plot_chart(chart_type, png_prefix, path_to_log_list):
         # If there too many datapoints, do not use marker.
         use_marker = False
 	if(str(chart_type)=="0"):
-		print(path_to_log,max(data[1]))
+		max_acc=max(data[1])
+		ind=data[1].index(max_acc)
+		iter_max_acc=data[0][ind]
+		print(path_to_log,iter_max_acc,max_acc)
         if not use_marker:
             plt.plot(data[0], data[1], label=label, color=color,
                      linewidth=linewidth)

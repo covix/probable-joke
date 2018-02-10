@@ -5,8 +5,8 @@ CLASS=$2
 TEST_SAMPLE=$3
 OUTPUT_FOLDER=$4
 ANTERIOR=$5
+NODE=${6:-nef001.inria.fr}
 
-NODE=nef001.inria.fr
 BESTEFFORT="-t besteffort"
 
 # if you don't want the option, just use
