@@ -32,8 +32,10 @@ LOUD_ALIGNMENT_INDEXES_TEST=$TEST_FOLDER/alignment_indexes_loud_test
 LOUD_ALIGNED_FRAMES_TRAIN=$TRAIN_FOLDER/aligned_frames_loud_train
 LOUD_ALIGNED_FRAMES_TEST=$TEST_FOLDER/aligned_frames_loud_test
 
-TRAIN_FOLDER_REDUCED_FPS=/data/sparks/share/asl/experiments/datasets/train/aligned_reduced_fps_loud_train
-TEST_FOLDER_REDUCED_FPS=/data/sparks/share/asl/experiments/datasets/test/aligned_reduced_fps_loud_test
+TRAIN_FOLDER_REDUCED_FPS=/data/sparks/share/asl/experiments/datasets/train/loud_reduce_fps_train
+TEST_FOLDER_REDUCED_FPS=/data/sparks/share/asl/experiments/datasets/test/loud_reduce_fps_test
+ALIGNED_TRAIN_FOLDER_REDUCED_FPS=/data/sparks/share/asl/experiments/datasets/train/aligned_reduced_fps_loud_train
+ALIGNED_TEST_FOLDER_REDUCED_FPS=/data/sparks/share/asl/experiments/datasets/test/aligned_reduced_fps_loud_test
 FPS="7.5"
 LENGTH="45"
 
@@ -55,6 +57,11 @@ ANTERIOR_LOUD_FRAMES_CLASS_TEST=
 
 ANTERIOR_LOUD_PCA_FEATURES_CLASS_TRAIN=
 ANTERIOR_LOUD_PCA_FEATURES_CLASS_TEST=
+
+ANTERIOR_REDUCED_FPS_ALIGNED_TRAIN=
+ANTERIOR_REDUCED_FPS_ALIGNED_TEST=
+ANTERIOR_REDUCED_FPS_TRAIN=
+ANTERIOR_REDUCED_FPS_TEST=
 
 # check if the folder already exists, if so pass to the next step
 if [[ ! -d $LOUD_FRAMES_TRAIN ]]; then
@@ -285,15 +292,52 @@ fi
 
 #--- Reduce fps and pad with silence ----------------------------------------------------
 
+if [[ ! -d $ALIGNED_TRAIN_FOLDER_REDUCED_FPS ]]; then
+    #Create reduced fps train
+    echo "Create reduced fps aligned train..."
+    mkdir -p $ALIGNED_TRAIN_FOLDER_REDUCED_FPS
+    # python $PYTHON_SCRIPTS_FOLDER/reduce_fps_parallel.py $LOUD_ALIGNED_FRAMES_TRAIN $ALIGNED_TRAIN_FOLDER_REDUCED_FPS $FPS
+    # python $PYTHON_SCRIPTS_FOLDER/replicate_last_frame_parallel.py $ALIGNED_TRAIN_FOLDER_REDUCED_FPS $LENGTH
+    CMD="$PYTHON_SCRIPTS_FOLDER/reduce_fps_and_pad_interface.sh $LOUD_ALIGNED_FRAMES_TRAIN $ALIGNED_TRAIN_FOLDER_REDUCED_FPS $FPS $LENGTH"
+    OAR_SUB_OUTPUT=`oarsub -n aligned_train_folder_reduced_fps $ANTERIOR_LOUD_ALIGNED_FRAMES_TRAIN -l /core=1 -S "$CMD"`
+    echo $OAR_SUB_OUTPUT
+    ANTERIOR_REDUCED_FPS_ALIGNED_TRAIN=`echo $OAR_SUB_OUTPUT | cut -d'=' -f2`
+    ANTERIOR_REDUCED_FPS_ALIGNED_TRAIN="--anterior=$ANTERIOR_REDUCED_FPS_ALIGNED_TRAIN"
+    chmod -R 777 $ALIGNED_TRAIN_FOLDER_REDUCED_FPS
+else
+    echo "Skipping reduced fps aligned train"
+fi
+
+
+if [[ ! -d $ALIGNED_TEST_FOLDER_REDUCED_FPS ]]; then
+    #Create reduced fps test
+    echo "Create reduced fps aligned test..."
+    mkdir -p $ALIGNED_TEST_FOLDER_REDUCED_FPS
+    # python $PYTHON_SCRIPTS_FOLDER/reduce_fps_parallel.py $LOUD_ALIGNED_FRAMES_TEST $ALIGNED_TEST_FOLDER_REDUCED_FPS $FPS
+    # python $PYTHON_SCRIPTS_FOLDER/replicate_last_frame_parallel.py $ALIGNED_TEST_FOLDER_REDUCED_FPS $LENGTH
+    CMD="$PYTHON_SCRIPTS_FOLDER/reduce_fps_and_pad_interface.sh $LOUD_ALIGNED_FRAMES_TEST $ALIGNED_TEST_FOLDER_REDUCED_FPS $FPS $LENGTH"
+    OAR_SUB_OUTPUT=`oarsub -n aligned_test_folder_reduced_fps $ANTERIOR_LOUD_ALIGNED_FRAMES_TEST -l /core=1 -S "$CMD"`
+    echo $OAR_SUB_OUTPUT
+    ANTERIOR_REDUCED_FPS_ALIGNED_TEST=`echo $OAR_SUB_OUTPUT | cut -d'=' -f2`
+    ANTERIOR_REDUCED_FPS_ALIGNED_TEST="--anterior=$ANTERIOR_REDUCED_FPS_ALIGNED_TEST"
+    chmod -R 777 $ALIGNED_TEST_FOLDER_REDUCED_FPS
+else
+    echo "Skipping reduced fps aligned test"
+fi
+
+
+
+#--- Reduce fps and pad with silence ----------------------------------------------------
+
 if [[ ! -d $TRAIN_FOLDER_REDUCED_FPS ]]; then
     #Create reduced fps train
     echo "Create reduced fps train..."
     mkdir -p $TRAIN_FOLDER_REDUCED_FPS
-    # python $PYTHON_SCRIPTS_FOLDER/reduce_fps_parallel.py $LOUD_ALIGNED_FRAMES_TRAIN $TRAIN_FOLDER_REDUCED_FPS $FPS
-    # python $PYTHON_SCRIPTS_FOLDER/replicate_last_frame_parallel.py $TRAIN_FOLDER_REDUCED_FPS $LENGTH
-    CMD="$PYTHON_SCRIPTS_FOLDER/reduce_fps_and_pad_interface.sh $LOUD_ALIGNED_FRAMES_TRAIN $TRAIN_FOLDER_REDUCED_FPS $FPS $LENGTH"
-    OAR_SUB_OUTPUT=`oarsub -n train_folder_reduced_fps $ANTERIOR_LOUD_ALIGNED_FRAMES_TRAIN -l /core=1 -S "$CMD"`
+    CMD="$PYTHON_SCRIPTS_FOLDER/reduce_fps_and_pad_interface.sh $LOUD_FRAMES_TRAIN $TRAIN_FOLDER_REDUCED_FPS $FPS $LENGTH"
+    OAR_SUB_OUTPUT=`oarsub -n aligned_train_folder_reduced_fps $ANTERIOR_LOUD_FRAMES_TRAIN -l /core=1 -S "$CMD"`
     echo $OAR_SUB_OUTPUT
+    ANTERIOR_REDUCED_FPS_TRAIN=`echo $OAR_SUB_OUTPUT | cut -d'=' -f2`
+    ANTERIOR_REDUCED_FPS_TRAIN="--anterior=$ANTERIOR_REDUCED_FPS_TRAIN"
     chmod -R 777 $TRAIN_FOLDER_REDUCED_FPS
 else
     echo "Skipping reduced fps train"
@@ -304,15 +348,33 @@ if [[ ! -d $TEST_FOLDER_REDUCED_FPS ]]; then
     #Create reduced fps test
     echo "Create reduced fps test..."
     mkdir -p $TEST_FOLDER_REDUCED_FPS
-    # python $PYTHON_SCRIPTS_FOLDER/reduce_fps_parallel.py $LOUD_ALIGNED_FRAMES_TEST $TEST_FOLDER_REDUCED_FPS $FPS
-    # python $PYTHON_SCRIPTS_FOLDER/replicate_last_frame_parallel.py $TEST_FOLDER_REDUCED_FPS $LENGTH
-    CMD="$PYTHON_SCRIPTS_FOLDER/reduce_fps_and_pad_interface.sh $LOUD_ALIGNED_FRAMES_TEST $TEST_FOLDER_REDUCED_FPS $FPS $LENGTH"
-    OAR_SUB_OUTPUT=`oarsub -n test_folder_reduced_fps $ANTERIOR_LOUD_ALIGNED_FRAMES_TEST -l /core=1 -S "$CMD"`
+    CMD="$PYTHON_SCRIPTS_FOLDER/reduce_fps_and_pad_interface.sh $LOUD_FRAMES_TEST $TEST_FOLDER_REDUCED_FPS $FPS $LENGTH"
+    OAR_SUB_OUTPUT=`oarsub -n aligned_test_folder_reduced_fps $ANTERIOR_LOUD_FRAMES_TEST -l /core=1 -S "$CMD"`
     echo $OAR_SUB_OUTPUT
+    ANTERIOR_REDUCED_FPS_TEST=`echo $OAR_SUB_OUTPUT | cut -d'=' -f2`
+    ANTERIOR_REDUCED_FPS_TEST="--anterior=$ANTERIOR_REDUCED_FPS_TEST"
     chmod -R 777 $TEST_FOLDER_REDUCED_FPS
 else
     echo "Skipping reduced fps test"
 fi
+
+
+echo "Changing extension train..."
+CMD="$BASH_SCRIPTS_FOLDER/rename_extension.sh $ALIGNED_TRAIN_FOLDER_REDUCED_FPS"
+OAR_SUB_OUTPUT=`oarsub -n change_extension $ANTERIOR_REDUCED_FPS_ALIGNED_TRAIN -l /core=1 -S "$CMD"`
+echo $OAR_SUB_OUTPUT
+CMD="$BASH_SCRIPTS_FOLDER/rename_extension.sh $TRAIN_FOLDER_REDUCED_FPS"
+OAR_SUB_OUTPUT=`oarsub -n change_extension $ANTERIOR_REDUCED_FPS_TRAIN -l /core=1 -S "$CMD"`
+echo $OAR_SUB_OUTPUT
+
+echo "Changing extension test..."
+CMD="$BASH_SCRIPTS_FOLDER/rename_extension.sh $ALIGNED_TEST_FOLDER_REDUCED_FPS"
+OAR_SUB_OUTPUT=`oarsub -n change_extension $ANTERIOR_REDUCED_FPS_ALIGNED_TEST -l /core=1 -S "$CMD"`
+echo $OAR_SUB_OUTPUT
+CMD="$BASH_SCRIPTS_FOLDER/rename_extension.sh $TEST_FOLDER_REDUCED_FPS"
+OAR_SUB_OUTPUT=`oarsub -n change_extension $ANTERIOR_REDUCED_FPS_TEST -l /core=1 -S "$CMD"`
+echo $OAR_SUB_OUTPUT
+
 
 
 #--- Change permissions of every folder -------------------------------------------------
@@ -337,13 +399,13 @@ CMD="for i in $ORIGINAL_FRAMES_TRAIN \
     $LOUD_ALIGNMENT_INDEXES_TEST \
     $LOUD_ALIGNED_FRAMES_TRAIN \
     $LOUD_ALIGNED_FRAMES_TEST \
-    $TRAIN_FOLDER_REDUCED_FPS \
-    $TEST_FOLDER_REDUCED_FPS
+    $ALIGNED_TRAIN_FOLDER_REDUCED_FPS \
+    $ALIGNED_TEST_FOLDER_REDUCED_FPS
 do
     chmod -R 777 $i &
 done
 "
-OAR_SUB_OUTPUT=`oarsub -n test_folder_reduced_fps $ANTERIOR_LOUD_ALIGNED_FRAMES_TRAIN $ANTERIOR_LOUD_ALIGNED_FRAMES_TEST -l /core=1 -S "$CMD"`
+OAR_SUB_OUTPUT=`oarsub -n ALIGNED_TEST_FOLDER_REDUCED_FPS $ANTERIOR_LOUD_ALIGNED_FRAMES_TRAIN $ANTERIOR_LOUD_ALIGNED_FRAMES_TEST  -l /core=1 -S "$CMD"`
 echo $OAR_SUB_OUTPUT
 
 
