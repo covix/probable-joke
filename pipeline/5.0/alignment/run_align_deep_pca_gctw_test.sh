@@ -7,7 +7,7 @@ OUTPUT_FOLDER=$4
 ANTERIOR=$5
 
 NODE=nef001.inria.fr
-BESTEFFORT="-t BESTEFFORT"
+BESTEFFORT="-t besteffort"
 
 # if you don't want the option, just use
 # BESTEFFORT=
