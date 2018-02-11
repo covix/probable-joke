@@ -13,6 +13,7 @@ FPS_RATE=7.5
 FINAL_LENGTH=45
 
 PYTHON_SCRIPT_FOLDER=/data/sparks/share/asl/probable-joke/C3D-v1.1/python/
+BASH_SCRIPT_FOLDER=/data/sparks/share/asl/probable-joke/C3D-v1.1/scripts/
 
 # Align all test videos to class class_id
 $PYTHON_SCRIPT_FOLDER/frames_from_indexes_test_sample_all_classes.sh \
@@ -31,4 +32,8 @@ $PYTHON_SCRIPT_FOLDER/replicate_last_frame_parallel_all_classes_new.sh \
   $OUTPUT_FOLDER_FPS \
   $FINAL_LENGTH
 
-# change extension
+  # change extension of frames_from_indexes_sample
+  $BASH_SCRIPT_FOLDER/rename_extensions_perclass.sh $OUTPUT_FOLDER_FPS
+
+  chmod 777 $OUTPUT_FOLDER
+  chmod 777 $OUTPUT_FOLDER_FPS
