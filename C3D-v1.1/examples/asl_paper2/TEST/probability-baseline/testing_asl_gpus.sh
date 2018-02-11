@@ -28,4 +28,4 @@ done
 GPUS=${GPUS:1}
 
 
-GLOG_log_dir="./LOG_TRAIN" $CAFFE_HOME/build/tools/caffe.bin test --model=$MODEL_FILE --weights=$WEIGHTS --gpu=$GPUS -iterations 1
+GLOG_log_dir="./LOG_TRAIN" $CAFFE_HOME/build/tools/caffe.bin test --model=$MODEL_FILE --weights=$WEIGHTS --gpu=$GPUS -iterations 240
