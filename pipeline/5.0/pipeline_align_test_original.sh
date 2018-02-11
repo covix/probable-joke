@@ -29,3 +29,5 @@ $PYTHON_SCRIPT_FOLDER/reduce_fps_parallel_all_classes_new.sh \
 $PYTHON_SCRIPT_FOLDER/replicate_last_frame_parallel_all_classes_new.sh \
   $OUTPUT_FOLDER_FPS \
   $FINAL_LENGTH
+
+# change extension
