@@ -6,11 +6,11 @@ TEST_SAMPLE=$3
 OUTPUT_FOLDER=$4
 ANTERIOR=$5
 
-NODE=nef007.inria.fr
+NODE=nef027.inria.fr
 
 # if you don't want the option, just use
-# BESTEFFORT="-t besteffort"
-BESTEFFORT=
+BESTEFFORT="-t besteffort"
+# BESTEFFORT=
 
 ANTERIOR=`echo $ANTERIOR | tr : ' '`
 
