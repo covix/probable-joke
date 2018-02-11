@@ -4,9 +4,11 @@ from matplotlib import pyplot as plt
 
 
 original_folder = sys.argv[1]
-aligned_folder = sys.argv[2]
+original_aligned_folder = sys.argv[2]
+loud_aligned_folder = sys.argv[3]
 
-original, aligned = {}, {}
+
+original, aligned_original, aligned_loud  = {}, {}, {}
 
 
 def load_video_frames(input_folder):
@@ -26,16 +28,19 @@ def load_video_frames(input_folder):
 
 
 original = load_video_frames(original_folder)
-aligned = load_video_frames(aligned_folder)
+original_aligned = load_video_frames(original_aligned_folder)
+loud_aligned = load_video_frames(loud_aligned_folder)
 
 
-print "Original length => Aligned length"
+# print "Original length => Aligned length"
 
 original_length = 0
-aligned_length = len(aligned.itervalues().next())
+original_aligned_length = len(original_aligned.itervalues().next())
+loud_aligned_length = len(loud_aligned.itervalues().next())
+
 
 for k in sorted(original.keys()):
-    print '\t', len(original[k]), '=>', len(aligned[k]), k
+    # print '\t', len(original[k]), '=>', len(aligned[k]), k
     original_length = max(original_length, len(original[k]))
 
 
@@ -67,13 +72,19 @@ step = 3
 
 fig = plot_frames(original, original_length, step, "Original frames")
 fig.set_size_inches(16.8, 3.75)
-plt.savefig('../plots/alignment_visualization/original_test.png',
+plt.savefig('../plots/alignment_visualization/original.png',
             bbox_inches='tight', dpi=300)
 
-fig = plot_frames(aligned, aligned_length, step, "Aligned frames (GCTW)")
+fig = plot_frames(original_aligned, original_aligned_length, step, "Origninal aligned frames")
 fig.set_size_inches(16.8, 3.75)
-plt.savefig('../plots/alignment_visualization/aligned_gctw_test.png',
+plt.savefig('../plots/alignment_visualization/original_aligned.png',
             bbox_inches='tight', dpi=300)
+
+fig = plot_frames(loud_aligned, loud_aligned_length, step, "Loud aligned frames")
+fig.set_size_inches(16.8, 3.75)
+plt.savefig('../plots/alignment_visualization/loud_aligned.png',
+            bbox_inches='tight', dpi=300)
+
 
 # plt.show()
 print "Figure saved."
