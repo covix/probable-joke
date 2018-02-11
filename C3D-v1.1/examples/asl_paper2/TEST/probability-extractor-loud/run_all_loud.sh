@@ -3,7 +3,7 @@ TEST_DATA_PATH="/data/sparks/share/asl/experiments/datasets/test/aligned_reduced
 
 echo "Testing started using model: " $MODEL
 
-for CLASS in {01..43}
+for CLASS in {01..17}
 do
 echo "Testing for class: " $CLASS
  ./replicate_and_run_class.sh 1_aligned_aligned_2gpus_iter_738.caffemodel $TEST_DATA_PATH $CLASS
