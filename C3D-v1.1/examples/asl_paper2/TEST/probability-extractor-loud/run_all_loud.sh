@@ -6,6 +6,6 @@ echo "Testing started using model: " $MODEL
 for CLASS in {01..17}
 do
 echo "Testing for class: " $CLASS
- ./replicate_and_run_class.sh 1_aligned_aligned_2gpus_iter_738.caffemodel $TEST_DATA_PATH $CLASS
+ ./replicate_and_run_class.sh $MODEL $TEST_DATA_PATH $CLASS
 done
 
