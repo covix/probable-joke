@@ -3,11 +3,11 @@
 
 source /data/sparks/share/asl/asl/bin/activate
 
-INPUT_FOLDER=/data/sparks/share/asl/experiments/datasets/test/original_test
-ALIGN_IDX_FOLDER=/data/sparks/share/asl/experiments/datasets/test/alignment_indexes_original_test_all_classes
-OUTPUT_FOLDER=/data/sparks/share/asl/experiments/datasets/test/aligned_frames_original_test_all_classes/
-OUTPUT_FOLDER_FPS=/data/sparks/share/asl/experiments/datasets/test/aligned_reduced_fps_original_test_all_classes/
-CLASS_ID=04
+INPUT_FOLDER=/data/sparks/share/asl/experiments/datasets/test/loud_test
+ALIGN_IDX_FOLDER=/data/sparks/share/asl/experiments/datasets/test/alignment_indexes_loud_test_all_classes
+OUTPUT_FOLDER=/data/sparks/share/asl/experiments/datasets/test/aligned_frames_loud_test_all_classes/
+OUTPUT_FOLDER_FPS=/data/sparks/share/asl/experiments/datasets/test/aligned_reduced_fps_loud_test_all_classes/
+CLASS_ID=$1
 FPS_RATE=7.5
 FINAL_LENGTH=45
 
