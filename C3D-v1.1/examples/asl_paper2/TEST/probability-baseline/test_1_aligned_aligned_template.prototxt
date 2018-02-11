@@ -22,7 +22,7 @@ layer {
     new_height: 128
     new_width: 171
     batch_size: 1
-    shuffle: true
+    shuffle: false
   }
 }
 
@@ -527,29 +527,6 @@ layer {
   top: "prob"
   include {
     phase: TEST
-  }
-}
-layer {
-  name: "accuracy"
-  type: "Accuracy"
-  bottom: "prob"
-  bottom: "label"
-  top: "accuracy/top-1"
-  include {
-    phase: TEST
-  }
-}
-layer {
-  name: "accuracy"
-  type: "Accuracy"
-  bottom: "prob"
-  bottom: "label"
-  top: "accuracy/top-5"
-  include {
-    phase: TEST
-  }
-  accuracy_param {
-    top_k: 5
   }
 }
 layer {
