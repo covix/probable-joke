@@ -10,7 +10,7 @@ do
     do
         for k in 'C' 'D';
         do
-            if [ -f $FOLDER/$j-M-$i-$k-comp ]; then
+            if [ -d "$FOLDER/$j-M-$i-$k-comp" ]; then
                 echo $j $i $k `ls $FOLDER/$j-M-$i-$k-comp  | wc -l` # >> num_frames.txt
             fi
         done
@@ -20,3 +20,8 @@ done
 
 # Usage example
 # ./num_frames_extractor.sh /Users/covix/Projects/probable-joke/data/asl
+
+# > num_frames.txt
+# ./num_frames_extractor.sh ../../experiments/datasets/train/loud_train/ >> num_frames.txt
+# ./num_frames_extractor.sh ../../experiments/datasets/test/loud_test/ >> num_frames.txt
+# sort num_frames.txt > num_frames.txt
