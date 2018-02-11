@@ -15,4 +15,4 @@ done
 #rm *.sed_bak
 
 
-# Usage example ./replicate_and_run_class.sh 1_aligned_aligned_2gpus_iter_738.caffemodel ../../../../../../experiments/datasets/test/aligned_gctw_sample_test_all_classes_reduced_fps/ 04
+# Usage example ./replicate_and_run_class.sh 1_aligned-loud_aligned-loud_2gpus_nogamma_iter_2419.caffemodel /data/sparks/share/asl/experiments/datasets/test/aligned_reduced_fps_loud_test_all_classes/ 04
