@@ -3,7 +3,7 @@ TEST_FOLDER=$2
 OUTPUT_FOLDER=$3
 CLASS_ID=$4
 MAX_PROCESSES_RUNNING=${5:-6}
-
+WAIT_ID=$6  # empty is ok!, otherwise just put a job you want to w8 for
 
 # pad the number
 CLASS_ID=`seq -f '%02g' $CLASS_ID $CLASS_ID`
@@ -39,6 +39,8 @@ do
         
     done
 done
+
+echo $ID
 
 
 # alignment_indexes_loud_test_all_classes/01/$TEST_SAMPLE/01/01-M-01-C-comp_features.csv
