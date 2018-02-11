@@ -167,9 +167,9 @@ def plot_chart(chart_type, png_prefix, path_to_log_list):
         # If there too many datapoints, do not use marker.
         use_marker = False
 	if(str(chart_type)=="0"):
-		ind_min_2000=len(filter(lambda x: x<2000,data[0]))
-		data[0]=data[0][:ind_min_2000]
-		data[1]=data[1][:ind_min_2000]
+		#ind_min_2000=len(filter(lambda x: x<2000,data[0]))
+		#data[0]=data[0][:ind_min_2000]
+		#data[1]=data[1][:ind_min_2000]
 		max_acc=max(data[1])
 		ind=data[1].index(max_acc)
 		iter_max_acc=data[0][ind]
