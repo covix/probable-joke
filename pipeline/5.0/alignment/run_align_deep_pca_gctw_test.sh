@@ -6,7 +6,7 @@ TEST_SAMPLE=$3
 OUTPUT_FOLDER=$4
 ANTERIOR=$5
 
-NODE=nef027.inria.fr
+NODE=nef021.inria.fr
 
 # if you don't want the option, just use
 BESTEFFORT="-t besteffort"
