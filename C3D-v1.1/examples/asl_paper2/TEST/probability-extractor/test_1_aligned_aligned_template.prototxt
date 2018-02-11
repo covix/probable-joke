@@ -16,8 +16,8 @@ layer {
     mirror: false
   }
   video_data_param {
-    source: "/data/sparks/share/asl/experiments/datasets/test/labels_class/{CLASS}.txt"
-    root_folder: "/data/sparks/share/asl/experiments/datasets/test/aligned_reduced_fps_original_test_all_classes/{CLASS}/{SAMPLE}/"
+    source: "/data/sparks/share/asl/experiments/datasets/test.txt"
+    root_folder: "/data/sparks/share/asl/experiments/datasets/test/original_reduced_fps_test/"
     new_length: 45
     new_height: 128
     new_width: 171
