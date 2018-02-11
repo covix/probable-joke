@@ -20,10 +20,10 @@ def main():
     for frame_idx, frame in enumerate(indexes):
 
         source = os.path.join(input_folder, "image_{:05d}.png".format(int(round(frame))))
-        print("Source: ",source)
+        #print("Source: ",source)
 
         dest = os.path.join(output_folder, "image_{:05d}.png".format(frame_idx + 1))
-        print("Destination: ",dest)
+        #print("Destination: ",dest)
 
         shutil.copyfile(source, dest)
 

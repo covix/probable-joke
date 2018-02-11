@@ -1,0 +1,9 @@
+$SAMPLES_FOLDER
+$CLASS
+$OUTPUT_FOLDER=$SAMPLES_FOLDER/$CLASS
+mkdir $OUTPUT_FOLDER
+chmod 777 $OUTPUT_FOLDER
+for f in `*M-$CLASS*`;
+do
+  echo mv $f $OUTPUT_FOLDER/$f
+done
