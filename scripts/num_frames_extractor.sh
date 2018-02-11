@@ -2,7 +2,7 @@
 
 FOLDER=$1
 
-:>num_frames.txt
+# :>num_frames.txt
 
 for i in `seq -w 1 43`;
 do
@@ -10,7 +10,9 @@ do
     do
         for k in 'C' 'D';
         do
-            echo $j $i $k `ls $FOLDER/$j-M-$i-$k-comp  | wc -l` >> num_frames.txt
+            if [ -f $FOLDER/$j-M-$i-$k-comp ]; then
+                echo $j $i $k `ls $FOLDER/$j-M-$i-$k-comp  | wc -l` # >> num_frames.txt
+            fi
         done
     done
 done
