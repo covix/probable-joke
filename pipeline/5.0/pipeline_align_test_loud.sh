@@ -1,5 +1,5 @@
 # Aligns all videos from input folder to class class_id and saves them in
-# OUTPUT_FOLDER. Afterwards they are reduced by FPS_RATE
+# OUTPUT_FOLDER Afterwards they are reduced by FPS_RATE
 
 source /data/sparks/share/asl/asl/bin/activate
 
