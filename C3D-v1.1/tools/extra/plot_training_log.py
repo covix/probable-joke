@@ -10,6 +10,8 @@ import matplotlib.legend as lgd
 import matplotlib.markers as mks
 import matplotlib.pyplot as plt
 
+random.seed(813)
+
 
 def get_log_parsing_script():
     dirname = os.path.dirname(os.path.abspath(inspect.getfile(
@@ -174,13 +176,14 @@ def plot_chart(chart_type, png_prefix, path_to_log_list):
 		ind=data[1].index(max_acc)
 		iter_max_acc=data[0][ind]
 		print(path_to_log,iter_max_acc,max_acc)
+        label_plot = label[0].replace('_', ' ')
         if not use_marker:
-            plt.plot(data[0], data[1], label=label, color=color,
+            plt.plot(data[0], data[1], label=label_plot, color=color,
                      linewidth=linewidth)
 	    #, alpha=1. / len(path_to_log_list)
         else:
             marker = random_marker()
-            plt.plot(data[0], data[1], label=label, color=color,
+            plt.plot(data[0], data[1], label=label_plot, color=color,
                      marker=marker, linewidth=linewidth)
     legend_loc = get_legend_loc(chart_type)
     plt.legend(loc=legend_loc, ncol=1)  # ajust ncol to fit the space

@@ -24,4 +24,4 @@ done
 # > num_frames.txt
 # ./num_frames_extractor.sh ../../experiments/datasets/train/loud_train/ >> num_frames.txt
 # ./num_frames_extractor.sh ../../experiments/datasets/test/loud_test/ >> num_frames.txt
-# sort num_frames.txt > num_frames.txt
+# cat num_frames.txt | sort > num_frames_loud.txt
